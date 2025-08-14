@@ -7,6 +7,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import org.unibl.etf.vetclinic.data.dao.AppointmentDao;
+import org.unibl.etf.vetclinic.data.dao.MedicalRecordDao;
+import org.unibl.etf.vetclinic.data.dao.PaymentDao;
+import org.unibl.etf.vetclinic.data.dao.PetDao;
+import org.unibl.etf.vetclinic.data.dao.RoleDao;
+import org.unibl.etf.vetclinic.data.dao.ServiceDao;
+import org.unibl.etf.vetclinic.data.dao.UnpaidServiceDao;
+import org.unibl.etf.vetclinic.data.dao.UserDao;
+import org.unibl.etf.vetclinic.data.dao.UserPreferencesDao;
 import org.unibl.etf.vetclinic.data.entities.Appointment;
 import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
 import org.unibl.etf.vetclinic.data.entities.Payment;
@@ -36,15 +45,15 @@ import org.unibl.etf.vetclinic.data.entities.UserPreferences;
 public abstract class AppDatabase extends RoomDatabase {
 
     // DAO interfejsi (definišemo kad ih napravimo)
-//    public abstract RoleDao roleDao();
-//    public abstract UserDao userDao();
-//    public abstract UserPreferencesDao userPreferencesDao();
-//    public abstract ServiceDao serviceDao();
-//    public abstract PetDao petDao();
-//    public abstract AppointmentDao appointmentDao();
-//    public abstract MedicalRecordDao medicalRecordDao();
-//    public abstract PaymentDao paymentDao();
-//    public abstract UnpaidServiceDao unpaidServiceDao();
+    public abstract RoleDao roleDao();
+    public abstract UserDao userDao();
+    public abstract UserPreferencesDao userPreferencesDao();
+    public abstract ServiceDao serviceDao();
+    public abstract PetDao petDao();
+    public abstract AppointmentDao appointmentDao();
+    public abstract MedicalRecordDao medicalRecordDao();
+    public abstract PaymentDao paymentDao();
+    public abstract UnpaidServiceDao unpaidServiceDao();
 
     // Singleton instance
     private static volatile AppDatabase INSTANCE;
