@@ -33,5 +33,8 @@ public interface UserDao {
 
     @Query("SELECT * FROM Users")
     List<User> getAll();
+
+    @Query("SELECT * FROM Users WHERE Email = :email LIMIT 1")
+    User getUserByEmail(String email);
 }
 
