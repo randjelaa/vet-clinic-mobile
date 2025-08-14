@@ -22,4 +22,11 @@
         android:name="org.unibl.etf.vetclinic.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_pets"
+        android:name="org.unibl.etf.vetclinic.ui.pet.PetListFragment"
+        android:label="Ljubimci"
+        tools:layout="@layout/fragment_pet_list" />
+
 </navigation>
