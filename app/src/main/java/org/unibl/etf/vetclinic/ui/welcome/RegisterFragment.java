@@ -1,19 +1,19 @@
-package org.unibl.etf.vetclinic.ui;
+package org.unibl.etf.vetclinic.ui.welcome;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
-
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.data.entities.User;
@@ -58,6 +58,11 @@ public class RegisterFragment extends Fragment {
                 return;
             }
 
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(getContext(), "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             User user = new User();
             user.Name = name;
             user.Email = email;
@@ -66,12 +71,21 @@ public class RegisterFragment extends Fragment {
             userViewModel.register(user,
                     () -> requireActivity().runOnUiThread(() -> {
                         Toast.makeText(getContext(), "Registration successful", Toast.LENGTH_SHORT).show();
-                        NavHostFragment.findNavController(this).navigate(R.id.action_registerFragment_to_loginFragment);
+                        NavHostFragment.findNavController(this)
+                                .navigate(R.id.action_registerFragment_to_loginFragment);
                     }),
                     () -> requireActivity().runOnUiThread(() ->
                             Toast.makeText(getContext(), "Email already exists or error occurred", Toast.LENGTH_SHORT).show()
                     )
             );
         });
+
+        view.findViewById(R.id.buttonBack).setOnClickListener(v ->
+                NavHostFragment.findNavController(this).navigateUp()
+        );
+
+        view.findViewById(R.id.textViewLoginLink).setOnClickListener(v ->
+                NavHostFragment.findNavController(this).navigate(R.id.action_registerFragment_to_loginFragment)
+        );
     }
 }

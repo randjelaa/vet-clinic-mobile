@@ -1,4 +1,4 @@
-package org.unibl.etf.vetclinic.ui;
+package org.unibl.etf.vetclinic.ui.welcome;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

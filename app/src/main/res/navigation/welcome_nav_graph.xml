@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="org.unibl.etf.vetclinic.ui.WelcomeFragment"
+        android:name="org.unibl.etf.vetclinic.ui.welcome.WelcomeFragment"
         android:label="@string/welcome_message" >
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
@@ -18,12 +18,16 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="org.unibl.etf.vetclinic.ui.LoginFragment"
-        android:label="@string/login" />
+        android:name="org.unibl.etf.vetclinic.ui.welcome.LoginFragment"
+        android:label="@string/login">
+    <action
+        android:id="@+id/action_loginFragment_to_RegisterFragment"
+        app:destination="@id/registerFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="org.unibl.etf.vetclinic.ui.RegisterFragment"
+        android:name="org.unibl.etf.vetclinic.ui.welcome.RegisterFragment"
         android:label="@string/register">
     <action
         android:id="@+id/action_registerFragment_to_loginFragment"

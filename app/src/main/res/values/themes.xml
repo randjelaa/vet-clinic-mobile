@@ -23,4 +23,55 @@
         <item name="colorOnSecondary">@color/black</item>
     </style>
 
+    <style name="Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">200dp</item>
+        <item name="android:maxWidth">300dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="backgroundTint">@color/purple_500</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingStart">@dimen/spacing_large</item>
+        <item name="android:paddingEnd">@dimen/spacing_large</item>
+        <item name="android:paddingTop">@dimen/spacing_small</item>
+        <item name="android:paddingBottom">@dimen/spacing_small</item>
+        <item name="android:layout_marginTop">@dimen/spacing_medium</item>
+    </style>
+
+    <style name="Text.Heading.Centered" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="InputField.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxStrokeColor">@color/purple_500</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="hintTextColor">@color/purple_200</item>
+    </style>
+
+    <style name="IconButtonBack">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="tint">@color/purple_700</item>
+        <item name="android:layout_margin">@dimen/spacing_medium</item>
+    </style>
+
+    <style name="Text.LinkAction" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/purple_200</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
 </resources>
