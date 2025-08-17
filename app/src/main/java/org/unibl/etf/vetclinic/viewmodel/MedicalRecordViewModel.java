@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
+import org.unibl.etf.vetclinic.data.entities.relations.MedicalRecordWithAppointment;
 import org.unibl.etf.vetclinic.repository.MedicalRecordRepository;
 
 import java.util.List;
@@ -22,5 +23,9 @@ public class MedicalRecordViewModel extends AndroidViewModel {
 
     public LiveData<List<MedicalRecord>> getMedicalRecordsByPetId(int petId) {
         return repository.getMedicalRecordsByPetId(petId);
+    }
+
+    public LiveData<List<MedicalRecordWithAppointment>> getMedicalRecordsWithAppointmentByPetId(int petId) {
+        return repository.getMedicalRecordsWithAppointmentByPetId(petId);
     }
 }

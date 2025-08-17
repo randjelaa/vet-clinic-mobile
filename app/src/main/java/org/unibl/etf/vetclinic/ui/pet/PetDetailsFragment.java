@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
@@ -26,6 +28,10 @@ public class PetDetailsFragment extends Fragment {
     private MedicalRecordViewModel recordViewModel;
     private TextView textViewMedicalRecords;
 
+    private RecyclerView recyclerViewMedicalRecords;
+    private MedicalRecordAdapter medicalRecordAdapter;
+
+
 
     @Nullable
     @Override
@@ -40,11 +46,18 @@ public class PetDetailsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         textViewPetDetails = view.findViewById(R.id.textViewPetDetails);
+        recyclerViewMedicalRecords = view.findViewById(R.id.recyclerViewMedicalRecords);
+        recyclerViewMedicalRecords.setLayoutManager(new LinearLayoutManager(requireContext()));
+        medicalRecordAdapter = new MedicalRecordAdapter();
+        recyclerViewMedicalRecords.setAdapter(medicalRecordAdapter);
+
         petViewModel = new ViewModelProvider(this).get(PetViewModel.class);
+        recordViewModel = new ViewModelProvider(this).get(MedicalRecordViewModel.class); // <--- MORA biti ovde!
 
         if (getArguments() != null) {
             petId = getArguments().getInt("petId", -1);
             if (petId != -1) {
+                // PET DETALJI
                 petViewModel.getPetById(petId).observe(getViewLifecycleOwner(), pet -> {
                     if (pet != null) {
                         String details = "Ime: " + pet.Name + "\n" +
@@ -55,27 +68,21 @@ public class PetDetailsFragment extends Fragment {
                         textViewPetDetails.setText("Ljubimac nije pronađen.");
                     }
                 });
+
+                // MEDICINSKI ZAPISI
+                recordViewModel.getMedicalRecordsWithAppointmentByPetId(petId).observe(getViewLifecycleOwner(), records -> {
+                    if (records != null && !records.isEmpty()) {
+                        medicalRecordAdapter.setRecordsWithAppointments(records);
+                    } else {
+                        // Opcionalno: prikaži empty state poruku
+                    }
+                });
+            } else {
+                textViewPetDetails.setText("Nepoznat ID ljubimca.");
             }
         }
-
-        textViewMedicalRecords = view.findViewById(R.id.textViewMedicalRecords);
-        recordViewModel = new ViewModelProvider(this).get(MedicalRecordViewModel.class);
-
-        recordViewModel.getMedicalRecordsByPetId(petId).observe(getViewLifecycleOwner(), records -> {
-            if (records != null && !records.isEmpty()) {
-                StringBuilder sb = new StringBuilder();
-                for (MedicalRecord r : records) {
-                    sb.append("Dijagnoza: ").append(r.Diagnosis != null ? r.Diagnosis : "N/A").append("\n")
-                            .append("Terapija: ").append(r.Treatment != null ? r.Treatment : "N/A").append("\n")
-                            .append("Lijekovi: ").append(r.Medications != null ? r.Medications : "N/A").append("\n")
-                            .append("Bilješke: ").append(r.Notes != null ? r.Notes : "N/A").append("\n\n");
-                }
-                textViewMedicalRecords.setText(sb.toString());
-            } else {
-                textViewMedicalRecords.setText("Nema medicinskih zapisa za ovog ljubimca.");
-            }
-        });
     }
+
 
 }
 

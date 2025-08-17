@@ -1,23 +1,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="@dimen/spacing_medium"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Placeholder for pet details -->
     <TextView
+        style="@style/PetDetailsText"
         android:id="@+id/textViewPetDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Detalji ljubimca će biti ovdje."
-        android:paddingTop="25dp" />
+        android:text="@string/pet_details_placeholder" />
 
-    <TextView
-        android:id="@+id/textViewMedicalRecords"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMedicalRecords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Medical records..."
-        android:paddingTop="24dp"
-        android:textAppearance="?attr/textAppearanceBody1" />
-
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/spacing_medium" />
 </LinearLayout>

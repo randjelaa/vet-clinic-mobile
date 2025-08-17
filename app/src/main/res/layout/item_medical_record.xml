@@ -3,7 +3,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     style="@style/WidgetAppCardDefault"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_small">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,25 +13,40 @@
         android:padding="@dimen/card_padding">
 
         <TextView
-            android:id="@+id/textViewPetName"
+            android:id="@+id/textViewDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             style="@style/WidgetAppTextPrimaryBold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/pet_name" />
+            android:text="Datum" />
 
         <TextView
-            android:id="@+id/textViewPetSpecies"
-            style="@style/WidgetAppTextSecondary"
+            android:id="@+id/textViewDiagnosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/species" />
+            style="@style/WidgetAppTextPrimaryBold"
+            android:text="Dijagnoza: ..." />
 
         <TextView
-            android:id="@+id/textViewPetBreed"
-            style="@style/WidgetAppTextSecondary"
+            android:id="@+id/textViewTreatment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/breed" />
+            style="@style/WidgetAppTextSecondary"
+            android:text="Terapija: ..." />
+
+        <TextView
+            android:id="@+id/textViewMedications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/WidgetAppTextSecondary"
+            android:text="Lijekovi: ..." />
+
+        <TextView
+            android:id="@+id/textViewNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/WidgetAppTextSecondary"
+            android:text="Bilješke: ..." />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

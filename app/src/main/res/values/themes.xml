@@ -98,5 +98,18 @@
         <item name="android:textAppearance">?attr/textAppearanceBody2</item>
     </style>
 
+    <style name="PetDetailsText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/spacing_large</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+    <style name="PetRecordsText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/spacing_large</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
 
 </resources>

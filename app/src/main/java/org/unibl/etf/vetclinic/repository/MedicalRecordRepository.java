@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import org.unibl.etf.vetclinic.data.database.AppDatabase;
 import org.unibl.etf.vetclinic.data.dao.MedicalRecordDao;
 import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
+import org.unibl.etf.vetclinic.data.entities.relations.MedicalRecordWithAppointment;
 
 import java.util.List;
 
@@ -20,5 +21,9 @@ public class MedicalRecordRepository {
 
     public LiveData<List<MedicalRecord>> getMedicalRecordsByPetId(int petId) {
         return medicalRecordDao.getMedicalRecordsByPetId(petId);
+    }
+
+    public LiveData<List<MedicalRecordWithAppointment>> getMedicalRecordsWithAppointmentByPetId(int petId) {
+        return medicalRecordDao.getMedicalRecordsWithAppointmentByPetId(petId);
     }
 }
