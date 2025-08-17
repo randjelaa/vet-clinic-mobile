@@ -28,8 +28,5 @@ public interface PetDao {
 
     @Query("SELECT * FROM Pets WHERE ID = :id")
     LiveData<Pet> getPetById(int id);
-
-    @Query("SELECT * FROM Pets WHERE Deleted IS NULL ORDER BY Name ASC")
-    LiveData<List<Pet>> getAllPets();
 }
 

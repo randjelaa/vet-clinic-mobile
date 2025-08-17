@@ -19,10 +19,6 @@ public class MedicalRecordRepository {
         medicalRecordDao = db.medicalRecordDao();
     }
 
-    public LiveData<List<MedicalRecord>> getMedicalRecordsByPetId(int petId) {
-        return medicalRecordDao.getMedicalRecordsByPetId(petId);
-    }
-
     public LiveData<List<MedicalRecordWithAppointment>> getMedicalRecordsWithAppointmentByPetId(int petId) {
         return medicalRecordDao.getMedicalRecordsWithAppointmentByPetId(petId);
     }

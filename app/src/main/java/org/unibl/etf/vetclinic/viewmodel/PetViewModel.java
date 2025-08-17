@@ -13,20 +13,14 @@ import java.util.List;
 
 public class PetViewModel extends AndroidViewModel {
     private final PetRepository repository;
-    private final LiveData<List<Pet>> allPets;
 
     public PetViewModel(@NonNull Application application) {
         super(application);
         repository = new PetRepository(application);
-        allPets = repository.getAllPets();
     }
 
     public LiveData<Pet> getPetById(int id) {
         return repository.getPetById(id);
-    }
-
-    public LiveData<List<Pet>> getAllPets() {
-        return allPets;
     }
 
     public LiveData<List<Pet>> getPetsByUserId(int userId) {

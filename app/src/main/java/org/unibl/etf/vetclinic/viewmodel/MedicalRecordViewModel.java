@@ -21,10 +21,6 @@ public class MedicalRecordViewModel extends AndroidViewModel {
         repository = new MedicalRecordRepository(application);
     }
 
-    public LiveData<List<MedicalRecord>> getMedicalRecordsByPetId(int petId) {
-        return repository.getMedicalRecordsByPetId(petId);
-    }
-
     public LiveData<List<MedicalRecordWithAppointment>> getMedicalRecordsWithAppointmentByPetId(int petId) {
         return repository.getMedicalRecordsWithAppointmentByPetId(petId);
     }

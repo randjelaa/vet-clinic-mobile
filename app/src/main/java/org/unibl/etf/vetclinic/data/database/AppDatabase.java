@@ -49,7 +49,6 @@ import java.util.concurrent.Executors;
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
-    // DAO interfejsi
     public abstract RoleDao roleDao();
     public abstract UserDao userDao();
     public abstract UserPreferencesDao userPreferencesDao();
@@ -60,10 +59,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PaymentDao paymentDao();
     public abstract UnpaidServiceDao unpaidServiceDao();
 
-    // Singleton instance
     private static volatile AppDatabase INSTANCE;
 
-    // Thread pool da ne blokiramo main thread
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -78,7 +75,7 @@ public abstract class AppDatabase extends RoomDatabase {
                                     "vetclinic_database"
                             )
                             .fallbackToDestructiveMigration()
-                            .addCallback(roomDatabaseCallback) // <-- bitno
+                            .addCallback(roomDatabaseCallback)
                             .build();
                 }
             }
@@ -86,17 +83,12 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    /**
-     * Callback koji se izvršava kada se baza prvi put kreira.
-     * Tu ubacujemo inicijalne podatke asinhrono.
-     */
     private static final RoomDatabase.Callback roomDatabaseCallback =
             new RoomDatabase.Callback() {
                 @Override
                 public void onCreate(@NonNull SupportSQLiteDatabase db) {
                     super.onCreate(db);
                     databaseWriteExecutor.execute(() -> {
-                        // Dobijamo DAO-e
                         AppDatabase database = INSTANCE;
                         if (database != null) {
                             DatabaseSeeder.seed(database);
