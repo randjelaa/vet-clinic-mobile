@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,8 +53,24 @@ public class AddPetFragment extends Fragment {
             String species = speciesEditText.getText().toString().trim();
             String breed = breedEditText.getText().toString().trim();
 
-            if (name.isEmpty()) {
+            // Provjera imena (obavezno)
+            if (TextUtils.isEmpty(name)) {
                 Toast.makeText(getContext(), "Unesite ime ljubimca", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (name.length() < 2) {
+                Toast.makeText(getContext(), "Ime ljubimca mora imati najmanje 2 karaktera", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Opcione dodatne provjere za vrstu i rasu (možeš ih ukloniti ako nisu obavezne)
+            if (!TextUtils.isEmpty(species) && species.length() < 2) {
+                Toast.makeText(getContext(), "Vrsta mora imati najmanje 2 karaktera ili ostavite prazno", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!TextUtils.isEmpty(breed) && breed.length() < 2) {
+                Toast.makeText(getContext(), "Rasa mora imati najmanje 2 karaktera ili ostavite prazno", Toast.LENGTH_SHORT).show();
                 return;
             }
 
