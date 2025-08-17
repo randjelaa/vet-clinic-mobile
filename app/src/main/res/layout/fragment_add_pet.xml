@@ -8,7 +8,8 @@
         android:id="@+id/editTextPetName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ime ljubimca" />
+        android:hint="Ime ljubimca"
+        android:paddingTop="25dp" />
 
     <EditText
         android:id="@+id/editTextPetSpecies"

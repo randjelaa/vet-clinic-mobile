@@ -74,4 +74,29 @@
         <item name="android:padding">8dp</item>
     </style>
 
+    <style name="WidgetAppFloatingActionButtonPurple" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/purple_500</item>
+        <item name="elevation">@dimen/fab_elevation</item>
+    </style>
+
+    <!-- General reusable card style -->
+    <style name="WidgetAppCardDefault" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="android:layout_marginBottom">@dimen/card_margin_bottom</item>
+    </style>
+
+    <!-- Primary bold title text -->
+    <style name="WidgetAppTextPrimaryBold">
+        <item name="android:textAppearance">?attr/textAppearanceSubtitle1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Secondary regular text -->
+    <style name="WidgetAppTextSecondary">
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+
 </resources>
