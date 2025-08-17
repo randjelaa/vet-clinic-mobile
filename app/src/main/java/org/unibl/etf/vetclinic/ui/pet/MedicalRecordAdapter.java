@@ -12,6 +12,7 @@ import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.data.entities.Appointment;
 import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
 import org.unibl.etf.vetclinic.data.entities.relations.MedicalRecordWithAppointment;
+import org.unibl.etf.vetclinic.util.DateUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,19 +20,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class MedicalRecordAdapter extends RecyclerView.Adapter<MedicalRecordAdapter.MedicalRecordViewHolder> {
-
-    private List<MedicalRecord> records;
-
     private List<MedicalRecordWithAppointment> recordsWithAppointment = new ArrayList<>();
 
     public void setRecordsWithAppointments(List<MedicalRecordWithAppointment> records) {
         this.recordsWithAppointment = records;
-        notifyDataSetChanged();
-    }
-
-
-    public void setRecords(List<MedicalRecord> records) {
-        this.records = records;
         notifyDataSetChanged();
     }
 
@@ -49,18 +41,31 @@ public class MedicalRecordAdapter extends RecyclerView.Adapter<MedicalRecordAdap
         MedicalRecord r = item.record;
         Appointment a = item.appointment;
 
-        holder.diagnosis.setText("Dijagnoza: " + (r.Diagnosis != null ? r.Diagnosis : "N/A"));
-        holder.treatment.setText("Terapija: " + (r.Treatment != null ? r.Treatment : "N/A"));
-        holder.medications.setText("Lijekovi: " + (r.Medications != null ? r.Medications : "N/A"));
-        holder.notes.setText("Bilješke: " + (r.Notes != null ? r.Notes : "N/A"));
+        View contextView = holder.itemView;
+        String na = contextView.getContext().getString(R.string.value_na);
+        String unknown = contextView.getContext().getString(R.string.unknown);
+
+        holder.diagnosis.setText(contextView.getContext().getString(
+                R.string.label_diagnosis, r.Diagnosis != null ? r.Diagnosis : na));
+
+        holder.treatment.setText(contextView.getContext().getString(
+                R.string.label_treatment, r.Treatment != null ? r.Treatment : na));
+
+        holder.medications.setText(contextView.getContext().getString(
+                R.string.label_medications, r.Medications != null ? r.Medications : na));
+
+        holder.notes.setText(contextView.getContext().getString(
+                R.string.label_notes, r.Notes != null ? r.Notes : na));
 
         if (a != null && a.Date != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-            holder.date.setText("Datum: " + sdf.format(a.Date));
+            String dateStr = DateUtils.formatDate(a.Date);
+            holder.date.setText(contextView.getContext().getString(R.string.label_date, dateStr));
         } else {
-            holder.date.setText("Datum: Nepoznat");
+            holder.date.setText(contextView.getContext().getString(R.string.label_date,
+                    contextView.getContext().getString(R.string.unknown)));
         }
     }
+
 
     @Override
     public int getItemCount() {

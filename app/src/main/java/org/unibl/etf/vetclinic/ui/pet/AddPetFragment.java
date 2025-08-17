@@ -53,31 +53,29 @@ public class AddPetFragment extends Fragment {
             String species = speciesEditText.getText().toString().trim();
             String breed = breedEditText.getText().toString().trim();
 
-            // Provjera imena (obavezno)
             if (TextUtils.isEmpty(name)) {
-                Toast.makeText(getContext(), "Unesite ime ljubimca", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_pet_name_required), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (name.length() < 2) {
-                Toast.makeText(getContext(), "Ime ljubimca mora imati najmanje 2 karaktera", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_pet_name_too_short), Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Opcione dodatne provjere za vrstu i rasu (možeš ih ukloniti ako nisu obavezne)
             if (!TextUtils.isEmpty(species) && species.length() < 2) {
-                Toast.makeText(getContext(), "Vrsta mora imati najmanje 2 karaktera ili ostavite prazno", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_species_too_short), Toast.LENGTH_SHORT).show();
                 return;
             }
 
             if (!TextUtils.isEmpty(breed) && breed.length() < 2) {
-                Toast.makeText(getContext(), "Rasa mora imati najmanje 2 karaktera ili ostavite prazno", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_breed_too_short), Toast.LENGTH_SHORT).show();
                 return;
             }
 
             SharedPreferences prefs = requireActivity().getSharedPreferences("VetClinicPrefs", Context.MODE_PRIVATE);
             int userId = prefs.getInt("userId", -1);
             if (userId == -1) {
-                Toast.makeText(getContext(), "Greška: Korisnik nije prijavljen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_user_not_logged_in), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -88,7 +86,7 @@ public class AddPetFragment extends Fragment {
             pet.OwnerID = userId;
 
             petViewModel.insert(pet);
-            Toast.makeText(getContext(), "Ljubimac dodat", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.pet_added_success), Toast.LENGTH_SHORT).show();
             NavHostFragment.findNavController(this).navigateUp();
         });
     }

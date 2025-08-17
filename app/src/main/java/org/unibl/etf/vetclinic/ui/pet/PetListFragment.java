@@ -37,7 +37,6 @@ public class PetListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapter = new PetListAdapter(pet -> {
-            // Navigacija ka PetDetailsFragment
             Bundle bundle = new Bundle();
             bundle.putInt("petId", pet.ID);
             NavHostFragment.findNavController(this).navigate(R.id.action_petListFragment_to_petDetailsFragment, bundle);

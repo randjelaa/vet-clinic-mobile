@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.unibl.etf.vetclinic.R;
-import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
 import org.unibl.etf.vetclinic.viewmodel.MedicalRecordViewModel;
 import org.unibl.etf.vetclinic.viewmodel.PetViewModel;
 
@@ -26,14 +25,11 @@ import android.widget.Toast;
 public class PetDetailsFragment extends Fragment {
 
     private int petId;
-
     private PetViewModel petViewModel;
     private TextView textViewPetDetails;
-
     private MedicalRecordViewModel recordViewModel;
     private RecyclerView recyclerViewMedicalRecords;
     private MedicalRecordAdapter medicalRecordAdapter;
-
     private Button buttonDeletePet;
 
     @Nullable
@@ -64,12 +60,12 @@ public class PetDetailsFragment extends Fragment {
             if (petId != -1) {
                 petViewModel.getPetById(petId).observe(getViewLifecycleOwner(), pet -> {
                     if (pet != null) {
-                        String details = "Ime: " + pet.Name + "\n" +
-                                "Vrsta: " + (pet.Species != null ? pet.Species : "Nepoznata") + "\n" +
-                                "Rasa: " + (pet.Breed != null ? pet.Breed : "Nepoznata");
+                        String details = getString(R.string.pet_name) + ": " + pet.Name + "\n" +
+                                getString(R.string.species) + ": " + (pet.Species != null ? pet.Species : getString(R.string.unknown)) + "\n" +
+                                getString(R.string.breed) + ": " + (pet.Breed != null ? pet.Breed : getString(R.string.unknown));
                         textViewPetDetails.setText(details);
                     } else {
-                        textViewPetDetails.setText("Ljubimac nije pronađen.");
+                        textViewPetDetails.setText(getString(R.string.not_found));
                     }
                 });
 
@@ -81,10 +77,9 @@ public class PetDetailsFragment extends Fragment {
                     }
                 });
 
-                // Klik na dugme za brisanje
                 buttonDeletePet.setOnClickListener(v -> showDeleteConfirmationDialog());
             } else {
-                textViewPetDetails.setText("Nepoznat ID ljubimca.");
+                textViewPetDetails.setText(R.string.not_found);
                 buttonDeletePet.setVisibility(View.GONE);
             }
         }
@@ -92,10 +87,10 @@ public class PetDetailsFragment extends Fragment {
 
     private void showDeleteConfirmationDialog() {
         new AlertDialog.Builder(requireContext())
-                .setTitle("Potvrda brisanja")
-                .setMessage("Da li ste sigurni da želite obrisati ovog ljubimca?")
-                .setPositiveButton("Da", (dialog, which) -> deletePet())
-                .setNegativeButton("Ne", null)
+                .setTitle(getString(R.string.delete_confirmation_title))
+                .setMessage(getString(R.string.delete_confirmation_message))
+                .setPositiveButton(getString(R.string.yes), (dialog, which) -> deletePet())
+                .setNegativeButton(getString(R.string.no), null)
                 .show();
     }
 
@@ -103,11 +98,10 @@ public class PetDetailsFragment extends Fragment {
         petViewModel.getPetById(petId).observe(getViewLifecycleOwner(), pet -> {
             if (pet != null) {
                 petViewModel.delete(pet);
-                Toast.makeText(requireContext(), "Ljubimac obrisan", Toast.LENGTH_SHORT).show();
-                // Vraćamo se nazad nakon brisanja
+                Toast.makeText(requireContext(), getString(R.string.pet_deleted), Toast.LENGTH_SHORT).show();
                 requireActivity().onBackPressed();
             } else {
-                Toast.makeText(requireContext(), "Greška: Ljubimac nije pronađen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), getString(R.string.pet_delete_error), Toast.LENGTH_SHORT).show();
             }
         });
     }
