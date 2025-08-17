@@ -18,6 +18,11 @@ import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
 import org.unibl.etf.vetclinic.viewmodel.MedicalRecordViewModel;
 import org.unibl.etf.vetclinic.viewmodel.PetViewModel;
 
+import android.app.AlertDialog;
+import android.widget.Button;
+import android.widget.Toast;
+
+
 public class PetDetailsFragment extends Fragment {
 
     private int petId;
@@ -26,12 +31,10 @@ public class PetDetailsFragment extends Fragment {
     private TextView textViewPetDetails;
 
     private MedicalRecordViewModel recordViewModel;
-    private TextView textViewMedicalRecords;
-
     private RecyclerView recyclerViewMedicalRecords;
     private MedicalRecordAdapter medicalRecordAdapter;
 
-
+    private Button buttonDeletePet;
 
     @Nullable
     @Override
@@ -51,13 +54,14 @@ public class PetDetailsFragment extends Fragment {
         medicalRecordAdapter = new MedicalRecordAdapter();
         recyclerViewMedicalRecords.setAdapter(medicalRecordAdapter);
 
+        buttonDeletePet = view.findViewById(R.id.buttonDeletePet);
+
         petViewModel = new ViewModelProvider(this).get(PetViewModel.class);
-        recordViewModel = new ViewModelProvider(this).get(MedicalRecordViewModel.class); // <--- MORA biti ovde!
+        recordViewModel = new ViewModelProvider(this).get(MedicalRecordViewModel.class);
 
         if (getArguments() != null) {
             petId = getArguments().getInt("petId", -1);
             if (petId != -1) {
-                // PET DETALJI
                 petViewModel.getPetById(petId).observe(getViewLifecycleOwner(), pet -> {
                     if (pet != null) {
                         String details = "Ime: " + pet.Name + "\n" +
@@ -69,7 +73,6 @@ public class PetDetailsFragment extends Fragment {
                     }
                 });
 
-                // MEDICINSKI ZAPISI
                 recordViewModel.getMedicalRecordsWithAppointmentByPetId(petId).observe(getViewLifecycleOwner(), records -> {
                     if (records != null && !records.isEmpty()) {
                         medicalRecordAdapter.setRecordsWithAppointments(records);
@@ -77,12 +80,35 @@ public class PetDetailsFragment extends Fragment {
                         // Opcionalno: prikaži empty state poruku
                     }
                 });
+
+                // Klik na dugme za brisanje
+                buttonDeletePet.setOnClickListener(v -> showDeleteConfirmationDialog());
             } else {
                 textViewPetDetails.setText("Nepoznat ID ljubimca.");
+                buttonDeletePet.setVisibility(View.GONE);
             }
         }
     }
 
+    private void showDeleteConfirmationDialog() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Potvrda brisanja")
+                .setMessage("Da li ste sigurni da želite obrisati ovog ljubimca?")
+                .setPositiveButton("Da", (dialog, which) -> deletePet())
+                .setNegativeButton("Ne", null)
+                .show();
+    }
 
+    private void deletePet() {
+        petViewModel.getPetById(petId).observe(getViewLifecycleOwner(), pet -> {
+            if (pet != null) {
+                petViewModel.delete(pet);
+                Toast.makeText(requireContext(), "Ljubimac obrisan", Toast.LENGTH_SHORT).show();
+                // Vraćamo se nazad nakon brisanja
+                requireActivity().onBackPressed();
+            } else {
+                Toast.makeText(requireContext(), "Greška: Ljubimac nije pronađen", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
-

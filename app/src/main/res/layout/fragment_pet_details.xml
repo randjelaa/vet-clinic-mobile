@@ -2,7 +2,8 @@
     android:orientation="vertical"
     android:padding="@dimen/spacing_medium"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
 
     <TextView
         style="@style/PetDetailsText"
@@ -15,4 +16,9 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:paddingTop="@dimen/spacing_medium" />
+
+    <Button
+        android:id="@+id/buttonDeletePet"
+        android:text="@string/delete_pet"
+        style="@style/Button.Primary" />
 </LinearLayout>

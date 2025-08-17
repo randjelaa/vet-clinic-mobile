@@ -19,6 +19,8 @@
     <string name="breed">Breed</string>
     <string name="pet_details_placeholder">Detalji ljubimca će biti ovdje.</string>
     <string name="medical_records">Medical records...</string>
+    <string name="delete_pet">Delete pet</string>
+
 
 
 </resources>
