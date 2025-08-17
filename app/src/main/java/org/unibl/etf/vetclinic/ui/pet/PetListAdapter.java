@@ -15,8 +15,19 @@ import org.unibl.etf.vetclinic.data.entities.Pet;
 
 public class PetListAdapter extends ListAdapter<Pet, PetListAdapter.PetViewHolder> {
 
-    public PetListAdapter() {
+    private static OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(Pet pet);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public PetListAdapter(OnItemClickListener listener) {
         super(DIFF_CALLBACK);
+        this.listener = listener;
     }
 
     private static final DiffUtil.ItemCallback<Pet> DIFF_CALLBACK = new DiffUtil.ItemCallback<Pet>() {
@@ -44,10 +55,10 @@ public class PetListAdapter extends ListAdapter<Pet, PetListAdapter.PetViewHolde
     @Override
     public void onBindViewHolder(@NonNull PetViewHolder holder, int position) {
         Pet pet = getItem(position);
-        holder.bind(pet);
+        holder.bind(pet, listener);
     }
 
-    static class PetViewHolder extends RecyclerView.ViewHolder {
+    class PetViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewName;
         private final TextView textViewSpecies;
         private final TextView textViewBreed;
@@ -57,12 +68,22 @@ public class PetListAdapter extends ListAdapter<Pet, PetListAdapter.PetViewHolde
             textViewName = itemView.findViewById(R.id.textViewPetName);
             textViewSpecies = itemView.findViewById(R.id.textViewPetSpecies);
             textViewBreed = itemView.findViewById(R.id.textViewPetBreed);
+
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (listener != null && position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(getItem(position));
+                }
+            });
         }
 
-        public void bind(Pet pet) {
+        public void bind(Pet pet, OnItemClickListener listener) {
             textViewName.setText(pet.Name);
             textViewSpecies.setText(pet.Species != null ? pet.Species : "Nepoznata vrsta");
             textViewBreed.setText(pet.Breed != null ? pet.Breed : "Nepoznata rasa");
+
+            itemView.setOnClickListener(v -> listener.onItemClick(pet));
         }
     }
 }
+

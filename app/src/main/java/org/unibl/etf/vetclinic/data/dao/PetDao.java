@@ -24,10 +24,10 @@ public interface PetDao {
     void delete(Pet pet);
 
     @Query("SELECT * FROM Pets WHERE OwnerID = :ownerId AND Deleted IS NULL ORDER BY Name ASC")
-    List<Pet> getPetsForOwner(int ownerId);
+    LiveData<List<Pet>> getPetsByUserId(int ownerId);
 
-    @Query("SELECT * FROM Pets WHERE ID = :id LIMIT 1")
-    Pet getPetById(int id);
+    @Query("SELECT * FROM Pets WHERE ID = :id")
+    LiveData<Pet> getPetById(int id);
 
     @Query("SELECT * FROM Pets WHERE Deleted IS NULL ORDER BY Name ASC")
     LiveData<List<Pet>> getAllPets();

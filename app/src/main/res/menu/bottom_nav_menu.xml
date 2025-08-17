@@ -7,7 +7,7 @@
         android:title="Početna" />
 
     <item
-        android:id="@+id/navigation_pets"
+        android:id="@+id/petListFragment"
         android:title="Ljubimci"
     />
 

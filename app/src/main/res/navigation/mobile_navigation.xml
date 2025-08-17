@@ -12,10 +12,33 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_pets"
+        android:id="@+id/petListFragment"
         android:name="org.unibl.etf.vetclinic.ui.pet.PetListFragment"
-        android:label="Ljubimci"
-        tools:layout="@layout/fragment_pet_list" />
+        android:label="Ljubimci">
+
+        <action
+            android:id="@+id/action_petListFragment_to_addPetFragment"
+            app:destination="@id/addPetFragment" />
+
+        <action
+            android:id="@+id/action_petListFragment_to_petDetailsFragment"
+            app:destination="@id/petDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addPetFragment"
+        android:name="org.unibl.etf.vetclinic.ui.pet.AddPetFragment"
+        android:label="Dodaj ljubimca" />
+
+    <fragment
+        android:id="@+id/petDetailsFragment"
+        android:name="org.unibl.etf.vetclinic.ui.pet.PetDetailsFragment"
+        android:label="Detalji ljubimca">
+        <argument
+            android:name="petId"
+            app:argType="integer" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_appointments"

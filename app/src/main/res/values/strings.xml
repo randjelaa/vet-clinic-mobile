@@ -13,5 +13,6 @@
     <string name="back">Back</string>
     <string name="already_have_account">Already have an account? Log in here!</string>
     <string name="dont_have_account_register">Don\'t have an account? Register here!</string>
+    <string name="add_pet">Add</string>
 
 </resources>

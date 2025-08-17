@@ -1,5 +1,6 @@
 package org.unibl.etf.vetclinic.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -27,5 +28,8 @@ public interface MedicalRecordDao {
 
     @Query("SELECT * FROM MedicalRecords ORDER BY ID DESC")
     List<MedicalRecord> getAllRecords();
+
+    @Query("SELECT * FROM MedicalRecords WHERE AppointmentID IN (SELECT ID FROM Appointments WHERE PetID = :petId)")
+    LiveData<List<MedicalRecord>> getMedicalRecordsByPetId(int petId);
 }
 

@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextPetName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ime ljubimca" />
+
+    <EditText
+        android:id="@+id/editTextPetSpecies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Vrsta" />
+
+    <EditText
+        android:id="@+id/editTextPetBreed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Rasa" />
+
+    <Button
+        android:id="@+id/buttonAddPet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dodaj ljubimca"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

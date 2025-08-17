@@ -19,11 +19,18 @@ public class PetViewModel extends AndroidViewModel {
         super(application);
         repository = new PetRepository(application);
         allPets = repository.getAllPets();
-        repository.insertTestPets();
+    }
+
+    public LiveData<Pet> getPetById(int id) {
+        return repository.getPetById(id);
     }
 
     public LiveData<List<Pet>> getAllPets() {
         return allPets;
+    }
+
+    public LiveData<List<Pet>> getPetsByUserId(int userId) {
+        return repository.getPetsByUserId(userId);
     }
 
     public void insert(Pet pet) {
@@ -38,4 +45,3 @@ public class PetViewModel extends AndroidViewModel {
         repository.delete(pet);
     }
 }
-
