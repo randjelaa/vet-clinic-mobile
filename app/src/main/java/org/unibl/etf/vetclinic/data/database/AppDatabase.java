@@ -2,10 +2,12 @@ package org.unibl.etf.vetclinic.data.database;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import org.unibl.etf.vetclinic.data.dao.AppointmentDao;
 import org.unibl.etf.vetclinic.data.dao.MedicalRecordDao;
@@ -26,6 +28,9 @@ import org.unibl.etf.vetclinic.data.entities.UnpaidService;
 import org.unibl.etf.vetclinic.data.entities.User;
 import org.unibl.etf.vetclinic.data.entities.UserPreferences;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 @Database(
         entities = {
                 Role.class,
@@ -44,7 +49,7 @@ import org.unibl.etf.vetclinic.data.entities.UserPreferences;
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
-    // DAO interfejsi (definišemo kad ih napravimo)
+    // DAO interfejsi
     public abstract RoleDao roleDao();
     public abstract UserDao userDao();
     public abstract UserPreferencesDao userPreferencesDao();
@@ -58,6 +63,11 @@ public abstract class AppDatabase extends RoomDatabase {
     // Singleton instance
     private static volatile AppDatabase INSTANCE;
 
+    // Thread pool da ne blokiramo main thread
+    private static final int NUMBER_OF_THREADS = 4;
+    static final ExecutorService databaseWriteExecutor =
+            Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+
     public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
@@ -68,11 +78,30 @@ public abstract class AppDatabase extends RoomDatabase {
                                     "vetclinic_database"
                             )
                             .fallbackToDestructiveMigration()
+                            .addCallback(roomDatabaseCallback) // <-- bitno
                             .build();
                 }
             }
         }
         return INSTANCE;
     }
-}
 
+    /**
+     * Callback koji se izvršava kada se baza prvi put kreira.
+     * Tu ubacujemo inicijalne podatke asinhrono.
+     */
+    private static final RoomDatabase.Callback roomDatabaseCallback =
+            new RoomDatabase.Callback() {
+                @Override
+                public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                    super.onCreate(db);
+                    databaseWriteExecutor.execute(() -> {
+                        // Dobijamo DAO-e
+                        AppDatabase database = INSTANCE;
+                        if (database != null) {
+                            DatabaseSeeder.seed(database);
+                        }
+                    });
+                }
+            };
+}
