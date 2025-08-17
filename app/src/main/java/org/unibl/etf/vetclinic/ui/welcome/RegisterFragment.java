@@ -54,12 +54,12 @@ public class RegisterFragment extends Fragment {
             String password = passwordEditText.getText().toString().trim();
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_fields_required), Toast.LENGTH_SHORT).show();
                 return;
             }
 
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(getContext(), "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_invalid_email), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -70,12 +70,12 @@ public class RegisterFragment extends Fragment {
 
             userViewModel.register(user,
                     () -> requireActivity().runOnUiThread(() -> {
-                        Toast.makeText(getContext(), "Registration successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getString(R.string.success_registration), Toast.LENGTH_SHORT).show();
                         NavHostFragment.findNavController(this)
                                 .navigate(R.id.action_registerFragment_to_loginFragment);
                     }),
                     () -> requireActivity().runOnUiThread(() ->
-                            Toast.makeText(getContext(), "Email already exists or error occurred", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(getContext(), getString(R.string.error_email_exists), Toast.LENGTH_SHORT).show()
                     )
             );
         });

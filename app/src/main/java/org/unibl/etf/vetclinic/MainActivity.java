@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            // Ovde definiseš sta se desava kada se klikne na strelicu nazad
-            onBackPressed(); // ili neka tvoja logika
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

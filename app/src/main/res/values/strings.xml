@@ -40,5 +40,15 @@
     <string name="error_breed_too_short">Breed must be at least 2 characters long or leave it empty</string>
     <string name="error_user_not_logged_in">Error: User not logged in</string>
     <string name="pet_added_success">Pet added successfully</string>
+    <string name="error_fields_required">All fields are required</string>
+    <string name="error_invalid_email">Please enter a valid email address</string>
+    <string name="error_invalid_credentials">Invalid credentials</string>
+    <string name="success_registration">Registration successful</string>
+    <string name="error_email_exists">Email already exists or error occurred</string>
+    <string name="title_pet_list">Pets</string>
+    <string name="title_add_pet">Add Pet</string>
+    <string name="title_pet_details">Pet Details</string>
+    <string name="title_appointments">Appointments</string>
+    <string name="title_profile">Profile</string>
 
 </resources>

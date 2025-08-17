@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="org.unibl.etf.vetclinic.ui.home.HomeFragment"
-        android:label="Početna"
+        android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/petListFragment"
         android:name="org.unibl.etf.vetclinic.ui.pet.PetListFragment"
-        android:label="Ljubimci">
+        android:label="@string/title_pet_list">
 
         <action
             android:id="@+id/action_petListFragment_to_addPetFragment"
@@ -28,28 +28,26 @@
     <fragment
         android:id="@+id/addPetFragment"
         android:name="org.unibl.etf.vetclinic.ui.pet.AddPetFragment"
-        android:label="Dodaj ljubimca" />
+        android:label="@string/title_add_pet" />
 
     <fragment
         android:id="@+id/petDetailsFragment"
         android:name="org.unibl.etf.vetclinic.ui.pet.PetDetailsFragment"
-        android:label="Detalji ljubimca">
+        android:label="@string/title_pet_details">
         <argument
             android:name="petId"
             app:argType="integer" />
     </fragment>
 
-
     <fragment
         android:id="@+id/navigation_appointments"
         android:name="org.unibl.etf.vetclinic.ui.appointment.AppointmentFragment"
-        android:label="Termini"
+        android:label="@string/title_appointments"
         tools:layout="@layout/fragment_appointment" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="org.unibl.etf.vetclinic.ui.profile.ProfileFragment"
-        android:label="Profil"
+        android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
-
 </navigation>
