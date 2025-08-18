@@ -35,8 +35,20 @@
             android:layout_height="wrap_content"
             android:text="@string/label_date" />
 
+        <!-- Paid label -->
+        <TextView
+            android:id="@+id/textViewPaid"
+            style="@style/WidgetAppTextPrimaryBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paid"
+            android:textColor="@android:color/holo_green_dark"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/spacing_small" />
+
         <!-- Buttons row -->
         <LinearLayout
+            android:id="@+id/buttonsRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -48,7 +60,8 @@
                 style="@style/WidgetAppButtonSecondarySmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cancel" />
+                android:text="@string/cancel"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/buttonPay"
@@ -56,7 +69,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pay"
-                android:layout_marginStart="@dimen/spacing_small" />
+                android:layout_marginStart="@dimen/spacing_small"
+                android:visibility="gone" />
         </LinearLayout>
 
     </LinearLayout>

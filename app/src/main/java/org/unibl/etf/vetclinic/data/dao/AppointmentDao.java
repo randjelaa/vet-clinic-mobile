@@ -37,10 +37,12 @@ public interface AppointmentDao {
     @Query("SELECT * FROM Appointments WHERE ID = :id LIMIT 1")
     Appointment getById(int id);
 
-    @Query("SELECT a.ID, a.Date, p.Name AS PetName, s.Name AS ServiceName, s.Price " +
+    @Query("SELECT a.ID, a.Date, p.Name AS PetName, s.Name AS ServiceName, s.Price, " +
+            "CASE WHEN pay.AppointmentID IS NOT NULL THEN 1 ELSE 0 END AS IsPaid " +
             "FROM Appointments a " +
             "JOIN Pets p ON a.PetID = p.ID " +
             "JOIN Services s ON a.ServiceID = s.ID " +
+            "LEFT JOIN Payments pay ON pay.AppointmentID = a.ID " +
             "WHERE a.Deleted IS NULL AND p.OwnerID = :userId " +
             "ORDER BY a.Date DESC")
     LiveData<List<AppointmentWithDetails>> getAppointmentsByUserId(int userId);

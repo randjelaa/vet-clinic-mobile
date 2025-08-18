@@ -64,4 +64,5 @@
     <string name="select_vet">Select vet</string>
     <string name="select_service">Select service</string>
     <string name="selected_datetime">Selected datetime</string>
+    <string name="paid">Paid</string>
 </resources>

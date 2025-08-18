@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.data.entities.relations.AppointmentWithDetails;
 
+import java.util.Date;
+
 public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, AppointmentListAdapter.ViewHolder> {
 
     public interface OnItemActionListener {
@@ -40,7 +42,8 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
                     return oldItem.Date.equals(newItem.Date)
                             && oldItem.PetName.equals(newItem.PetName)
                             && oldItem.ServiceName.equals(newItem.ServiceName)
-                            && oldItem.Price == newItem.Price;
+                            && oldItem.Price == newItem.Price
+                            && oldItem.IsPaid == newItem.IsPaid; // Dodaj poređenje IsPaid
                 }
             };
 
@@ -50,6 +53,7 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
         private final TextView textViewDate;
         private final Button buttonCancel;
         private final Button buttonPay;
+        private final TextView textViewPaid;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -58,6 +62,7 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
             textViewDate = itemView.findViewById(R.id.textViewDate);
             buttonCancel = itemView.findViewById(R.id.buttonCancel);
             buttonPay = itemView.findViewById(R.id.buttonPay);
+            textViewPaid = itemView.findViewById(R.id.textViewPaid);
         }
 
         void bind(AppointmentWithDetails appointment, OnItemActionListener listener) {
@@ -65,8 +70,29 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
             textViewService.setText(appointment.ServiceName + " (" + appointment.Price + " KM)");
             textViewDate.setText(appointment.Date.toString());
 
-            buttonCancel.setOnClickListener(v -> listener.onCancel(appointment));
-            buttonPay.setOnClickListener(v -> listener.onPay(appointment));
+            Date now = new Date();
+
+            // Početno sakrij sve akcije
+            buttonCancel.setVisibility(View.GONE);
+            buttonPay.setVisibility(View.GONE);
+            textViewPaid.setVisibility(View.GONE);
+
+            if (appointment.Date.after(now)) {
+                // Budući termin - vidi dugme Cancel
+                buttonCancel.setVisibility(View.VISIBLE);
+                buttonCancel.setOnClickListener(v -> listener.onCancel(appointment));
+            } else {
+                // Prošli termin
+                if (appointment.IsPaid) {
+                    // Plaćeno - prikaži oznaku Paid
+                    textViewPaid.setVisibility(View.VISIBLE);
+                    textViewPaid.setText(itemView.getContext().getString(R.string.paid));
+                } else {
+                    // Nije plaćeno - dugme Pay
+                    buttonPay.setVisibility(View.VISIBLE);
+                    buttonPay.setOnClickListener(v -> listener.onPay(appointment));
+                }
+            }
         }
     }
 

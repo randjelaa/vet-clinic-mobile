@@ -12,5 +12,7 @@ public class AppointmentWithDetails {
     @NonNull
     public String ServiceName;
     public double Price;
+
+    public boolean IsPaid; 
 }
 
