@@ -1,5 +1,6 @@
 package org.unibl.etf.vetclinic.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -23,7 +24,7 @@ public interface ServiceDao {
     void delete(Service service);
 
     @Query("SELECT * FROM Services WHERE Deleted IS NULL ORDER BY Name ASC")
-    List<Service> getAllActiveServices();
+    LiveData<List<Service>> getAllServices();
 
     @Query("SELECT * FROM Services WHERE ID = :id LIMIT 1")
     Service getServiceById(int id);

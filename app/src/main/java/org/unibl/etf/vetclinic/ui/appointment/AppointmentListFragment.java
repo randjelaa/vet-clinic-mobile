@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,26 +49,28 @@ public class AppointmentListFragment extends Fragment {
         upcomingAdapter = new AppointmentListAdapter(new AppointmentListAdapter.OnItemActionListener() {
             @Override
             public void onCancel(AppointmentWithDetails appointment) {
-                Toast.makeText(getContext(), "Cancel upcoming " + appointment.ID, Toast.LENGTH_SHORT).show();
-                // TODO: implement cancel logic
+                appointmentViewModel.cancelAppointment(appointment.ID);
+                Toast.makeText(getContext(), "Appointment cancelled.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onPay(AppointmentWithDetails appointment) {
-                Toast.makeText(getContext(), "Pay upcoming " + appointment.ID, Toast.LENGTH_SHORT).show();
-                // TODO: implement payment logic
+                appointmentViewModel.markAppointmentAsPaid(appointment.ID);
+                Toast.makeText(getContext(), "Appointment marked as paid.", Toast.LENGTH_SHORT).show();
             }
         });
 
         pastAdapter = new AppointmentListAdapter(new AppointmentListAdapter.OnItemActionListener() {
             @Override
             public void onCancel(AppointmentWithDetails appointment) {
-                Toast.makeText(getContext(), "Cancel past " + appointment.ID, Toast.LENGTH_SHORT).show();
+                appointmentViewModel.cancelAppointment(appointment.ID);
+                Toast.makeText(getContext(), "Appointment cancelled.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onPay(AppointmentWithDetails appointment) {
-                Toast.makeText(getContext(), "Pay past " + appointment.ID, Toast.LENGTH_SHORT).show();
+                appointmentViewModel.markAppointmentAsPaid(appointment.ID);
+                Toast.makeText(getContext(), "Appointment marked as paid.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -99,10 +102,10 @@ public class AppointmentListFragment extends Fragment {
         }
 
         FloatingActionButton fab = view.findViewById(R.id.fabAddAppointment);
-        fab.setOnClickListener(v ->
-                        Toast.makeText(getContext(), "Navigate to Add Appointment", Toast.LENGTH_SHORT).show()
-                // TODO: navigate to AddAppointmentFragment
-        );
+        fab.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_appointmentListFragment_to_addAppointmentFragment);
+        });
 
         return view;
     }

@@ -1,5 +1,6 @@
 package org.unibl.etf.vetclinic.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -36,5 +37,11 @@ public interface UserDao {
 
     @Query("SELECT * FROM Users WHERE Email = :email LIMIT 1")
     User getUserByEmail(String email);
+
+    @Query("SELECT u.* FROM Users u " +
+            "JOIN Roles r ON u.RoleID = r.ID " +
+            "WHERE r.Name = 'Veterinarian' AND u.Deleted IS NULL")
+    LiveData<List<User>> getAllVets();
+
 }
 

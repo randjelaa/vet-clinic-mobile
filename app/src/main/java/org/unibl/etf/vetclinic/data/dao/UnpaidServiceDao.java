@@ -30,5 +30,8 @@ public interface UnpaidServiceDao {
 
     @Query("SELECT * FROM UnpaidServices WHERE ID = :id LIMIT 1")
     UnpaidService getUnpaidServiceById(int id);
+
+    @Query("SELECT * FROM UnpaidServices WHERE AppointmentID = :appointmentId LIMIT 1")
+    UnpaidService getByAppointmentId(int appointmentId);
 }
 

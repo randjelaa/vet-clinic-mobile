@@ -34,6 +34,9 @@ public interface AppointmentDao {
     @Query("SELECT * FROM Appointments WHERE ID = :id LIMIT 1")
     Appointment getAppointmentById(int id);
 
+    @Query("SELECT * FROM Appointments WHERE ID = :id LIMIT 1")
+    Appointment getById(int id);
+
     @Query("SELECT a.ID, a.Date, p.Name AS PetName, s.Name AS ServiceName, s.Price " +
             "FROM Appointments a " +
             "JOIN Pets p ON a.PetID = p.ID " +

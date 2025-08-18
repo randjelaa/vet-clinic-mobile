@@ -4,9 +4,12 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import org.unibl.etf.vetclinic.data.entities.User;
 import org.unibl.etf.vetclinic.repository.UserRepository;
+
+import java.util.List;
 import java.util.function.Consumer;
 
 public class UserViewModel extends AndroidViewModel {
@@ -24,5 +27,9 @@ public class UserViewModel extends AndroidViewModel {
 
     public void login(String email, String password, Consumer<User> onResult) {
         repository.login(email, password, onResult);
+    }
+
+    public LiveData<List<User>> getAllVets() {
+        return repository.getAllVets();
     }
 }

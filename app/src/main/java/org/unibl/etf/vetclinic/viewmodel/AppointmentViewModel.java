@@ -6,12 +6,15 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import org.unibl.etf.vetclinic.data.entities.Appointment;
 import org.unibl.etf.vetclinic.data.entities.relations.AppointmentWithDetails;
 import org.unibl.etf.vetclinic.repository.AppointmentRepository;
 
+import java.util.Date;
 import java.util.List;
 
 public class AppointmentViewModel extends AndroidViewModel {
+
     private final AppointmentRepository repository;
 
     public AppointmentViewModel(@NonNull Application application) {
@@ -22,4 +25,17 @@ public class AppointmentViewModel extends AndroidViewModel {
     public LiveData<List<AppointmentWithDetails>> getAppointmentsByUserId(int userId) {
         return repository.getAppointmentsByUserId(userId);
     }
+
+    public void cancelAppointment(int appointmentId) {
+        repository.cancelAppointment(appointmentId);
+    }
+
+    public void markAppointmentAsPaid(int appointmentId) {
+        repository.markAppointmentAsPaid(appointmentId);
+    }
+
+    public void insert(Appointment appointment) {
+        repository.insert(appointment);
+    }
 }
+

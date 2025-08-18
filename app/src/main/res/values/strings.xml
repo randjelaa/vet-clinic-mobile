@@ -56,4 +56,8 @@
     <string name="service">Service</string>
     <string name="cancel">Cancel</string>
     <string name="pay">Pay</string>
+    <string name="title_add_appointment">Add appointment</string>
+    <string name="no_date_selected">No date selected!</string>
+    <string name="select_date">Select date</string>
+    <string name="select_time">Select time</string>
 </resources>

@@ -40,10 +40,20 @@
     </fragment>
 
     <fragment
+        android:id="@+id/addAppointmentFragment"
+        android:name="org.unibl.etf.vetclinic.ui.appointment.AddAppointmentFragment"
+        android:label="@string/title_add_appointment"
+        tools:layout="@layout/fragment_add_appointment" />
+
+    <fragment
         android:id="@+id/navigation_appointments"
         android:name="org.unibl.etf.vetclinic.ui.appointment.AppointmentListFragment"
         android:label="@string/title_appointments"
-        tools:layout="@layout/fragment_appointment" />
+        tools:layout="@layout/fragment_appointment_list">
+    <action
+        android:id="@+id/action_appointmentListFragment_to_addAppointmentFragment"
+        app:destination="@id/addAppointmentFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"

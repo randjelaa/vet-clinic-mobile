@@ -8,6 +8,7 @@ import org.unibl.etf.vetclinic.data.dao.UserDao;
 import org.unibl.etf.vetclinic.data.database.AppDatabase;
 import org.unibl.etf.vetclinic.data.entities.User;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
@@ -46,4 +47,7 @@ public class UserRepository {
         });
     }
 
+    public LiveData<List<User>> getAllVets() {
+        return userDao.getAllVets(); // Pretpostavka: samo veterinari
+    }
 }
