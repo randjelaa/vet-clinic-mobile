@@ -1,5 +1,6 @@
 package org.unibl.etf.vetclinic.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -7,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import org.unibl.etf.vetclinic.data.entities.Appointment;
+import org.unibl.etf.vetclinic.data.entities.relations.AppointmentWithDetails;
 
 import java.util.Date;
 import java.util.List;
@@ -31,5 +33,13 @@ public interface AppointmentDao {
 
     @Query("SELECT * FROM Appointments WHERE ID = :id LIMIT 1")
     Appointment getAppointmentById(int id);
+
+    @Query("SELECT a.ID, a.Date, p.Name AS PetName, s.Name AS ServiceName, s.Price " +
+            "FROM Appointments a " +
+            "JOIN Pets p ON a.PetID = p.ID " +
+            "JOIN Services s ON a.ServiceID = s.ID " +
+            "WHERE a.Deleted IS NULL AND p.OwnerID = :userId " +
+            "ORDER BY a.Date DESC")
+    LiveData<List<AppointmentWithDetails>> getAppointmentsByUserId(int userId);
 }
 

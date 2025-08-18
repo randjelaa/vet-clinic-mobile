@@ -41,7 +41,7 @@
 
     <fragment
         android:id="@+id/navigation_appointments"
-        android:name="org.unibl.etf.vetclinic.ui.appointment.AppointmentFragment"
+        android:name="org.unibl.etf.vetclinic.ui.appointment.AppointmentListFragment"
         android:label="@string/title_appointments"
         tools:layout="@layout/fragment_appointment" />
 

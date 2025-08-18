@@ -50,5 +50,10 @@
     <string name="title_pet_details">Pet Details</string>
     <string name="title_appointments">Appointments</string>
     <string name="title_profile">Profile</string>
-
+    <string name="upcoming_appointments">Upcoming appointments</string>
+    <string name="past_appointments">Past appointments</string>
+    <string name="add_appointment">Add appointment</string>
+    <string name="service">Service</string>
+    <string name="cancel">Cancel</string>
+    <string name="pay">Pay</string>
 </resources>
