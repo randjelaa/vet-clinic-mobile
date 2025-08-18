@@ -60,4 +60,8 @@
     <string name="no_date_selected">No date selected!</string>
     <string name="select_date">Select date</string>
     <string name="select_time">Select time</string>
+    <string name="select_pet">Select pet</string>
+    <string name="select_vet">Select vet</string>
+    <string name="select_service">Select service</string>
+    <string name="selected_datetime">Selected datetime</string>
 </resources>
