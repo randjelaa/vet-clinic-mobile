@@ -43,5 +43,9 @@ public class PetRepository {
     public LiveData<List<Pet>> getPetsByUserId(int userId) {
         return petDao.getPetsByUserId(userId);
     }
+
+    public Pet getPetByIdSync(int id) {
+        return petDao.getPetByIdSync(id);
+    }
 }
 

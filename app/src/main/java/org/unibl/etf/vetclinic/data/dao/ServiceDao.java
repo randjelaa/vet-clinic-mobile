@@ -28,5 +28,8 @@ public interface ServiceDao {
 
     @Query("SELECT * FROM Services WHERE ID = :id LIMIT 1")
     Service getServiceById(int id);
+
+    @Query("SELECT * FROM Services WHERE ID = :serviceId LIMIT 1")
+    Service getServiceByIdSync(int serviceId);
 }
 

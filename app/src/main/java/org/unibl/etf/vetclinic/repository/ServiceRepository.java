@@ -21,4 +21,8 @@ public class ServiceRepository {
     public LiveData<List<Service>> getAllServices() {
         return serviceDao.getAllServices();
     }
+
+    public Service getServiceByIdSync(int serviceId) {
+        return serviceDao.getServiceByIdSync(serviceId);
+    }
 }

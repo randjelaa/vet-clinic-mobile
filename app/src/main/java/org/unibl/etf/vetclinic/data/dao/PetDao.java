@@ -28,5 +28,8 @@ public interface PetDao {
 
     @Query("SELECT * FROM Pets WHERE ID = :id")
     LiveData<Pet> getPetById(int id);
+
+    @Query("SELECT * FROM Pets WHERE ID = :id LIMIT 1")
+    Pet getPetByIdSync(int id);
 }
 
