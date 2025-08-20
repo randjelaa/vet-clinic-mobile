@@ -65,4 +65,11 @@
     <string name="select_service">Select service</string>
     <string name="selected_datetime">Selected datetime</string>
     <string name="paid">Paid</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="preferences">Preferences</string>
+    <string name="language">Language</string>
+    <string name="theme">Theme</string>
+    <string name="dark_theme">Dark</string>
+    <string name="my_payments">My payments</string>
+    <string name="logout">Logout</string>
 </resources>
