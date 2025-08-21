@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import org.unibl.etf.vetclinic.MainActivity;
 import org.unibl.etf.vetclinic.R;
+import org.unibl.etf.vetclinic.viewmodel.UserPreferencesViewModel;
 import org.unibl.etf.vetclinic.viewmodel.UserViewModel;
 
 public class LoginFragment extends Fragment {
@@ -72,19 +73,30 @@ public class LoginFragment extends Fragment {
 
             userViewModel.login(email, password, user -> requireActivity().runOnUiThread(() -> {
                 if (user != null) {
-                    SharedPreferences prefs = requireActivity().getSharedPreferences("VetClinicPrefs", Context.MODE_PRIVATE);
-                    prefs.edit()
-                            .putBoolean("isLoggedIn", true)
-                            .putInt("userId", user.ID)
-                            .apply();
+                    UserPreferencesViewModel preferencesViewModel = new ViewModelProvider(requireActivity()).get(UserPreferencesViewModel.class);
 
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                    requireActivity().finish();
+                    preferencesViewModel.getPreferencesForUser(user.ID).observe(getViewLifecycleOwner(), prefs -> {
+                        if (prefs != null) {
+                            SharedPreferences sharedPrefs = requireActivity().getSharedPreferences("VetClinicPrefs", Context.MODE_PRIVATE);
+                            sharedPrefs.edit()
+                                    .putBoolean("isLoggedIn", true)
+                                    .putInt("userId", user.ID)
+                                    .putString("language", prefs.Language)
+                                    .putString("theme", prefs.Theme)
+                                    .apply();
+
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
+                            requireActivity().finish();
+                        } else {
+                            Toast.makeText(getContext(), "User preferences not found.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 } else {
                     Toast.makeText(getContext(), getString(R.string.error_invalid_credentials), Toast.LENGTH_SHORT).show();
                 }
             }));
+
         });
 
         backButton.setOnClickListener(v ->
