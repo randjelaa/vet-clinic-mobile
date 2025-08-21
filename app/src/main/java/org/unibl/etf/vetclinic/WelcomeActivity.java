@@ -2,9 +2,13 @@ package org.unibl.etf.vetclinic;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import java.util.Locale;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -13,6 +17,12 @@ public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // ✅ Postavi uvijek svijetlu temu
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        // ✅ Postavi jezik na engleski
+        forceEnglishLocale();
+
         super.onCreate(savedInstanceState);
 
         if (isUserLoggedIn()) {
@@ -32,5 +42,13 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void forceEnglishLocale() {
+        Locale locale = new Locale("en");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 }
