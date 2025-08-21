@@ -9,6 +9,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -65,9 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
         // === Tema ===
         if ("Dark".equalsIgnoreCase(theme)) {
-            setTheme(R.style.Theme_VetClinic_Dark); // moraš imati ovu temu definisanu
+            setTheme(R.style.Theme_VetClinic); // moraš imati ovu temu definisanu
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
-            setTheme(R.style.Theme_VetClinic_Light); // default tema
+            setTheme(R.style.Theme_VetClinic); // default tema
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
 
         // === Jezik ===

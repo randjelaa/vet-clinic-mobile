@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -16,11 +18,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
 
+import org.unibl.etf.vetclinic.MainActivity;
 import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.WelcomeActivity;
+import org.unibl.etf.vetclinic.viewmodel.UserPreferencesViewModel;
 
 public class ProfileFragment extends Fragment {
 
@@ -44,22 +49,70 @@ public class ProfileFragment extends Fragment {
         btnLogout = view.findViewById(R.id.btnLogout);
 
         SharedPreferences prefs = requireActivity().getSharedPreferences("VetClinicPrefs", Context.MODE_PRIVATE);
+        int userId = prefs.getInt("userId", -1);
         String name = prefs.getString("userName", "Unknown User");
         String email = prefs.getString("userEmail", "unknown@email.com");
-        boolean darkTheme = prefs.getBoolean("darkTheme", false);
 
         textUserName.setText(name);
         textUserEmail.setText(email);
-        switchTheme.setChecked(darkTheme);
+
+        // === Postavi adapter za jezike ===
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(),
+                R.array.language_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLanguage.setAdapter(adapter);
+
+        // === ViewModel za preferences ===
+        UserPreferencesViewModel prefsViewModel = new ViewModelProvider(requireActivity()).get(UserPreferencesViewModel.class);
+
+        // === Ucitaj user preferences iz baze ===
+        prefsViewModel.getPreferencesForUser(userId).observe(getViewLifecycleOwner(), userPrefs -> {
+            if (userPrefs != null) {
+                // Postavi jezik
+                String language = userPrefs.Language != null ? userPrefs.Language : "English";
+                int langPos = adapter.getPosition(language);
+                spinnerLanguage.setSelection(langPos);
+
+                // Postavi temu
+                boolean isDark = "Dark".equalsIgnoreCase(userPrefs.Theme);
+                switchTheme.setChecked(isDark);
+
+                // === Promjena jezika ===
+                spinnerLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String selectedLanguage = adapter.getItem(position).toString();
+                        if (!selectedLanguage.equals(userPrefs.Language)) {
+                            userPrefs.Language = selectedLanguage;
+                            prefsViewModel.update(userPrefs);
+                            prefs.edit().putString("language", selectedLanguage).apply();
+                            restartApp(); // promjena jezika zahtijeva restart
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) { }
+                });
+
+                // === Promjena teme ===
+                switchTheme.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    String newTheme = isChecked ? "Dark" : "Light";
+                    if (!newTheme.equalsIgnoreCase(userPrefs.Theme)) {
+                        userPrefs.Theme = newTheme;
+                        prefsViewModel.update(userPrefs);
+                        prefs.edit().putString("theme", newTheme).putBoolean("darkTheme", isChecked).apply();
+                        restartApp(); // restart da bi se tema primijenila
+                    }
+                });
+            }
+        });
 
         btnEditProfile.setOnClickListener(v ->
-                        Toast.makeText(getContext(), "Edit profile clicked", Toast.LENGTH_SHORT).show()
-                // TODO: open edit profile fragment/dialog
+                Toast.makeText(getContext(), "Edit profile clicked", Toast.LENGTH_SHORT).show()
         );
 
         btnPayments.setOnClickListener(v ->
-                        Toast.makeText(getContext(), "Open payments screen", Toast.LENGTH_SHORT).show()
-                // TODO: navigate to PaymentsFragment
+                Toast.makeText(getContext(), "Open payments screen", Toast.LENGTH_SHORT).show()
         );
 
         btnLogout.setOnClickListener(v -> {
@@ -69,14 +122,13 @@ public class ProfileFragment extends Fragment {
             requireActivity().finish();
         });
 
-        switchTheme.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefs.edit().putBoolean("darkTheme", isChecked).apply();
-            Toast.makeText(getContext(), "Theme changed (apply restart)", Toast.LENGTH_SHORT).show();
-            // TODO: apply theme switch properly
-        });
-
-        // TODO: postavi adapter za jezike i sacuvaj izbor u SharedPreferences
-
         return view;
+    }
+
+    private void restartApp() {
+        Intent intent = new Intent(requireActivity(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        requireActivity().finish();
     }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFB86F6F</color>  <!-- svjetlija crvena -->
+    <color name="purple_500">#FFB00000</color>  <!-- srednja crvena -->
+    <color name="purple_700">#FF7F0000</color>  <!-- tamnija crvena -->
+    <color name="teal_200">#FFCC4C4C</color>    <!-- blago crvena, umjesto teala -->
+    <color name="teal_700">#FF990000</color>    <!-- tamnija nijansa crvene -->
+    <color name="black">#FFFFFFFF</color>       <!-- da se vidi na tamnoj pozadini -->
+    <color name="white">#FF000000</color>       <!-- crna na svijetlom -->
+</resources>

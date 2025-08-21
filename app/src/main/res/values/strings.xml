@@ -72,4 +72,10 @@
     <string name="dark_theme">Dark</string>
     <string name="my_payments">My payments</string>
     <string name="logout">Logout</string>
+
+    <string-array name="language_options">
+        <item>English</item>
+        <item>Serbian</item>
+    </string-array>
+
 </resources>
