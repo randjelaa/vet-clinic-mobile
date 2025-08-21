@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">VetKlinika</string>
+    <string name="title_home">Početna</string>
+    <string name="title_dashboard">Kontrolna tabla</string>
+    <string name="title_notifications">Obavještenja</string>
+
+    <string name="welcome_message">Dobrodošli u VetKliniku!</string>
+    <string name="login">Prijava</string>
+    <string name="register">Registracija</string>
+    <string name="username">Korisničko ime</string>
+    <string name="password">Lozinka</string>
+    <string name="email">Email</string>
+    <string name="back">Nazad</string>
+    <string name="already_have_account">Već imate nalog? Prijavite se ovdje!</string>
+    <string name="dont_have_account_register">Nemate nalog? Registrujte se ovdje!</string>
+    <string name="add_pet">Dodaj</string>
+    <string name="pet_name">Ime ljubimca</string>
+    <string name="species">Vrsta</string>
+    <string name="breed">Rasa</string>
+    <string name="pet_details_placeholder">Detalji o ljubimcu će biti prikazani ovdje.</string>
+    <string name="medical_records">Zdravstveni karton...</string>
+    <string name="delete_pet">Obriši ljubimca</string>
+    <string name="unknown">Nepoznato</string>
+    <string name="not_found">Nije pronađeno</string>
+    <string name="delete_confirmation_title">Potvrda brisanja</string>
+    <string name="delete_confirmation_message">Da li ste sigurni da želite da obrišete ovog ljubimca?</string>
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="pet_deleted">Ljubimac je obrisan</string>
+    <string name="pet_delete_error">Greška: Ljubimac nije pronađen</string>
+    <string name="label_diagnosis">Dijagnoza: %1$s</string>
+    <string name="label_treatment">Tretman: %1$s</string>
+    <string name="label_medications">Lijekovi: %1$s</string>
+    <string name="label_notes">Napomene: %1$s</string>
+    <string name="label_date">Datum: %1$s</string>
+    <string name="value_na">N/A</string>
+    <string name="error_pet_name_required">Unesite ime ljubimca</string>
+    <string name="error_pet_name_too_short">Ime ljubimca mora imati bar 2 slova</string>
+    <string name="error_species_too_short">Vrsta mora imati bar 2 slova ili ostavite prazno</string>
+    <string name="error_breed_too_short">Rasa mora imati bar 2 slova ili ostavite prazno</string>
+    <string name="error_user_not_logged_in">Greška: Korisnik nije prijavljen</string>
+    <string name="pet_added_success">Ljubimac je uspješno dodat</string>
+    <string name="error_fields_required">Sva polja su obavezna</string>
+    <string name="error_invalid_email">Unesite ispravan email</string>
+    <string name="error_invalid_credentials">Neispravni podaci za prijavu</string>
+    <string name="success_registration">Registracija uspješna</string>
+    <string name="error_email_exists">Email već postoji ili je došlo do greške</string>
+    <string name="title_pet_list">Ljubimci</string>
+    <string name="title_add_pet">Dodaj ljubimca</string>
+    <string name="title_pet_details">Detalji o ljubimcu</string>
+    <string name="title_appointments">Termini</string>
+    <string name="title_profile">Profil</string>
+    <string name="upcoming_appointments">Predstojeći termini</string>
+    <string name="past_appointments">Prošli termini</string>
+    <string name="add_appointment">Dodaj termin</string>
+    <string name="service">Usluga</string>
+    <string name="cancel">Otkaži</string>
+    <string name="pay">Plati</string>
+    <string name="title_add_appointment">Dodaj termin</string>
+    <string name="no_date_selected">Datum nije izabran!</string>
+    <string name="select_date">Izaberite datum</string>
+    <string name="select_time">Izaberite vrijeme</string>
+    <string name="select_pet">Izaberite ljubimca</string>
+    <string name="select_vet">Izaberite veterinara</string>
+    <string name="select_service">Izaberite uslugu</string>
+    <string name="selected_datetime">Izabrani datum i vrijeme</string>
+    <string name="paid">Plaćeno</string>
+    <string name="edit_profile">Izmijeni profil</string>
+    <string name="preferences">Podešavanja</string>
+    <string name="language">Jezik</string>
+    <string name="theme">Tema</string>
+    <string name="dark_theme">Tamna</string>
+    <string name="my_payments">Moja plaćanja</string>
+    <string name="logout">Odjava</string>
+
+    <string-array name="language_options">
+        <item>Engleski</item>
+        <item>Srpski</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>en</item>
+        <item>sr</item>
+    </string-array>
+</resources>

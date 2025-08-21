@@ -69,9 +69,20 @@ public class ProfileFragment extends Fragment {
         prefsViewModel.getPreferencesForUser(userId).observe(getViewLifecycleOwner(), userPrefs -> {
             if (userPrefs != null) {
                 // Postavi jezik
-                String language = userPrefs.Language != null ? userPrefs.Language : "English";
-                int langPos = adapter.getPosition(language);
+                String[] languageCodes = getResources().getStringArray(R.array.language_codes);
+                String savedLangCode = userPrefs.Language != null ? userPrefs.Language : "en";
+
+// Pronađi poziciju jezika na osnovu koda (npr. "sr")
+                int langPos = 0;
+                for (int i = 0; i < languageCodes.length; i++) {
+                    if (languageCodes[i].equals(savedLangCode)) {
+                        langPos = i;
+                        break;
+                    }
+                }
+
                 spinnerLanguage.setSelection(langPos);
+
 
                 // Postavi temu
                 boolean isDark = "Dark".equalsIgnoreCase(userPrefs.Theme);
@@ -81,7 +92,8 @@ public class ProfileFragment extends Fragment {
                 spinnerLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedLanguage = adapter.getItem(position).toString();
+                        String[] languageCodes = getResources().getStringArray(R.array.language_codes);
+                        String selectedLanguage = languageCodes[position];
                         if (!selectedLanguage.equals(userPrefs.Language)) {
                             userPrefs.Language = selectedLanguage;
                             prefsViewModel.update(userPrefs);

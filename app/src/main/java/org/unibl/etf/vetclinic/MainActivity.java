@@ -79,13 +79,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setLocale(String lang) {
-        Locale locale = new Locale(lang.toLowerCase()); // npr. "en" ili "sr"
+    private void setLocale(String langCode) {
+        Locale locale = new Locale(langCode);
         Locale.setDefault(locale);
+
         Configuration config = new Configuration();
         config.setLocale(locale);
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-    }
 
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+    }
 
 }

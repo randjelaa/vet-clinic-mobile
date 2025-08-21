@@ -78,4 +78,9 @@
         <item>Serbian</item>
     </string-array>
 
+    <string-array name="language_codes">
+        <item>en</item>
+        <item>sr</item>
+    </string-array>
+
 </resources>
