@@ -1,5 +1,6 @@
 package org.unibl.etf.vetclinic.data.database;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -75,25 +76,24 @@ public abstract class AppDatabase extends RoomDatabase {
                                     "vetclinic_database"
                             )
                             .fallbackToDestructiveMigration()
-                            .addCallback(roomDatabaseCallback)
+                            .addCallback(new RoomDatabase.Callback() {
+                                @Override
+                                public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                                    super.onCreate(db);
+                                    databaseWriteExecutor.execute(() -> {
+                                        AppDatabase database = INSTANCE;
+                                        if (database != null) {
+                                            // Kastuj kontekst u Application
+                                            Application app = (Application) context.getApplicationContext();
+                                            DatabaseSeeder.seed(database, app);
+                                        }
+                                    });
+                                }
+                            })
                             .build();
                 }
             }
         }
         return INSTANCE;
     }
-
-    private static final RoomDatabase.Callback roomDatabaseCallback =
-            new RoomDatabase.Callback() {
-                @Override
-                public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                    super.onCreate(db);
-                    databaseWriteExecutor.execute(() -> {
-                        AppDatabase database = INSTANCE;
-                        if (database != null) {
-                            DatabaseSeeder.seed(database);
-                        }
-                    });
-                }
-            };
 }

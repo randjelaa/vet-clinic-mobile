@@ -8,9 +8,12 @@ import org.unibl.etf.vetclinic.data.entities.*;
 import java.util.Calendar;
 import java.util.Date;
 
+import android.app.Application;
+import org.unibl.etf.vetclinic.repository.UserRepository;
+
 public class DatabaseSeeder {
 
-    public static void seed(AppDatabase db) {
+    public static void seed(AppDatabase db, Application application) {
         try {
             // === ROLES ===
             RoleDao roleDao = db.roleDao();
@@ -28,49 +31,49 @@ public class DatabaseSeeder {
             int clientRoleId = (int) roleDao.insert(roleClient);
 
             // === USERS ===
-            UserDao userDao = db.userDao();
+            UserRepository userRepo = new UserRepository(application);
 
             User admin = new User();
             admin.Email = "admin@vet.com";
             admin.Name = "Admin User";
             admin.Password = "admin123";
             admin.RoleID = adminRoleId;
-            int adminId = (int) userDao.insert(admin);
+            int adminId = userRepo.insertUserAndPreferencesSync(admin);
 
             User vet1 = new User();
             vet1.Email = "vet1@vet.com";
             vet1.Name = "Dr. Vet One";
             vet1.Password = "vet123";
             vet1.RoleID = vetRoleId;
-            int vet1Id = (int) userDao.insert(vet1);
+            int vet1Id = userRepo.insertUserAndPreferencesSync(vet1);
 
             User vet2 = new User();
             vet2.Email = "vet2@vet.com";
             vet2.Name = "Dr. Vet Two";
             vet2.Password = "vet123";
             vet2.RoleID = vetRoleId;
-            int vet2Id = (int) userDao.insert(vet2);
+            int vet2Id = userRepo.insertUserAndPreferencesSync(vet2);
 
             User client1 = new User();
             client1.Email = "client1@mail.com";
             client1.Name = "John Doe";
             client1.Password = "client123";
             client1.RoleID = clientRoleId;
-            int client1Id = (int) userDao.insert(client1);
+            int client1Id = userRepo.insertUserAndPreferencesSync(client1);
 
             User client2 = new User();
             client2.Email = "client2@mail.com";
             client2.Name = "Jane Smith";
             client2.Password = "client123";
             client2.RoleID = clientRoleId;
-            int client2Id = (int) userDao.insert(client2);
+            int client2Id = userRepo.insertUserAndPreferencesSync(client2);
 
             User client3 = new User();
             client3.Email = "client3@mail.com";
             client3.Name = "Alice Brown";
             client3.Password = "client123";
             client3.RoleID = clientRoleId;
-            int client3Id = (int) userDao.insert(client3);
+            int client3Id = userRepo.insertUserAndPreferencesSync(client3);
 
             // === PETS ===
             PetDao petDao = db.petDao();
