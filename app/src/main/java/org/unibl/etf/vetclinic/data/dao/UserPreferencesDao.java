@@ -1,5 +1,6 @@
 package org.unibl.etf.vetclinic.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -21,6 +22,6 @@ public interface UserPreferencesDao {
     void delete(UserPreferences prefs);
 
     @Query("SELECT * FROM UserPreferences WHERE UserID = :userId LIMIT 1")
-    UserPreferences getPreferencesForUser(int userId);
+    LiveData<UserPreferences> getPreferencesForUser(int userId);
 }
 
