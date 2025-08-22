@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
+
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 
@@ -99,5 +102,14 @@ public class UserRepository {
 
     public LiveData<List<User>> getAllVets() {
         return userDao.getAllVets(); // Pretpostavka: samo veterinari
+    }
+
+    public void getUserByIdAsync(int id, Consumer<User> callback) {
+        executorService.execute(() -> {
+            User user = userDao.getUserById(id);
+            new Handler(Looper.getMainLooper()).post(() -> {
+                callback.accept(user);
+            });
+        });
     }
 }

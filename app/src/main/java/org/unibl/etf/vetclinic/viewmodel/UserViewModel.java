@@ -32,4 +32,8 @@ public class UserViewModel extends AndroidViewModel {
     public LiveData<List<User>> getAllVets() {
         return repository.getAllVets();
     }
+
+    public void getUserById(int id, Consumer<User> callback) {
+        repository.getUserByIdAsync(id, callback);
+    }
 }
