@@ -1,5 +1,6 @@
 package org.unibl.etf.vetclinic.ui.profile;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,22 +36,27 @@ public class PaymentListAdapter extends RecyclerView.Adapter<PaymentListAdapter.
     @Override
     public void onBindViewHolder(@NonNull PaymentViewHolder holder, int position) {
         PaymentWithAppointment payment = payments.get(position);
+        Context context = holder.itemView.getContext();
 
-        // Prikaži datum plaćanja
-        holder.textDatePaid.setText("Paid on: " + dateFormat.format(payment.payment.Date));
+        holder.textDatePaid.setText(
+                context.getString(R.string.paid_on) + dateFormat.format(payment.payment.Date)
+        );
 
-        // Prikaži informacije o zakazanom terminu, ako postoji
         if (payment.appointment != null) {
-            holder.textDateAppointment.setText("Appointment on: " + dateFormat.format(payment.appointment.Date));
+            holder.textDateAppointment.setText(
+                    context.getString(R.string.appointment_on) + dateFormat.format(payment.appointment.Date)
+            );
 
-            // Prikaži osnovne detalje o terminu (npr. ID)
-            holder.textDetails.setText("Pet: " + payment.appointment.PetName + "\n" +
-                                        "Service: " + payment.appointment.ServiceName);
+            holder.textDetails.setText(
+                    context.getString(R.string.appointment_pet_prefix) + payment.appointment.PetName + "\n" +
+                            context.getString(R.string.appointment_service_prefix) + payment.appointment.ServiceName
+            );
         } else {
-            holder.textDateAppointment.setText("No appointment associated");
+            holder.textDateAppointment.setText(R.string.no_appointment_associated);
             holder.textDetails.setText("");
         }
     }
+
 
     @Override
     public int getItemCount() {

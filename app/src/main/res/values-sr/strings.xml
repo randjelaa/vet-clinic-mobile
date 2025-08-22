@@ -82,6 +82,26 @@
     <string name="change_password">Promijeni lozinku</string>
     <string name="current_password">Trenutna lozinka</string>
     <string name="new_password">Nova lozinka</string>
+    <string name="details_placeholder">Detalji...</string>
+    <string name="appointment_details">Ljubimac: %1$s • Servis: %2$s • Cijena: %3$.2f€</string>
+    <string name="appointment_pet_prefix">Ljubimac: </string>
+    <string name="appointment_service_prefix">Servis: </string>
+    <!-- Validation errors -->
+    <string name="error_name_required">Name is required</string>
+    <string name="error_email_required">Email is required</string>
+    <string name="error_enter_passwords">Enter both current and new password</string>
+    <string name="error_incorrect_password">Incorrect current password</string>
+
+    <!-- Dialog -->
+    <string name="dialog_confirm_title">Confirm Changes</string>
+    <string name="dialog_confirm_message">Are you sure you want to save these changes?</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_cancel">Cancel</string>
+
+    <!-- Toasts -->
+    <string name="toast_profile_updated">Profile updated</string>
+    <string name="toast_profile_update_failed">Failed to update profile</string>
+
 
     <string-array name="language_options">
         <item>Engleski</item>

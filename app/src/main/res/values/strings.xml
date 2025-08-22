@@ -76,12 +76,26 @@
     <string name="pet_name_required">Pet name required</string>
     <string name="pet_updated">Pet updated</string>
     <string name="confirm_save_pet_changes">Are you sure you want to save these changes?</string>
-    <string name="paid_on">Paid on</string>
-    <string name="appointment_on">Appointment on</string>
     <string name="no_appointment_associated">No appointment associated</string>
     <string name="change_password">Change Password</string>
     <string name="current_password">Current Password</string>
     <string name="new_password">New Password</string>
+    <string name="details_placeholder">Details...</string>
+    <string name="paid_on">Paid on: </string>
+    <string name="appointment_on">Appointment on: </string>
+    <string name="appointment_details">Pet: %1$s • Service: %2$s • Price: %3$.2f€</string>
+    <string name="appointment_pet_prefix">Pet: </string>
+    <string name="appointment_service_prefix">Service: </string>
+    <string name="error_name_required">Name is required</string>
+    <string name="error_email_required">Email is required</string>
+    <string name="error_enter_passwords">Enter both current and new password</string>
+    <string name="error_incorrect_password">Incorrect current password</string>
+    <string name="dialog_confirm_title">Confirm Changes</string>
+    <string name="dialog_confirm_message">Are you sure you want to save these changes?</string>
+    <string name="toast_profile_updated">Profile updated</string>
+    <string name="toast_profile_update_failed">Failed to update profile</string>
+
+
 
 
     <string-array name="language_options">

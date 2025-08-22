@@ -16,21 +16,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/WidgetAppTextPrimaryBold"
-            android:text="Paid on: ..." />
+            android:text="@string/paid_on" />
 
         <TextView
             android:id="@+id/textDateAppointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/WidgetAppTextSecondary"
-            android:text="Appointment on: ..." />
+            android:text="@string/appointment_on" />
 
         <TextView
             android:id="@+id/textDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/WidgetAppTextSecondary"
-            android:text="Details..." />
+            android:text="@string/details_placeholder" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

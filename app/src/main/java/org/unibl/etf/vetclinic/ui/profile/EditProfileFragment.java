@@ -77,32 +77,31 @@ public class EditProfileFragment extends Fragment {
             String newPass = editNewPassword.getText().toString();
 
             if (name.isEmpty()) {
-                editName.setError("Name is required");
+                editName.setError(getString(R.string.error_name_required));
                 return;
             }
 
             if (email.isEmpty()) {
-                editEmail.setError("Email is required");
+                editEmail.setError(getString(R.string.error_email_required));
                 return;
             }
 
             if (showPasswordFields) {
                 if (currentPass.isEmpty() || newPass.isEmpty()) {
-                    Toast.makeText(getContext(), "Enter both current and new password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_enter_passwords), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!currentPass.equals(currentUser.Password)) {
-                    Toast.makeText(getContext(), "Incorrect current password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_incorrect_password), Toast.LENGTH_SHORT).show();
                     return;
                 }
             }
 
-            // Potvrda prije spremanja
             new AlertDialog.Builder(requireContext())
-                    .setTitle("Confirm Changes")
-                    .setMessage("Are you sure you want to save these changes?")
-                    .setPositiveButton("Yes", (dialog, which) -> {
+                    .setTitle(getString(R.string.dialog_confirm_title))
+                    .setMessage(getString(R.string.dialog_confirm_message))
+                    .setPositiveButton(getString(R.string.yes), (dialog, which) -> {
                         currentUser.Name = name;
                         currentUser.Email = email;
                         if (showPasswordFields && !newPass.isEmpty())
@@ -110,15 +109,15 @@ public class EditProfileFragment extends Fragment {
 
                         userViewModel.updateUser(currentUser,
                                 () -> requireActivity().runOnUiThread(() -> {
-                                    Toast.makeText(getContext(), "Profile updated", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), getString(R.string.toast_profile_updated), Toast.LENGTH_SHORT).show();
                                     requireActivity().getSupportFragmentManager().popBackStack();
                                 }),
                                 () -> requireActivity().runOnUiThread(() ->
-                                        Toast.makeText(getContext(), "Failed to update profile", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(getContext(), getString(R.string.toast_profile_update_failed), Toast.LENGTH_SHORT).show()
                                 )
                         );
                     })
-                    .setNegativeButton("Cancel", null)
+                    .setNegativeButton(getString(R.string.cancel), null)
                     .show();
         });
 
