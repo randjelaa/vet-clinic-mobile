@@ -33,6 +33,7 @@ public class HomeFragment extends Fragment {
 
         UserViewModel userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
+        // Pozdrav korisniku
         if (userId != -1) {
             userViewModel.getUserById(userId, user -> {
                 if (user != null) {
@@ -46,8 +47,21 @@ public class HomeFragment extends Fragment {
             binding.textHome.setText("Dobrodošli!");
         }
 
+        // Posmatranje broja veterinara
+        userViewModel.getAllVets().observe(getViewLifecycleOwner(), vets -> {
+            int vetCount = vets != null ? vets.size() : 0;
+            binding.textVeterinarians.setText("Broj veterinara: " + vetCount);
+        });
+
+        // Posmatranje broja klijenata
+        userViewModel.getAllClients().observe(getViewLifecycleOwner(), clients -> {
+            int clientCount = clients != null ? clients.size() : 0;
+            binding.textClients.setText("Broj klijenata: " + clientCount);
+        });
+
         return root;
     }
+
 
     @Override
     public void onDestroyView() {

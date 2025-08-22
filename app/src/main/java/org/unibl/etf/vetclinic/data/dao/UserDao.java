@@ -43,5 +43,10 @@ public interface UserDao {
             "WHERE r.Name = 'Veterinarian' AND u.Deleted IS NULL")
     LiveData<List<User>> getAllVets();
 
+    @Query("SELECT u.* FROM Users u " +
+            "JOIN Roles r ON u.RoleID = r.ID " +
+            "WHERE r.Name = 'Client' AND u.Deleted IS NULL")
+    LiveData<List<User>> getAllClients();
+
 }
 

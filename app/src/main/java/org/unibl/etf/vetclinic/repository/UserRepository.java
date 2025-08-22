@@ -101,7 +101,11 @@ public class UserRepository {
     }
 
     public LiveData<List<User>> getAllVets() {
-        return userDao.getAllVets(); // Pretpostavka: samo veterinari
+        return userDao.getAllVets();
+    }
+
+    public LiveData<List<User>> getAllClients() {
+        return userDao.getAllClients();
     }
 
     public void getUserByIdAsync(int id, Consumer<User> callback) {

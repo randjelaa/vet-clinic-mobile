@@ -33,6 +33,10 @@ public class UserViewModel extends AndroidViewModel {
         return repository.getAllVets();
     }
 
+    public LiveData<List<User>> getAllClients() {
+        return repository.getAllClients();
+    }
+
     public void getUserById(int id, Consumer<User> callback) {
         repository.getUserByIdAsync(id, callback);
     }
