@@ -8,6 +8,7 @@ import org.unibl.etf.vetclinic.data.database.AppDatabase;
 import org.unibl.etf.vetclinic.data.dao.PetDao;
 import org.unibl.etf.vetclinic.data.entities.Pet;
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -37,7 +38,7 @@ public class PetRepository {
     }
 
     public void delete(Pet pet) {
-        executorService.execute(() -> petDao.delete(pet));
+        executorService.execute(() -> petDao.softDelete(pet.ID, new Date()));
     }
 
     public LiveData<List<Pet>> getPetsByUserId(int userId) {

@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFB86F6F</color>  <!-- svjetlija crvena -->
-    <color name="purple_500">#FFB00000</color>  <!-- srednja crvena -->
-    <color name="purple_700">#FF7F0000</color>  <!-- tamnija crvena -->
-    <color name="teal_200">#FFCC4C4C</color>    <!-- blago crvena, umjesto teala -->
-    <color name="teal_700">#FF990000</color>    <!-- tamnija nijansa crvene -->
-    <color name="black">#FFFFFFFF</color>       <!-- da se vidi na tamnoj pozadini -->
-    <color name="white">#FF000000</color>       <!-- crna na svijetlom -->
+    <!-- Primary / Secondary -->
+    <color name="colorPrimary">#B39DDB</color> <!-- Svjetlija verzija ljubičaste -->
+    <color name="colorPrimaryVariant">#9575CD</color> <!-- Još malo tamnija -->
+    <color name="colorOnPrimary">#000000</color> <!-- Crni tekst na svijetloj pozadini -->
+
+    <color name="colorSecondary">#FFD54F</color> <!-- Svjetlija žuta -->
+    <color name="colorSecondaryVariant">#FFB300</color>
+    <color name="colorOnSecondary">#000000</color>
+
+    <!-- Background / Surface -->
+    <color name="colorBackground">#3b3b3b</color>
+    <color name="colorOnBackground">#FFFFFF</color>
+
+    <color name="colorSurface">#1E1E1E</color>
+    <color name="colorOnSurface">#FFFFFF</color>
+
+    <!-- Error -->
+    <color name="colorError">#CF6679</color>
+    <color name="colorOnError">#000000</color>
+
+    <!-- Ostale (custom) -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

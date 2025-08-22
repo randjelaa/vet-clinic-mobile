@@ -9,6 +9,7 @@ import androidx.room.Update;
 
 import org.unibl.etf.vetclinic.data.entities.Pet;
 
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -31,5 +32,9 @@ public interface PetDao {
 
     @Query("SELECT * FROM Pets WHERE ID = :id LIMIT 1")
     Pet getPetByIdSync(int id);
+
+    @Query("UPDATE Pets SET Deleted = :deletedAt WHERE ID = :id")
+    void softDelete(int id, Date deletedAt);
+
 }
 

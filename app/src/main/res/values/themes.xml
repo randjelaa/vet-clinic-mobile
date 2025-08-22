@@ -1,33 +1,33 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Tema aplikacije -->
     <style name="Theme.VetClinic" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="Theme.VetClinic.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
     </style>
 
+    <!-- Primarni button -->
     <style name="Button.Primary" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minWidth">200dp</item>
         <item name="android:maxWidth">300dp</item>
         <item name="cornerRadius">8dp</item>
-        <item name="backgroundTint">@color/purple_500</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:paddingStart">@dimen/spacing_large</item>
         <item name="android:paddingEnd">@dimen/spacing_large</item>
@@ -48,66 +48,59 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">22sp</item> <!-- ili više ako želiš veći naslov -->
+        <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/purple_700</item> <!-- koristi boju iz teme -->
+        <item name="android:textColor">@color/colorPrimaryVariant</item>
         <item name="android:layout_marginTop">@dimen/spacing_large</item>
         <item name="android:layout_marginBottom">@dimen/spacing_medium</item>
     </style>
 
-
+    <!-- TextInput polje -->
     <style name="InputField.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="boxBackgroundMode">outline</item>
-        <item name="boxStrokeColor">@color/purple_500</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
         <item name="boxCornerRadiusTopEnd">8dp</item>
         <item name="boxCornerRadiusBottomStart">8dp</item>
         <item name="boxCornerRadiusBottomEnd">8dp</item>
-        <item name="hintTextColor">@color/purple_200</item>
+        <item name="hintTextColor">@color/colorPrimaryVariant</item>
     </style>
 
     <style name="IconButtonBack">
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="tint">@color/purple_700</item>
+        <item name="tint">@color/colorPrimaryVariant</item>
         <item name="android:layout_margin">@dimen/spacing_small</item>
     </style>
 
     <style name="Text.LinkAction" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/purple_200</item>
+        <item name="android:textColor">@color/colorPrimaryVariant</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">8dp</item>
     </style>
 
+    <!-- FAB -->
     <style name="WidgetAppFloatingActionButtonPurple" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="backgroundTint">@color/purple_500</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
         <item name="elevation">@dimen/fab_elevation</item>
     </style>
 
-    <!-- General reusable card style -->
+    <!-- Kartica -->
     <style name="WidgetAppCardDefault" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
         <item name="cardElevation">@dimen/card_elevation</item>
-        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardBackgroundColor">@color/colorBackground</item>
         <item name="android:layout_marginBottom">@dimen/card_margin_bottom</item>
+        <item name="android:layout_marginStart">@dimen/card_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/card_margin_horizontal</item>
     </style>
 
-    <!-- Primary bold title text -->
-    <style name="WidgetAppTextPrimaryBold">
-        <item name="android:textAppearance">?attr/textAppearanceSubtitle1</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <!-- Secondary regular text -->
-    <style name="WidgetAppTextSecondary">
-        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
-    </style>
-
+    <!-- Tekstovi za detalje -->
     <style name="PetDetailsText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -122,15 +115,33 @@
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 
+    <!-- Sekundarni dugmić -->
     <style name="WidgetAppButtonSecondarySmall" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:paddingLeft">@dimen/spacing_medium</item>
         <item name="android:paddingRight">@dimen/spacing_medium</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textColor">@color/purple_200</item>
-        <item name="strokeColor">@color/purple_200</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="strokeColor">@color/colorSecondary</item>
         <item name="strokeWidth">2dp</item>
         <item name="cornerRadius">8dp</item>
     </style>
+
+    <!-- Stilizovani tekstovi -->
+    <style name="WidgetAppTextPrimaryBold">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
+    </style>
+
+    <style name="WidgetAppTextSecondary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
+    </style>
+
+    <style name="WidgetAppTextPrice" parent="WidgetAppTextSecondary">
+        <item name="android:textColor">@android:color/holo_green_dark</item>
+    </style>
+
 </resources>

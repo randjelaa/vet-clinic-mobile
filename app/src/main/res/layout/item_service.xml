@@ -16,27 +16,25 @@
 
         <TextView
             android:id="@+id/textViewServiceName"
+            style="@style/WidgetAppTextPrimaryBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ime usluge"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:text="Ime usluge" />
 
         <TextView
             android:id="@+id/textViewServiceDescription"
+            style="@style/WidgetAppTextSecondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opis usluge"
-            android:textSize="14sp"
-            android:paddingTop="4dp"/>
+            android:paddingTop="4dp" />
 
         <TextView
             android:id="@+id/textViewServicePrice"
+            style="@style/WidgetAppTextPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cijena"
-            android:textSize="14sp"
-            android:paddingTop="4dp"
-            android:textColor="@android:color/holo_green_dark"/>
+            android:paddingTop="4dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
