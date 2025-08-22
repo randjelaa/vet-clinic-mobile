@@ -76,6 +76,9 @@
     <string name="pet_name_required">Pet name required</string>
     <string name="pet_updated">Pet updated</string>
     <string name="confirm_save_pet_changes">Are you sure you want to save these changes?</string>
+    <string name="paid_on">Paid on</string>
+    <string name="appointment_on">Appointment on</string>
+    <string name="no_appointment_associated">No appointment associated</string>
 
     <string-array name="language_options">
         <item>English</item>

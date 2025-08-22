@@ -63,6 +63,9 @@
     <action
         android:id="@+id/action_profileFragment_to_editProfileFragment"
         app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_paymentsFragment"
+            app:destination="@id/paymentsFragment" />
     </fragment>
 
 
@@ -70,5 +73,10 @@
         android:id="@+id/editProfileFragment"
         android:name="org.unibl.etf.vetclinic.ui.profile.EditProfileFragment"
         android:label="Edit Profile" />
+
+    <fragment
+        android:id="@+id/paymentsFragment"
+        android:name="org.unibl.etf.vetclinic.ui.profile.PaymentListFragment"
+        android:label="My payments" />
 
 </navigation>

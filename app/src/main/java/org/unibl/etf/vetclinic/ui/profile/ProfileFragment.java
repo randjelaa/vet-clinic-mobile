@@ -133,9 +133,10 @@ public class ProfileFragment extends Fragment {
         });
 
 
-        btnPayments.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Open payments screen", Toast.LENGTH_SHORT).show()
-        );
+        btnPayments.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            navController.navigate(R.id.action_profileFragment_to_paymentsFragment);
+        });
 
         btnLogout.setOnClickListener(v -> {
             prefs.edit().clear().apply();

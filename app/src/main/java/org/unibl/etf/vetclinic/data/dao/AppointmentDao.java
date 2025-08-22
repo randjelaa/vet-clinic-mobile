@@ -32,9 +32,6 @@ public interface AppointmentDao {
     List<Appointment> getAppointmentsInRange(Date from, Date to);
 
     @Query("SELECT * FROM Appointments WHERE ID = :id LIMIT 1")
-    Appointment getAppointmentById(int id);
-
-    @Query("SELECT * FROM Appointments WHERE ID = :id LIMIT 1")
     Appointment getById(int id);
 
     @Query("SELECT a.ID, a.Date, p.Name AS PetName, s.Name AS ServiceName, s.Price, " +
@@ -46,5 +43,14 @@ public interface AppointmentDao {
             "WHERE a.Deleted IS NULL AND p.OwnerID = :userId " +
             "ORDER BY a.Date DESC")
     LiveData<List<AppointmentWithDetails>> getAppointmentsByUserId(int userId);
+
+    @Query("SELECT a.ID, a.Date, p.Name AS PetName, s.Name AS ServiceName, s.Price, " +
+            "CASE WHEN EXISTS (SELECT 1 FROM Payments WHERE AppointmentID = a.ID) THEN 1 ELSE 0 END AS IsPaid " +
+            "FROM Appointments a " +
+            "JOIN Pets p ON a.PetID = p.ID " +
+            "JOIN Services s ON a.ServiceID = s.ID " +
+            "WHERE a.ID = :id AND a.Deleted IS NULL LIMIT 1")
+    AppointmentWithDetails getDetailsById(int id);
+
 }
 
