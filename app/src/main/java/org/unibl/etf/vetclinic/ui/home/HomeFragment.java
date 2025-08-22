@@ -9,17 +9,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.unibl.etf.vetclinic.data.entities.User;
+import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.databinding.FragmentHomeBinding;
 import org.unibl.etf.vetclinic.viewmodel.UserViewModel;
 import org.unibl.etf.vetclinic.viewmodel.ServiceViewModel;
-import org.unibl.etf.vetclinic.ui.home.ServiceListAdapter;
 
 public class HomeFragment extends Fragment {
 
@@ -37,30 +34,27 @@ public class HomeFragment extends Fragment {
 
         UserViewModel userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
-        // Pozdrav korisniku
         if (userId != -1) {
             userViewModel.getUserById(userId, user -> {
                 if (user != null) {
-                    String welcomeText = "Dobrodošli, " + user.Name + "!";
+                    String welcomeText = getString(R.string.welcome_user, user.Name);
                     binding.textHome.setText(welcomeText);
                 } else {
-                    binding.textHome.setText("Dobrodošli!");
+                    binding.textHome.setText(getString(R.string.welcome_default));
                 }
             });
         } else {
-            binding.textHome.setText("Dobrodošli!");
+            binding.textHome.setText(getString(R.string.welcome_default));
         }
 
-        // Posmatranje broja veterinara
         userViewModel.getAllVets().observe(getViewLifecycleOwner(), vets -> {
             int vetCount = vets != null ? vets.size() : 0;
-            binding.textVeterinarians.setText("Broj veterinara: " + vetCount);
+            binding.textVeterinarians.setText(getString(R.string.veterinarians_count_format, vetCount));
         });
 
-        // Posmatranje broja klijenata
         userViewModel.getAllClients().observe(getViewLifecycleOwner(), clients -> {
             int clientCount = clients != null ? clients.size() : 0;
-            binding.textClients.setText("Broj klijenata: " + clientCount);
+            binding.textClients.setText(getString(R.string.clients_count_format, clientCount));
         });
 
         RecyclerView recyclerViewServices = binding.recyclerViewServices;
@@ -75,7 +69,6 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
-
 
     @Override
     public void onDestroyView() {

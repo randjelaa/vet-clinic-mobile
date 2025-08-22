@@ -144,4 +144,22 @@
         <item name="android:textColor">@android:color/holo_green_dark</item>
     </style>
 
+    <!-- Stil za karticu sa marginama -->
+    <style name="WidgetAppStatCard">
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <!-- Stil za tekst unutar kartice -->
+    <style name="WidgetAppStatCardText" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:padding">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
 </resources>

@@ -95,12 +95,19 @@
     <!-- Dialog -->
     <string name="dialog_confirm_title">Confirm Changes</string>
     <string name="dialog_confirm_message">Are you sure you want to save these changes?</string>
-    <string name="dialog_yes">Yes</string>
-    <string name="dialog_cancel">Cancel</string>
 
     <!-- Toasts -->
     <string name="toast_profile_updated">Profile updated</string>
     <string name="toast_profile_update_failed">Failed to update profile</string>
+
+    <string name="welcome_default">Dobrodošli!</string>
+    <string name="veterinarians_count">Broj veterinara: --</string>
+    <string name="clients_count">Broj klijenata: --</string>
+    <string name="available_services">Dostupne usluge</string>
+    <string name="welcome_user">Dobrodošli, %1$s!</string>
+    <string name="veterinarians_count_format">Broj veterinara: %1$d</string>
+    <string name="clients_count_format">Broj klijenata: %1$d</string>
+
 
 
     <string-array name="language_options">

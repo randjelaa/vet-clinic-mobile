@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:layout_marginTop="@dimen/spacing_large">
 
     <TextView
         android:id="@+id/text_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dobrodošli!"
+        android:text="@string/welcome_default"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
@@ -24,24 +25,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
         app:layout_constraintTop_toBottomOf="@id/text_home"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/textVeterinarians"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Broj veterinara: --"
-            android:textSize="16sp" />
+            android:layout_weight="1"
+            style="@style/WidgetAppStatCard"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
 
-        <TextView
-            android:id="@+id/textClients"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textVeterinarians"
+                style="@style/WidgetAppStatCardText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/veterinarians_count" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Broj klijenata: --"
-            android:textSize="16sp" />
+            android:layout_weight="1"
+            style="@style/WidgetAppStatCard"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <TextView
+                android:id="@+id/textClients"
+                style="@style/WidgetAppStatCardText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/clients_count" />
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
@@ -50,10 +71,10 @@
         style="@style/WidgetAppTextPrimaryBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dostupne usluge"
+        android:text="@string/available_services"
         android:padding="@dimen/spacing_medium"
         app:layout_constraintTop_toBottomOf="@id/statisticsLayout"
-    app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewServices"
@@ -68,6 +89,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textServices"
         app:layout_constraintVertical_bias="0.0" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
