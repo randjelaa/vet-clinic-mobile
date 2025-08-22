@@ -116,4 +116,15 @@ public class UserRepository {
             });
         });
     }
+
+    public void update(User user, Runnable onSuccess, Runnable onFailure) {
+        executorService.execute(() -> {
+            try {
+                userDao.update(user);
+                onSuccess.run();
+            } catch (Exception e) {
+                onFailure.run();
+            }
+        });
+    }
 }

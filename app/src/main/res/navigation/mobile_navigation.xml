@@ -59,5 +59,16 @@
         android:id="@+id/navigation_profile"
         android:name="org.unibl.etf.vetclinic.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+    <action
+        android:id="@+id/action_profileFragment_to_editProfileFragment"
+        app:destination="@id/editProfileFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="org.unibl.etf.vetclinic.ui.profile.EditProfileFragment"
+        android:label="Edit Profile" />
+
 </navigation>

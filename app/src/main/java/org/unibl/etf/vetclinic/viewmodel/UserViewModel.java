@@ -40,4 +40,8 @@ public class UserViewModel extends AndroidViewModel {
     public void getUserById(int id, Consumer<User> callback) {
         repository.getUserByIdAsync(id, callback);
     }
+
+    public void updateUser(User user, Runnable onSuccess, Runnable onFailure) {
+        repository.update(user, onSuccess, onFailure);
+    }
 }

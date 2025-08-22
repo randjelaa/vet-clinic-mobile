@@ -19,6 +19,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -119,9 +121,11 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        btnEditProfile.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Edit profile clicked", Toast.LENGTH_SHORT).show()
-        );
+        btnEditProfile.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            navController.navigate(R.id.action_profileFragment_to_editProfileFragment);
+        });
+
 
         btnPayments.setOnClickListener(v ->
                 Toast.makeText(getContext(), "Open payments screen", Toast.LENGTH_SHORT).show()
