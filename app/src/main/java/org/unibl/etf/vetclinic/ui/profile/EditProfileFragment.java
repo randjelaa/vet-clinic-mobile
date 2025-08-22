@@ -110,10 +110,6 @@ public class EditProfileFragment extends Fragment {
 
                         userViewModel.updateUser(currentUser,
                                 () -> requireActivity().runOnUiThread(() -> {
-                                    prefs.edit()
-                                            .putString("userName", name)
-                                            .putString("userEmail", email)
-                                            .apply();
                                     Toast.makeText(getContext(), "Profile updated", Toast.LENGTH_SHORT).show();
                                     requireActivity().getSupportFragmentManager().popBackStack();
                                 }),

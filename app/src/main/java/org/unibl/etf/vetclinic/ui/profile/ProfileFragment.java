@@ -28,6 +28,7 @@ import org.unibl.etf.vetclinic.MainActivity;
 import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.WelcomeActivity;
 import org.unibl.etf.vetclinic.viewmodel.UserPreferencesViewModel;
+import org.unibl.etf.vetclinic.viewmodel.UserViewModel;
 
 public class ProfileFragment extends Fragment {
 
@@ -52,11 +53,16 @@ public class ProfileFragment extends Fragment {
 
         SharedPreferences prefs = requireActivity().getSharedPreferences("VetClinicPrefs", Context.MODE_PRIVATE);
         int userId = prefs.getInt("userId", -1);
-        String name = prefs.getString("userName", "Unknown User");
-        String email = prefs.getString("userEmail", "unknown@email.com");
+        UserViewModel userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
 
-        textUserName.setText(name);
-        textUserEmail.setText(email);
+        userViewModel.getUserById(userId, user -> {
+            if (user != null) {
+                requireActivity().runOnUiThread(() -> {
+                    textUserName.setText(user.Name);
+                    textUserEmail.setText(user.Email);
+                });
+            }
+        });
 
         // === Postavi adapter za jezike ===
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(),
