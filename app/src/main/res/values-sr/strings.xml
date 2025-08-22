@@ -72,6 +72,7 @@
     <string name="dark_theme">Tamna</string>
     <string name="my_payments">Moja plaćanja</string>
     <string name="logout">Odjava</string>
+    <string name="save">Sacuvaj</string>
 
     <string-array name="language_options">
         <item>Engleski</item>

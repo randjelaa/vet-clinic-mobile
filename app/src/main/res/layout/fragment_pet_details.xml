@@ -3,22 +3,48 @@
     android:padding="@dimen/spacing_medium"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:layout_marginTop="@dimen/spacing_large">
 
-    <TextView
-        style="@style/PetDetailsText"
-        android:id="@+id/textViewPetDetails"
-        android:text="@string/pet_details_placeholder" />
+    <EditText
+        android:id="@+id/editTextPetName"
+        android:hint="@string/pet_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextSpecies"
+        android:hint="@string/species"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editTextBreed"
+        android:hint="@string/breed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/buttonSavePet"
+        android:text="@string/save"
+        style="@style/Button.Primary"
+        android:layout_marginTop="@dimen/spacing_medium" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMedicalRecords"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:clipToPadding="false"
         android:paddingTop="@dimen/spacing_medium" />
 
     <Button
         android:id="@+id/buttonDeletePet"
         android:text="@string/delete_pet"
-        style="@style/Button.Primary" />
+        style="@style/Button.Primary"
+        android:layout_marginBottom="@dimen/spacing_xlarge"
+/>
 </LinearLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.unibl.etf.vetclinic.R;
+import org.unibl.etf.vetclinic.data.entities.Pet;
 import org.unibl.etf.vetclinic.viewmodel.MedicalRecordViewModel;
 import org.unibl.etf.vetclinic.viewmodel.PetViewModel;
 
@@ -26,11 +28,14 @@ public class PetDetailsFragment extends Fragment {
 
     private int petId;
     private PetViewModel petViewModel;
-    private TextView textViewPetDetails;
+    private EditText editTextPetName, editTextSpecies, editTextBreed;
+    private Button buttonSavePet;
     private MedicalRecordViewModel recordViewModel;
     private RecyclerView recyclerViewMedicalRecords;
     private MedicalRecordAdapter medicalRecordAdapter;
     private Button buttonDeletePet;
+    private Pet currentPet;
+
 
     @Nullable
     @Override
@@ -44,7 +49,10 @@ public class PetDetailsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        textViewPetDetails = view.findViewById(R.id.textViewPetDetails);
+        editTextPetName = view.findViewById(R.id.editTextPetName);
+        editTextSpecies = view.findViewById(R.id.editTextSpecies);
+        editTextBreed = view.findViewById(R.id.editTextBreed);
+        buttonSavePet = view.findViewById(R.id.buttonSavePet);
         recyclerViewMedicalRecords = view.findViewById(R.id.recyclerViewMedicalRecords);
         recyclerViewMedicalRecords.setLayoutManager(new LinearLayoutManager(requireContext()));
         medicalRecordAdapter = new MedicalRecordAdapter();
@@ -59,13 +67,11 @@ public class PetDetailsFragment extends Fragment {
             petId = getArguments().getInt("petId", -1);
             if (petId != -1) {
                 petViewModel.getPetById(petId).observe(getViewLifecycleOwner(), pet -> {
-                    if (pet != null) {
-                        String details = getString(R.string.pet_name) + ": " + pet.Name + "\n" +
-                                getString(R.string.species) + ": " + (pet.Species != null ? pet.Species : getString(R.string.unknown)) + "\n" +
-                                getString(R.string.breed) + ": " + (pet.Breed != null ? pet.Breed : getString(R.string.unknown));
-                        textViewPetDetails.setText(details);
-                    } else {
-                        textViewPetDetails.setText(getString(R.string.not_found));
+                    if (pet != null && currentPet == null) {
+                        currentPet = pet;
+                        editTextPetName.setText(pet.Name);
+                        editTextSpecies.setText(pet.Species != null ? pet.Species : "");
+                        editTextBreed.setText(pet.Breed != null ? pet.Breed : "");
                     }
                 });
 
@@ -79,10 +85,43 @@ public class PetDetailsFragment extends Fragment {
 
                 buttonDeletePet.setOnClickListener(v -> showDeleteConfirmationDialog());
             } else {
-                textViewPetDetails.setText(R.string.not_found);
                 buttonDeletePet.setVisibility(View.GONE);
             }
         }
+
+        buttonSavePet.setOnClickListener(v -> {
+            String name = editTextPetName.getText().toString().trim();
+            String species = editTextSpecies.getText().toString().trim();
+            String breed = editTextBreed.getText().toString().trim();
+
+            if (name.isEmpty()) {
+                Toast.makeText(requireContext(), R.string.pet_name_required, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            new AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.save)
+                    .setMessage(R.string.confirm_save_pet_changes)
+                    .setPositiveButton(R.string.save, (dialog, which) -> {
+                        if (currentPet != null) {
+                            currentPet.Name = name;
+                            currentPet.Species = species.isEmpty() ? null : species;
+                            currentPet.Breed = breed.isEmpty() ? null : breed;
+                            petViewModel.update(currentPet);
+                            Toast.makeText(requireContext(), R.string.pet_updated, Toast.LENGTH_SHORT).show();
+
+                            // Navigacija nazad na PetListFragment
+                            requireActivity()
+                                    .runOnUiThread(() -> {
+                                        androidx.navigation.NavController navController =
+                                                androidx.navigation.Navigation.findNavController(requireView());
+                                        navController.popBackStack(); // vraća se na prethodni fragment (PetList)
+                                    });
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, null)
+                    .show();
+        });
     }
 
     private void showDeleteConfirmationDialog() {

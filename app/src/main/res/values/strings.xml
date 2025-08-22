@@ -72,6 +72,10 @@
     <string name="dark_theme">Dark</string>
     <string name="my_payments">My payments</string>
     <string name="logout">Logout</string>
+    <string name="save">Save</string>
+    <string name="pet_name_required">Pet name required</string>
+    <string name="pet_updated">Pet updated</string>
+    <string name="confirm_save_pet_changes">Are you sure you want to save these changes?</string>
 
     <string-array name="language_options">
         <item>English</item>
