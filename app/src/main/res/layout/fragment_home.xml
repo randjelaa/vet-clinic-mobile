@@ -45,5 +45,29 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textServices"
+        style="@style/WidgetAppTextPrimaryBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dostupne usluge"
+        android:padding="@dimen/spacing_medium"
+        app:layout_constraintTop_toBottomOf="@id/statisticsLayout"
+    app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewServices"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:padding="@dimen/spacing_medium"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textServices"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

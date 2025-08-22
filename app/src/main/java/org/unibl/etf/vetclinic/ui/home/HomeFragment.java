@@ -12,10 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.unibl.etf.vetclinic.data.entities.User;
 import org.unibl.etf.vetclinic.databinding.FragmentHomeBinding;
 import org.unibl.etf.vetclinic.viewmodel.UserViewModel;
+import org.unibl.etf.vetclinic.viewmodel.ServiceViewModel;
+import org.unibl.etf.vetclinic.ui.home.ServiceListAdapter;
 
 public class HomeFragment extends Fragment {
 
@@ -57,6 +61,16 @@ public class HomeFragment extends Fragment {
         userViewModel.getAllClients().observe(getViewLifecycleOwner(), clients -> {
             int clientCount = clients != null ? clients.size() : 0;
             binding.textClients.setText("Broj klijenata: " + clientCount);
+        });
+
+        RecyclerView recyclerViewServices = binding.recyclerViewServices;
+        ServiceListAdapter serviceAdapter = new ServiceListAdapter();
+        recyclerViewServices.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewServices.setAdapter(serviceAdapter);
+
+        ServiceViewModel serviceViewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
+        serviceViewModel.getAllServices().observe(getViewLifecycleOwner(), services -> {
+            serviceAdapter.submitList(services);
         });
 
         return root;
