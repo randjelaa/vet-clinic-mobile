@@ -79,6 +79,10 @@
     <string name="paid_on">Paid on</string>
     <string name="appointment_on">Appointment on</string>
     <string name="no_appointment_associated">No appointment associated</string>
+    <string name="change_password">Change Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+
 
     <string-array name="language_options">
         <item>English</item>

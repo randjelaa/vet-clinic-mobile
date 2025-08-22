@@ -73,6 +73,15 @@
     <string name="my_payments">Moja plaćanja</string>
     <string name="logout">Odjava</string>
     <string name="save">Sacuvaj</string>
+    <string name="pet_name_required">Obavezno ime ljubimca</string>
+    <string name="pet_updated">Pet updated</string>
+    <string name="confirm_save_pet_changes">Da li ste sigurni da želite da sačuvate ove promjene?</string>
+    <string name="paid_on">Plaćeno</string>
+    <string name="appointment_on">Termin</string>
+    <string name="no_appointment_associated">Nema povezanog termina</string>
+    <string name="change_password">Promijeni lozinku</string>
+    <string name="current_password">Trenutna lozinka</string>
+    <string name="new_password">Nova lozinka</string>
 
     <string-array name="language_options">
         <item>Engleski</item>

@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -64,23 +62,18 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        // === Postavi adapter za jezike ===
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.language_options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLanguage.setAdapter(adapter);
 
-        // === ViewModel za preferences ===
         UserPreferencesViewModel prefsViewModel = new ViewModelProvider(requireActivity()).get(UserPreferencesViewModel.class);
 
-        // === Ucitaj user preferences iz baze ===
         prefsViewModel.getPreferencesForUser(userId).observe(getViewLifecycleOwner(), userPrefs -> {
             if (userPrefs != null) {
-                // Postavi jezik
                 String[] languageCodes = getResources().getStringArray(R.array.language_codes);
                 String savedLangCode = userPrefs.Language != null ? userPrefs.Language : "en";
 
-// Pronađi poziciju jezika na osnovu koda (npr. "sr")
                 int langPos = 0;
                 for (int i = 0; i < languageCodes.length; i++) {
                     if (languageCodes[i].equals(savedLangCode)) {
@@ -91,12 +84,9 @@ public class ProfileFragment extends Fragment {
 
                 spinnerLanguage.setSelection(langPos);
 
-
-                // Postavi temu
                 boolean isDark = "Dark".equalsIgnoreCase(userPrefs.Theme);
                 switchTheme.setChecked(isDark);
 
-                // === Promjena jezika ===
                 spinnerLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -106,7 +96,7 @@ public class ProfileFragment extends Fragment {
                             userPrefs.Language = selectedLanguage;
                             prefsViewModel.update(userPrefs);
                             prefs.edit().putString("language", selectedLanguage).apply();
-                            restartApp(); // promjena jezika zahtijeva restart
+                            restartApp();
                         }
                     }
 
@@ -114,14 +104,13 @@ public class ProfileFragment extends Fragment {
                     public void onNothingSelected(AdapterView<?> parent) { }
                 });
 
-                // === Promjena teme ===
                 switchTheme.setOnCheckedChangeListener((buttonView, isChecked) -> {
                     String newTheme = isChecked ? "Dark" : "Light";
                     if (!newTheme.equalsIgnoreCase(userPrefs.Theme)) {
                         userPrefs.Theme = newTheme;
                         prefsViewModel.update(userPrefs);
                         prefs.edit().putString("theme", newTheme).putBoolean("darkTheme", isChecked).apply();
-                        restartApp(); // restart da bi se tema primijenila
+                        restartApp();
                     }
                 });
             }
