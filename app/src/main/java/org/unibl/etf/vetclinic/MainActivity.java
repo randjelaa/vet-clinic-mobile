@@ -5,9 +5,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
@@ -31,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home,
                 R.id.petListFragment,
@@ -64,16 +58,14 @@ public class MainActivity extends AppCompatActivity {
         String theme = prefs.getString("theme", "Light");
         String language = prefs.getString("language", "English");
 
-        // === Tema ===
         if ("Dark".equalsIgnoreCase(theme)) {
-            setTheme(R.style.Theme_VetClinic); // moraš imati ovu temu definisanu
+            setTheme(R.style.Theme_VetClinic);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
-            setTheme(R.style.Theme_VetClinic); // default tema
+            setTheme(R.style.Theme_VetClinic);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
 
-        // === Jezik ===
         if (language != null) {
             setLocale(language);
         }

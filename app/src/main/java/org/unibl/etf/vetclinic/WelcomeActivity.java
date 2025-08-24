@@ -17,10 +17,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // ✅ Postavi uvijek svijetlu temu
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        // ✅ Postavi jezik na engleski
         forceEnglishLocale();
 
         super.onCreate(savedInstanceState);
