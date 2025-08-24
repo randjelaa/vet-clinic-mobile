@@ -11,9 +11,9 @@
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:paddingBottom="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large" >
+        android:layout_marginTop="@dimen/spacing_large"
+        android:padding="@dimen/spacing_medium">
 
-        <!-- Labela i Spinner za ljubimca -->
         <TextView
             style="@style/WidgetAppTextPrimaryBold"
             android:text="@string/select_pet"
@@ -25,7 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!-- Labela i Spinner za veterinara -->
         <TextView
             style="@style/WidgetAppTextPrimaryBold"
             android:text="@string/select_vet"
@@ -37,7 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!-- Labela i Spinner za uslugu -->
         <TextView
             style="@style/WidgetAppTextPrimaryBold"
             android:text="@string/select_service"
@@ -49,13 +47,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!-- Odabrani datum i vrijeme -->
-        <TextView
-            style="@style/WidgetAppTextPrimaryBold"
-            android:text="@string/selected_datetime"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/spacing_medium">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSelectDate"
+            style="@style/WidgetAppButtonSecondarySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_date" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSelectTime"
+            style="@style/WidgetAppButtonSecondarySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_time" />
+    </LinearLayout>
 
         <TextView
             android:id="@+id/textViewSelectedDate"
@@ -64,24 +76,14 @@
             android:text="@string/no_date_selected"
             android:textSize="16sp"
             android:textColor="@color/colorOnBackground"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/spacing_small"/>
+            android:gravity="center"/>
 
-        <!-- Dugmad za odabir datuma i vremena -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonSelectDate"
-            style="@style/Button.Primary"
-            android:text="@string/select_date" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonSelectTime"
-            style="@style/Button.Primary"
-            android:text="@string/select_time" />
-
-        <!-- Dugme za potvrdu termina -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonAddAppointment"
             style="@style/Button.Primary"
-            android:text="@string/add_appointment" />
+            android:text="@string/add_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"/>
     </LinearLayout>
 </ScrollView>

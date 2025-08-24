@@ -8,6 +8,7 @@
 
     <EditText
         android:id="@+id/editTextPetName"
+        android:autofillHints=""
         android:hint="@string/pet_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +16,7 @@
 
     <EditText
         android:id="@+id/editTextSpecies"
+        android:autofillHints=""
         android:hint="@string/species"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,6 +24,7 @@
 
     <EditText
         android:id="@+id/editTextBreed"
+        android:autofillHints=""
         android:hint="@string/breed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,6 +34,8 @@
         android:id="@+id/buttonSavePet"
         android:text="@string/save"
         style="@style/Button.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_medium" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -39,7 +44,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingTop="@dimen/spacing_medium" />
+        android:paddingTop="@dimen/spacing_medium"
+        android:padding="@dimen/spacing_medium"/>
 
     <TextView
         android:id="@+id/textNoRecords"
@@ -57,6 +63,8 @@
         android:id="@+id/buttonDeletePet"
         android:text="@string/delete_pet"
         style="@style/Button.Primary"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_marginBottom="@dimen/spacing_xlarge"
 />
 </LinearLayout>

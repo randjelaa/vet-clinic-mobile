@@ -37,8 +37,6 @@
 
     <!-- Primarni button -->
     <style name="Button.Primary" parent="Widget.MaterialComponents.Button">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:minWidth">200dp</item>
         <item name="android:maxWidth">300dp</item>
         <item name="cornerRadius">8dp</item>
@@ -53,8 +51,6 @@
     </style>
 
     <style name="Text.Heading.Centered" parent="TextAppearance.MaterialComponents.Headline5">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">center</item>
     </style>
@@ -71,10 +67,15 @@
         <item name="android:layout_marginBottom">@dimen/spacing_medium</item>
     </style>
 
+    <style name="WelcomeMessage">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:layout_marginTop">32dp</item>
+    </style>
+
     <!-- TextInput polje -->
     <style name="InputField.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="boxBackgroundMode">outline</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
         <item name="boxCornerRadiusTopEnd">8dp</item>
@@ -85,8 +86,6 @@
 
     <style name="IconButtonBack">
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="tint">?attr/colorPrimaryVariant</item>
         <item name="android:layout_margin">@dimen/spacing_small</item>
     </style>
@@ -132,8 +131,6 @@
 
     <!-- Sekundarni dugmić -->
     <style name="WidgetAppButtonSecondarySmall" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
         <item name="android:paddingLeft">@dimen/spacing_medium</item>
         <item name="android:paddingRight">@dimen/spacing_medium</item>
         <item name="android:textAllCaps">false</item>
@@ -141,6 +138,9 @@
         <item name="strokeColor">?attr/colorSecondary</item>
         <item name="strokeWidth">2dp</item>
         <item name="cornerRadius">8dp</item>
+        <item name="android:layout_marginRight">@dimen/spacing_medium</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_medium</item>
+
     </style>
 
     <!-- Stilizovani tekstovi -->

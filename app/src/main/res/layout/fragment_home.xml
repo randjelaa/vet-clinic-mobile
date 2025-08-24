@@ -12,10 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_default"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorOnBackground"
-        android:layout_marginTop="32dp"
+        style="@style/WelcomeMessage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -33,12 +30,10 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="@style/WidgetAppStatCard"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            style="@style/WidgetAppStatCard">
 
             <TextView
                 android:id="@+id/textVeterinarians"
@@ -49,12 +44,10 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="@style/WidgetAppStatCard"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            style="@style/WidgetAppStatCard">
 
             <TextView
                 android:id="@+id/textClients"
