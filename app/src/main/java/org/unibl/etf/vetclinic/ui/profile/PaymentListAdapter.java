@@ -38,25 +38,31 @@ public class PaymentListAdapter extends RecyclerView.Adapter<PaymentListAdapter.
         PaymentWithAppointment payment = payments.get(position);
         Context context = holder.itemView.getContext();
 
+        // Datum plaćanja
+        String formattedDatePaid = dateFormat.format(payment.payment.Date);
         holder.textDatePaid.setText(
-                context.getString(R.string.paid_on) + dateFormat.format(payment.payment.Date)
+                context.getString(R.string.paid_on_format, formattedDatePaid)
         );
 
         if (payment.appointment != null) {
+            String formattedDateAppointment = dateFormat.format(payment.appointment.Date);
             holder.textDateAppointment.setText(
-                    context.getString(R.string.appointment_on) + dateFormat.format(payment.appointment.Date)
+                    context.getString(R.string.appointment_on_format, formattedDateAppointment)
             );
 
             holder.textDetails.setText(
-                    context.getString(R.string.appointment_pet_prefix) + payment.appointment.PetName + "\n" +
-                            context.getString(R.string.appointment_service_prefix) + payment.appointment.ServiceName
+                    context.getString(R.string.details_format,
+                            payment.appointment.PetName,
+                            payment.appointment.ServiceName,
+                            payment.appointment.Price
+                    )
             );
+
         } else {
             holder.textDateAppointment.setText(R.string.no_appointment_associated);
             holder.textDetails.setText("");
         }
     }
-
 
     @Override
     public int getItemCount() {

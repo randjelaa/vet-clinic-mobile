@@ -107,6 +107,11 @@
     <string name="welcome_user">Dobrodošli, %1$s!</string>
     <string name="veterinarians_count_format">Broj veterinara: %1$d</string>
     <string name="clients_count_format">Broj klijenata: %1$d</string>
+    <string name="price_placeholder">Price</string>
+    <string name="price_prefix">"Cijena: "</string>
+    <string name="paid_on_format">Plaćeno: %s</string>
+    <string name="appointment_on_format">Termin: %s</string>
+    <string name="details_format">Ljubimac: %s\nUsluga: %s\nCijena: %.2f</string>
 
 
 
