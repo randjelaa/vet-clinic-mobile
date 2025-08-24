@@ -10,7 +10,6 @@ import org.unibl.etf.vetclinic.data.entities.Appointment;
 import org.unibl.etf.vetclinic.data.entities.relations.AppointmentWithDetails;
 import org.unibl.etf.vetclinic.repository.AppointmentRepository;
 
-import java.util.Date;
 import java.util.List;
 
 public class AppointmentViewModel extends AndroidViewModel {

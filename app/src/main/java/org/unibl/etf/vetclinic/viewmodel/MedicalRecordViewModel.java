@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
 import org.unibl.etf.vetclinic.data.entities.relations.MedicalRecordWithAppointment;
 import org.unibl.etf.vetclinic.repository.MedicalRecordRepository;
 
