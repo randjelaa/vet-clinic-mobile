@@ -15,6 +15,7 @@ import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.data.entities.relations.AppointmentWithDetails;
 
 import java.util.Date;
+import java.util.Locale;
 
 public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, AppointmentListAdapter.ViewHolder> {
 
@@ -31,7 +32,7 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
     }
 
     private static final DiffUtil.ItemCallback<AppointmentWithDetails> DIFF_CALLBACK =
-            new DiffUtil.ItemCallback<AppointmentWithDetails>() {
+            new DiffUtil.ItemCallback<>() {
                 @Override
                 public boolean areItemsTheSame(@NonNull AppointmentWithDetails oldItem, @NonNull AppointmentWithDetails newItem) {
                     return oldItem.ID == newItem.ID;
@@ -43,7 +44,7 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
                             && oldItem.PetName.equals(newItem.PetName)
                             && oldItem.ServiceName.equals(newItem.ServiceName)
                             && oldItem.Price == newItem.Price
-                            && oldItem.IsPaid == newItem.IsPaid; // Dodaj poređenje IsPaid
+                            && oldItem.IsPaid == newItem.IsPaid;
                 }
             };
 
@@ -67,28 +68,23 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
 
         void bind(AppointmentWithDetails appointment, OnItemActionListener listener) {
             textViewPet.setText(appointment.PetName);
-            textViewService.setText(appointment.ServiceName + " (" + appointment.Price + " KM)");
+            textViewService.setText(String.format(Locale.getDefault(), "%s (%.2f KM)", appointment.ServiceName, appointment.Price));
             textViewDate.setText(appointment.Date.toString());
 
             Date now = new Date();
 
-            // Početno sakrij sve akcije
             buttonCancel.setVisibility(View.GONE);
             buttonPay.setVisibility(View.GONE);
             textViewPaid.setVisibility(View.GONE);
 
             if (appointment.Date.after(now)) {
-                // Budući termin - vidi dugme Cancel
                 buttonCancel.setVisibility(View.VISIBLE);
                 buttonCancel.setOnClickListener(v -> listener.onCancel(appointment));
             } else {
-                // Prošli termin
                 if (appointment.IsPaid) {
-                    // Plaćeno - prikaži oznaku Paid
                     textViewPaid.setVisibility(View.VISIBLE);
                     textViewPaid.setText(itemView.getContext().getString(R.string.paid));
                 } else {
-                    // Nije plaćeno - dugme Pay
                     buttonPay.setVisibility(View.VISIBLE);
                     buttonPay.setOnClickListener(v -> listener.onPay(appointment));
                 }

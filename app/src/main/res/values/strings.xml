@@ -106,6 +106,15 @@
     <string name="paid_on_format">Plaćeno: %s</string>
     <string name="appointment_on_format">Termin: %s</string>
     <string name="details_format">Ljubimac: %s\nUsluga: %s\nCijena: %.2f</string>
+    <string name="date_first">Please select date first</string>
+    <string name="future">Date and time must be in future!</string>
+    <string name="select_date_time">Please select date and time first</string>
+    <string name="select_all">Please select all the fields first</string>
+    <string name="appointment_scheduled">Appointment scheduled</string>
+    <string name="appointment_cancelled">Appointment cancelled</string>
+    <string name="appointment_paid">Appointment successfuly paid</string>
+    <string name="confirm_cancel_title">Confirm cancel</string>
+    <string name="confirm_cancel_message">Are you sure you want to cancel the appointment?</string>
 
     <string-array name="language_options">
         <item>English</item>

@@ -5,7 +5,6 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,11 +74,9 @@ public class AddAppointmentFragment extends Fragment {
         int userId = prefs.getInt("userId", -1);
 
         if (userId == -1) {
-            Toast.makeText(getContext(), "User not logged in", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Load pets
         petViewModel.getPetsByUserId(userId).observe(getViewLifecycleOwner(), pets -> {
             userPets = pets;
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
@@ -89,7 +86,6 @@ public class AddAppointmentFragment extends Fragment {
             petSpinner.setAdapter(adapter);
         });
 
-        // Load vets
         userViewModel.getAllVets().observe(getViewLifecycleOwner(), allVets -> {
             vets = allVets;
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
@@ -99,7 +95,6 @@ public class AddAppointmentFragment extends Fragment {
             vetSpinner.setAdapter(adapter);
         });
 
-        // Load services
         serviceViewModel.getAllServices().observe(getViewLifecycleOwner(), allServices -> {
             services = allServices;
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
@@ -122,11 +117,11 @@ public class AddAppointmentFragment extends Fragment {
 
         selectTimeButton.setOnClickListener(v -> {
             if (selectedDate == null) {
-                Toast.makeText(getContext(), "Please select date first", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.date_first), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (selectedDate.before(new Date())) {
-                Toast.makeText(getContext(), "Datum i vrijeme moraju biti u budućnosti", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.future), Toast.LENGTH_SHORT).show();
                 return;
             }
             final Calendar calendar = Calendar.getInstance();
@@ -142,11 +137,11 @@ public class AddAppointmentFragment extends Fragment {
 
         submitButton.setOnClickListener(v -> {
             if (selectedDate == null) {
-                Toast.makeText(getContext(), "Please select appointment date/time", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.select_date_time), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (selectedDate.before(new Date())) {
-                Toast.makeText(getContext(), "Datum i vrijeme moraju biti u budućnosti", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),  getString(R.string.future), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -155,7 +150,7 @@ public class AddAppointmentFragment extends Fragment {
             int serviceIndex = serviceSpinner.getSelectedItemPosition();
 
             if (petIndex < 0 || vetIndex < 0 || serviceIndex < 0) {
-                Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),  getString(R.string.select_all), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -167,7 +162,7 @@ public class AddAppointmentFragment extends Fragment {
 
             appointmentViewModel.insert(appointment);
 
-            Toast.makeText(getContext(), "Appointment scheduled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),  getString(R.string.appointment_scheduled), Toast.LENGTH_SHORT).show();
             NavHostFragment.findNavController(this).navigateUp();
         });
     }
@@ -185,7 +180,7 @@ public class AddAppointmentFragment extends Fragment {
 
     private List<String> convertVetsToNames(List<User> vets) {
         List<String> names = new ArrayList<>();
-        for (User v : vets) names.add(v.Name); // assuming `Name` field
+        for (User v : vets) names.add(v.Name);
         return names;
     }
 

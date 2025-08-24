@@ -20,7 +20,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.data.entities.relations.AppointmentWithDetails;
-import org.unibl.etf.vetclinic.ui.appointment.AppointmentListAdapter;
 import org.unibl.etf.vetclinic.viewmodel.AppointmentViewModel;
 
 import java.util.ArrayList;
@@ -45,32 +44,45 @@ public class AppointmentListFragment extends Fragment {
         recyclerUpcoming.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerPast.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Adapteri sa listenerima za dugmad
         upcomingAdapter = new AppointmentListAdapter(new AppointmentListAdapter.OnItemActionListener() {
             @Override
             public void onCancel(AppointmentWithDetails appointment) {
-                appointmentViewModel.cancelAppointment(appointment.ID);
-                Toast.makeText(getContext(), "Appointment cancelled.", Toast.LENGTH_SHORT).show();
+                new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                        .setTitle(R.string.confirm_cancel_title)
+                        .setMessage(R.string.confirm_cancel_message)
+                        .setPositiveButton(R.string.yes, (dialog, which) -> {
+                            appointmentViewModel.cancelAppointment(appointment.ID);
+                            Toast.makeText(getContext(), getString(R.string.appointment_cancelled), Toast.LENGTH_SHORT).show();
+                        })
+                        .setNegativeButton(R.string.no, null)
+                        .show();
             }
 
             @Override
             public void onPay(AppointmentWithDetails appointment) {
                 appointmentViewModel.markAppointmentAsPaid(appointment.ID);
-                Toast.makeText(getContext(), "Appointment marked as paid.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.appointment_paid), Toast.LENGTH_SHORT).show();
             }
         });
 
         pastAdapter = new AppointmentListAdapter(new AppointmentListAdapter.OnItemActionListener() {
             @Override
             public void onCancel(AppointmentWithDetails appointment) {
-                appointmentViewModel.cancelAppointment(appointment.ID);
-                Toast.makeText(getContext(), "Appointment cancelled.", Toast.LENGTH_SHORT).show();
+                new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                        .setTitle(R.string.confirm_cancel_title)
+                        .setMessage(R.string.confirm_cancel_message)
+                        .setPositiveButton(R.string.yes, (dialog, which) -> {
+                            appointmentViewModel.cancelAppointment(appointment.ID);
+                            Toast.makeText(getContext(), getString(R.string.appointment_cancelled), Toast.LENGTH_SHORT).show();
+                        })
+                        .setNegativeButton(R.string.no, null)
+                        .show();
             }
 
             @Override
             public void onPay(AppointmentWithDetails appointment) {
                 appointmentViewModel.markAppointmentAsPaid(appointment.ID);
-                Toast.makeText(getContext(), "Appointment marked as paid.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.appointment_paid), Toast.LENGTH_SHORT).show();
             }
         });
 
