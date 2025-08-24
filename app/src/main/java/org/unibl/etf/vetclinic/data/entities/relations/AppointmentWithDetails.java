@@ -11,8 +11,8 @@ public class AppointmentWithDetails {
     public String PetName;
     @NonNull
     public String ServiceName;
-    public double Price;
 
+    public double Price;
     public boolean IsPaid; 
 }
 
