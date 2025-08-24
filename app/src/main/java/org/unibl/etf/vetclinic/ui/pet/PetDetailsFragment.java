@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +20,7 @@ import org.unibl.etf.vetclinic.viewmodel.PetViewModel;
 
 import android.app.AlertDialog;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -57,6 +57,7 @@ public class PetDetailsFragment extends Fragment {
         recyclerViewMedicalRecords.setLayoutManager(new LinearLayoutManager(requireContext()));
         medicalRecordAdapter = new MedicalRecordAdapter();
         recyclerViewMedicalRecords.setAdapter(medicalRecordAdapter);
+        TextView textNoRecords = view.findViewById(R.id.textNoRecords);
 
         buttonDeletePet = view.findViewById(R.id.buttonDeletePet);
 
@@ -77,9 +78,10 @@ public class PetDetailsFragment extends Fragment {
 
                 recordViewModel.getMedicalRecordsWithAppointmentByPetId(petId).observe(getViewLifecycleOwner(), records -> {
                     if (records != null && !records.isEmpty()) {
+                        textNoRecords.setVisibility(View.GONE);
                         medicalRecordAdapter.setRecordsWithAppointments(records);
                     } else {
-                        // Opcionalno: prikaži empty state poruku
+                        textNoRecords.setVisibility(View.VISIBLE);
                     }
                 });
 
@@ -110,12 +112,11 @@ public class PetDetailsFragment extends Fragment {
                             petViewModel.update(currentPet);
                             Toast.makeText(requireContext(), R.string.pet_updated, Toast.LENGTH_SHORT).show();
 
-                            // Navigacija nazad na PetListFragment
                             requireActivity()
                                     .runOnUiThread(() -> {
                                         androidx.navigation.NavController navController =
                                                 androidx.navigation.Navigation.findNavController(requireView());
-                                        navController.popBackStack(); // vraća se na prethodni fragment (PetList)
+                                        navController.popBackStack();
                                     });
                         }
                     })

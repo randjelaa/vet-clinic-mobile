@@ -116,6 +116,7 @@
     <string name="confirm_cancel_title">Confirm cancel</string>
     <string name="confirm_cancel_message">Are you sure you want to cancel the appointment?</string>
     <string name="price_format">%1$.2f KM</string>
+    <string name="no_medical_records">This pet has no medical records</string>
 
     <string-array name="language_options">
         <item>English</item>

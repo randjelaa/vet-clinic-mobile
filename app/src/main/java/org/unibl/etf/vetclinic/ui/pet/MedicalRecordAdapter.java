@@ -14,10 +14,8 @@ import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
 import org.unibl.etf.vetclinic.data.entities.relations.MedicalRecordWithAppointment;
 import org.unibl.etf.vetclinic.util.DateUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class MedicalRecordAdapter extends RecyclerView.Adapter<MedicalRecordAdapter.MedicalRecordViewHolder> {
     private List<MedicalRecordWithAppointment> recordsWithAppointment = new ArrayList<>();
@@ -43,7 +41,6 @@ public class MedicalRecordAdapter extends RecyclerView.Adapter<MedicalRecordAdap
 
         View contextView = holder.itemView;
         String na = contextView.getContext().getString(R.string.value_na);
-        String unknown = contextView.getContext().getString(R.string.unknown);
 
         holder.diagnosis.setText(contextView.getContext().getString(
                 R.string.label_diagnosis, r.Diagnosis != null ? r.Diagnosis : na));

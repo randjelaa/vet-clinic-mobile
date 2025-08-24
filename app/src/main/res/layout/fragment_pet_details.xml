@@ -41,6 +41,18 @@
         android:clipToPadding="false"
         android:paddingTop="@dimen/spacing_medium" />
 
+    <TextView
+        android:id="@+id/textNoRecords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_medical_records"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:layout_marginTop="@dimen/spacing_medium"
+        />
+
+
     <Button
         android:id="@+id/buttonDeletePet"
         android:text="@string/delete_pet"

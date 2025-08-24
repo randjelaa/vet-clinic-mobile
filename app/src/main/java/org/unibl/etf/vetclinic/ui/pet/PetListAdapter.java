@@ -1,5 +1,6 @@
 package org.unibl.etf.vetclinic.ui.pet;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +23,15 @@ public class PetListAdapter extends ListAdapter<Pet, PetListAdapter.PetViewHolde
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
+        PetListAdapter.listener = listener;
     }
 
     public PetListAdapter(OnItemClickListener listener) {
         super(DIFF_CALLBACK);
-        this.listener = listener;
+        PetListAdapter.listener = listener;
     }
 
-    private static final DiffUtil.ItemCallback<Pet> DIFF_CALLBACK = new DiffUtil.ItemCallback<Pet>() {
+    private static final DiffUtil.ItemCallback<Pet> DIFF_CALLBACK = new DiffUtil.ItemCallback<>() {
         @Override
         public boolean areItemsTheSame(@NonNull Pet oldItem, @NonNull Pet newItem) {
             return oldItem.ID == newItem.ID;
@@ -78,12 +79,19 @@ public class PetListAdapter extends ListAdapter<Pet, PetListAdapter.PetViewHolde
         }
 
         public void bind(Pet pet, OnItemClickListener listener) {
+            Context context = itemView.getContext();
+
             textViewName.setText(pet.Name);
-            textViewSpecies.setText(pet.Species != null ? pet.Species : "Nepoznata vrsta");
-            textViewBreed.setText(pet.Breed != null ? pet.Breed : "Nepoznata rasa");
+            textViewSpecies.setText(
+                    pet.Species != null ? pet.Species : context.getString(R.string.unknown)
+            );
+            textViewBreed.setText(
+                    pet.Breed != null ? pet.Breed : context.getString(R.string.unknown)
+            );
 
             itemView.setOnClickListener(v -> listener.onItemClick(pet));
         }
+
     }
 }
 
