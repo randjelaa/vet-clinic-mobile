@@ -125,6 +125,10 @@ public class AddAppointmentFragment extends Fragment {
                 Toast.makeText(getContext(), "Please select date first", Toast.LENGTH_SHORT).show();
                 return;
             }
+            if (selectedDate.before(new Date())) {
+                Toast.makeText(getContext(), "Datum i vrijeme moraju biti u budućnosti", Toast.LENGTH_SHORT).show();
+                return;
+            }
             final Calendar calendar = Calendar.getInstance();
             new TimePickerDialog(getContext(), (view12, hourOfDay, minute) -> {
                 Calendar timeCal = Calendar.getInstance();
@@ -139,6 +143,10 @@ public class AddAppointmentFragment extends Fragment {
         submitButton.setOnClickListener(v -> {
             if (selectedDate == null) {
                 Toast.makeText(getContext(), "Please select appointment date/time", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (selectedDate.before(new Date())) {
+                Toast.makeText(getContext(), "Datum i vrijeme moraju biti u budućnosti", Toast.LENGTH_SHORT).show();
                 return;
             }
 
