@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/textViewPetName"
-            style="@style/WidgetAppTextPrimaryBold"
+            style="@style/WidgetAppCardTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/pet_name" />

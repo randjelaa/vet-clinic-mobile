@@ -63,8 +63,9 @@
             android:layout_height="wrap_content"
             android:text="@string/no_date_selected"
             android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="@dimen/spacing_small" />
+            android:textColor="@color/colorOnBackground"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_small"/>
 
         <!-- Dugmad za odabir datuma i vremena -->
         <com.google.android.material.button.MaterialButton

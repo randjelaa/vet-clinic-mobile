@@ -5,15 +5,15 @@
     <color name="colorPrimaryVariant">#9575CD</color> <!-- Još malo tamnija -->
     <color name="colorOnPrimary">#000000</color> <!-- Crni tekst na svijetloj pozadini -->
 
-    <color name="colorSecondary">#FFD54F</color> <!-- Svjetlija žuta -->
-    <color name="colorSecondaryVariant">#FFB300</color>
+    <color name="colorSecondary">#FFA000</color> <!-- Žuta -->
+    <color name="colorSecondaryVariant">#FFA000</color> <!-- Tamnija žuta -->
     <color name="colorOnSecondary">#000000</color>
 
     <!-- Background / Surface -->
-    <color name="colorBackground">#3b3b3b</color>
+    <color name="colorBackground">#1b0f4d</color>
     <color name="colorOnBackground">#FFFFFF</color>
 
-    <color name="colorSurface">#1E1E1E</color>
+    <color name="colorSurface">#231263</color>
     <color name="colorOnSurface">#FFFFFF</color>
 
     <!-- Error -->

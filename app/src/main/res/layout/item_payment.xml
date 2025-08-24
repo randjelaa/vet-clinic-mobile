@@ -15,7 +15,7 @@
             android:id="@+id/textDatePaid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/WidgetAppTextPrimaryBold"
+            style="@style/WidgetAppCardTitle"
             android:text="@string/paid_on" />
 
         <TextView

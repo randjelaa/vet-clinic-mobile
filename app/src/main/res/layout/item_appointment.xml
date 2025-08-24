@@ -15,7 +15,7 @@
         <!-- Pet info -->
         <TextView
             android:id="@+id/textViewPetName"
-            style="@style/WidgetAppTextPrimaryBold"
+            style="@style/WidgetAppCardTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/pet_name" />
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/paid"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="?attr/colorSecondary"
             android:visibility="gone"
             android:layout_marginTop="@dimen/spacing_small" />
 

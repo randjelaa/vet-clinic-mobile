@@ -1,14 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- Tema aplikacije -->
     <style name="Theme.VetClinic" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Boje iz colors.xml -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/colorOnError</item>
+
+        <!-- Status bar -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor">@color/colorSurface</item>
     </style>
 
     <style name="Theme.VetClinic.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -16,8 +24,16 @@
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/colorOnError</item>
     </style>
+
 
     <!-- Primarni button -->
     <style name="Button.Primary" parent="Widget.MaterialComponents.Button">
@@ -26,8 +42,8 @@
         <item name="android:minWidth">200dp</item>
         <item name="android:maxWidth">300dp</item>
         <item name="cornerRadius">8dp</item>
-        <item name="backgroundTint">@color/colorPrimary</item>
-        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:paddingStart">@dimen/spacing_large</item>
         <item name="android:paddingEnd">@dimen/spacing_large</item>
@@ -50,7 +66,7 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorPrimaryVariant</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
         <item name="android:layout_marginTop">@dimen/spacing_large</item>
         <item name="android:layout_marginBottom">@dimen/spacing_medium</item>
     </style>
@@ -60,24 +76,23 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="boxBackgroundMode">outline</item>
-        <item name="boxStrokeColor">@color/colorPrimary</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
         <item name="boxCornerRadiusTopEnd">8dp</item>
         <item name="boxCornerRadiusBottomStart">8dp</item>
         <item name="boxCornerRadiusBottomEnd">8dp</item>
-        <item name="hintTextColor">@color/colorPrimaryVariant</item>
+        <item name="hintTextColor">?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="IconButtonBack">
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="tint">@color/colorPrimaryVariant</item>
+        <item name="tint">?attr/colorPrimaryVariant</item>
         <item name="android:layout_margin">@dimen/spacing_small</item>
     </style>
 
     <style name="Text.LinkAction" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/colorPrimaryVariant</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
@@ -86,7 +101,7 @@
 
     <!-- FAB -->
     <style name="WidgetAppFloatingActionButtonPurple" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="backgroundTint">?attr/colorSecondary</item>
         <item name="elevation">@dimen/fab_elevation</item>
     </style>
 
@@ -94,7 +109,7 @@
     <style name="WidgetAppCardDefault" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
         <item name="cardElevation">@dimen/card_elevation</item>
-        <item name="cardBackgroundColor">@color/colorBackground</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
         <item name="android:layout_marginBottom">@dimen/card_margin_bottom</item>
         <item name="android:layout_marginStart">@dimen/card_margin_horizontal</item>
         <item name="android:layout_marginEnd">@dimen/card_margin_horizontal</item>
@@ -122,8 +137,8 @@
         <item name="android:paddingLeft">@dimen/spacing_medium</item>
         <item name="android:paddingRight">@dimen/spacing_medium</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textColor">@color/colorSecondary</item>
-        <item name="strokeColor">@color/colorSecondary</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="strokeColor">?attr/colorSecondary</item>
         <item name="strokeWidth">2dp</item>
         <item name="cornerRadius">8dp</item>
     </style>
@@ -132,20 +147,30 @@
     <style name="WidgetAppTextPrimaryBold">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+
+    <!-- Stilizovani tekstovi -->
+    <style name="WidgetAppCardTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
     </style>
 
     <style name="WidgetAppTextSecondary">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
     </style>
 
     <style name="WidgetAppTextPrice" parent="WidgetAppTextSecondary">
-        <item name="android:textColor">@android:color/holo_green_dark</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
     <!-- Stil za karticu sa marginama -->
     <style name="WidgetAppStatCard">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
         <item name="android:layout_marginStart">8dp</item>
         <item name="android:layout_marginEnd">8dp</item>
         <item name="android:layout_marginTop">4dp</item>
@@ -157,7 +182,7 @@
         <item name="android:padding">16dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:textSize">16sp</item>
     </style>
 
