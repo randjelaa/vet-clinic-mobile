@@ -20,7 +20,7 @@ public class ServiceListAdapter extends ListAdapter<Service, ServiceListAdapter.
     }
 
     private static final DiffUtil.ItemCallback<Service> DIFF_CALLBACK =
-            new DiffUtil.ItemCallback<Service>() {
+            new DiffUtil.ItemCallback<>() {
                 @Override
                 public boolean areItemsTheSame(@NonNull Service oldItem, @NonNull Service newItem) {
                     return oldItem.ID == newItem.ID;
@@ -50,7 +50,7 @@ public class ServiceListAdapter extends ListAdapter<Service, ServiceListAdapter.
         public void bind(Service service) {
             textName.setText(service.Name);
             textDescription.setText(service.Description != null ? service.Description : "");
-            textPrice.setText(service.Price + " KM");
+            textPrice.setText(itemView.getContext().getString(R.string.price_format, service.Price));
         }
     }
 
