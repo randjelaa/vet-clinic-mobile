@@ -38,7 +38,6 @@ public class PaymentListAdapter extends RecyclerView.Adapter<PaymentListAdapter.
         PaymentWithAppointment payment = payments.get(position);
         Context context = holder.itemView.getContext();
 
-        // Datum plaćanja
         String formattedDatePaid = dateFormat.format(payment.payment.Date);
         holder.textDatePaid.setText(
                 context.getString(R.string.paid_on_format, formattedDatePaid)
