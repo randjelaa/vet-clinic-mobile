@@ -10,7 +10,6 @@ import androidx.room.Update;
 import org.unibl.etf.vetclinic.data.entities.Appointment;
 import org.unibl.etf.vetclinic.data.entities.relations.AppointmentWithDetails;
 
-import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -24,12 +23,6 @@ public interface AppointmentDao {
 
     @Delete
     void delete(Appointment appointment);
-
-    @Query("SELECT * FROM Appointments WHERE PetID = :petId AND Deleted IS NULL ORDER BY Date ASC")
-    List<Appointment> getAppointmentsForPet(int petId);
-
-    @Query("SELECT * FROM Appointments WHERE Date >= :from AND Date <= :to AND Deleted IS NULL ORDER BY Date ASC")
-    List<Appointment> getAppointmentsInRange(Date from, Date to);
 
     @Query("SELECT * FROM Appointments WHERE ID = :id LIMIT 1")
     Appointment getById(int id);

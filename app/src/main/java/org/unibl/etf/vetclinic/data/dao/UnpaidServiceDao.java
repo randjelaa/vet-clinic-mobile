@@ -8,8 +8,6 @@ import androidx.room.Update;
 
 import org.unibl.etf.vetclinic.data.entities.UnpaidService;
 
-import java.util.List;
-
 @Dao
 public interface UnpaidServiceDao {
 
@@ -21,15 +19,6 @@ public interface UnpaidServiceDao {
 
     @Delete
     void delete(UnpaidService unpaidService);
-
-    @Query("SELECT * FROM UnpaidServices WHERE UserID = :userId ORDER BY ID DESC")
-    List<UnpaidService> getUnpaidServicesForUser(int userId);
-
-    @Query("SELECT * FROM UnpaidServices WHERE Status = :status ORDER BY ID DESC")
-    List<UnpaidService> getUnpaidServicesByStatus(String status);
-
-    @Query("SELECT * FROM UnpaidServices WHERE ID = :id LIMIT 1")
-    UnpaidService getUnpaidServiceById(int id);
 
     @Query("SELECT * FROM UnpaidServices WHERE AppointmentID = :appointmentId LIMIT 1")
     UnpaidService getByAppointmentId(int appointmentId);

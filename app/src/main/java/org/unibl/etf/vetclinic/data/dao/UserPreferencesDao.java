@@ -23,5 +23,6 @@ public interface UserPreferencesDao {
 
     @Query("SELECT * FROM UserPreferences WHERE UserID = :userId LIMIT 1")
     LiveData<UserPreferences> getPreferencesForUser(int userId);
+
 }
 

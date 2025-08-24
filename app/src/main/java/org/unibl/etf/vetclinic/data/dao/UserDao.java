@@ -23,17 +23,11 @@ public interface UserDao {
     @Delete
     void delete(User user);
 
-    @Query("SELECT * FROM Users ORDER BY Name ASC")
-    List<User> getAllUsers();
-
     @Query("SELECT * FROM Users WHERE ID = :id LIMIT 1")
     User getUserById(int id);
 
     @Query("SELECT * FROM Users WHERE Email = :email AND Password = :password LIMIT 1")
     User login(String email, String password);
-
-    @Query("SELECT * FROM Users")
-    List<User> getAll();
 
     @Query("SELECT * FROM Users WHERE Email = :email LIMIT 1")
     User getUserByEmail(String email);

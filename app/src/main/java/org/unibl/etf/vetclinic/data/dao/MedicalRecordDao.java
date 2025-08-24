@@ -25,18 +25,9 @@ public interface MedicalRecordDao {
     @Delete
     void delete(MedicalRecord record);
 
-    @Query("SELECT * FROM MedicalRecords WHERE AppointmentID = :appointmentId LIMIT 1")
-    MedicalRecord getRecordForAppointment(int appointmentId);
-
-    @Query("SELECT * FROM MedicalRecords ORDER BY ID DESC")
-    List<MedicalRecord> getAllRecords();
-
     @Transaction
     @Query("SELECT * FROM MedicalRecords WHERE AppointmentID IN (SELECT ID FROM Appointments WHERE PetID = :petId)")
     LiveData<List<MedicalRecordWithAppointment>> getMedicalRecordsWithAppointmentByPetId(int petId);
 
-
-    @Query("SELECT * FROM MedicalRecords WHERE AppointmentID IN (SELECT ID FROM Appointments WHERE PetID = :petId)")
-    LiveData<List<MedicalRecord>> getMedicalRecordsByPetId(int petId);
 }
 
