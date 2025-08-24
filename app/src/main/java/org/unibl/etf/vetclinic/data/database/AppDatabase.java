@@ -83,7 +83,6 @@ public abstract class AppDatabase extends RoomDatabase {
                                     databaseWriteExecutor.execute(() -> {
                                         AppDatabase database = INSTANCE;
                                         if (database != null) {
-                                            // Kastuj kontekst u Application
                                             Application app = (Application) context.getApplicationContext();
                                             DatabaseSeeder.seed(database, app);
                                         }

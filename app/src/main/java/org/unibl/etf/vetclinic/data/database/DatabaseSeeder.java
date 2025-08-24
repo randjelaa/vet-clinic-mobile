@@ -15,6 +15,8 @@ public class DatabaseSeeder {
 
     public static void seed(AppDatabase db, Application application) {
         try {
+            //TODO prosiriti
+
             // === ROLES ===
             RoleDao roleDao = db.roleDao();
 
