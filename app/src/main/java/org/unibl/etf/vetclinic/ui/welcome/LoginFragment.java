@@ -88,8 +88,6 @@ public class LoginFragment extends Fragment {
                             Intent intent = new Intent(getActivity(), MainActivity.class);
                             startActivity(intent);
                             requireActivity().finish();
-                        } else {
-                            Toast.makeText(getContext(), "User preferences not found.", Toast.LENGTH_SHORT).show();
                         }
                     });
                 } else {
