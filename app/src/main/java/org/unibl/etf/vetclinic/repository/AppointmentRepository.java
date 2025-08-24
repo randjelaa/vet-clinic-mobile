@@ -1,11 +1,9 @@
 package org.unibl.etf.vetclinic.repository;
 
 import android.app.Application;
-import android.util.Log;
 
 import org.unibl.etf.vetclinic.data.dao.AppointmentDao;
 import org.unibl.etf.vetclinic.data.dao.PaymentDao;
-import org.unibl.etf.vetclinic.data.dao.PetDao;
 import org.unibl.etf.vetclinic.data.dao.UnpaidServiceDao;
 import org.unibl.etf.vetclinic.data.database.AppDatabase;
 import org.unibl.etf.vetclinic.data.entities.Appointment;
@@ -85,18 +83,9 @@ public class AppointmentRepository {
                         unpaidService.status = UnpaidService.Status.pending;
 
                         unpaidServiceDao.insert(unpaidService);
-                        Log.d("Repo", "UnpaidService created with amount " + service.Price + " for appointment ID: " + insertedId);
-                    } else {
-                        Log.e("Repo", "Service not found for ServiceID: " + appointment.ServiceID);
                     }
-                } else {
-                    Log.e("Repo", "Pet not found for PetID: " + appointment.PetID);
                 }
-            } else {
-                Log.e("Repo", "Failed to insert appointment");
             }
         });
     }
-
-
 }

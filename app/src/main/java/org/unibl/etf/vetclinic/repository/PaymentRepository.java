@@ -5,7 +5,6 @@ import android.app.Application;
 import org.unibl.etf.vetclinic.data.database.AppDatabase;
 import org.unibl.etf.vetclinic.data.dao.AppointmentDao;
 import org.unibl.etf.vetclinic.data.dao.PaymentDao;
-import org.unibl.etf.vetclinic.data.entities.Appointment;
 import org.unibl.etf.vetclinic.data.entities.Payment;
 import org.unibl.etf.vetclinic.data.entities.relations.AppointmentWithDetails;
 import org.unibl.etf.vetclinic.data.entities.relations.PaymentWithAppointment;
@@ -50,8 +49,6 @@ public class PaymentRepository {
         });
     }
 
-
-
     public void insert(Payment payment) {
         executor.execute(() -> paymentDao.insert(payment));
     }
@@ -63,4 +60,5 @@ public class PaymentRepository {
     public void delete(Payment payment) {
         executor.execute(() -> paymentDao.delete(payment));
     }
+
 }

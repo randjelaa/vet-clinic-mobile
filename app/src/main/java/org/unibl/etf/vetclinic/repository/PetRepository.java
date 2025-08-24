@@ -16,11 +16,9 @@ import java.util.concurrent.Executors;
 public class PetRepository {
     private final PetDao petDao;
     private final ExecutorService executorService;
-    private final Application application;
 
     public PetRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
-        this.application = application;
         petDao = db.petDao();
         executorService = Executors.newSingleThreadExecutor();
     }

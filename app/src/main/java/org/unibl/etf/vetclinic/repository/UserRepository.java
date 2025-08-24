@@ -17,8 +17,6 @@ import java.util.function.Consumer;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
-
 
 public class UserRepository {
 
@@ -39,13 +37,12 @@ public class UserRepository {
             try {
                 User existing = userDao.getUserByEmail(user.Email);
                 if (existing != null) {
-                    onFailure.run(); // Email already exists
+                    onFailure.run();
                     return;
                 }
 
-                long userId = userDao.insert(user); // dobavi ID novog usera
+                long userId = userDao.insert(user);
 
-                // Kreiraj default preferences
                 UserPreferences prefs = new UserPreferences();
                 prefs.UserID = (int) userId;
                 prefs.Language = "English";
@@ -53,16 +50,9 @@ public class UserRepository {
 
                 userPreferencesDao.insert(prefs);
 
-                // ✅ LOGOVANJE:
-                Log.d("UserRepository", "UserPreferences saved: " +
-                        "UserID = " + prefs.UserID +
-                        ", Language = " + prefs.Language +
-                        ", Theme = " + prefs.Theme);
-
                 onSuccess.run();
             } catch (Exception e) {
-                Log.e("UserRepository", "Error while inserting user or preferences", e);
-                onFailure.run(); // Any other error
+                onFailure.run();
             }
         });
     }
@@ -71,7 +61,7 @@ public class UserRepository {
         try {
             User existing = userDao.getUserByEmail(user.Email);
             if (existing != null) {
-                return -1; // email already exists
+                return -1;
             }
 
             long userId = userDao.insert(user);
@@ -82,12 +72,8 @@ public class UserRepository {
             prefs.Theme = "Light";
 
             userPreferencesDao.insert(prefs);
-
-            Log.d("UserRepository", "UserPreferences saved for userId = " + prefs.UserID);
-
             return (int) userId;
         } catch (Exception e) {
-            Log.e("UserRepository", "Failed to insert user and preferences", e);
             return -1;
         }
     }
@@ -96,7 +82,7 @@ public class UserRepository {
     public void login(String email, String password, Consumer<User> onResult) {
         executorService.execute(() -> {
             User user = userDao.login(email, password);
-            onResult.accept(user); // može biti null
+            onResult.accept(user);
         });
     }
 
@@ -111,9 +97,7 @@ public class UserRepository {
     public void getUserByIdAsync(int id, Consumer<User> callback) {
         executorService.execute(() -> {
             User user = userDao.getUserById(id);
-            new Handler(Looper.getMainLooper()).post(() -> {
-                callback.accept(user);
-            });
+            new Handler(Looper.getMainLooper()).post(() -> callback.accept(user));
         });
     }
 

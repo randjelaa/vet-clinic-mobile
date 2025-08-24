@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 
 import org.unibl.etf.vetclinic.data.database.AppDatabase;
 import org.unibl.etf.vetclinic.data.dao.MedicalRecordDao;
-import org.unibl.etf.vetclinic.data.entities.MedicalRecord;
 import org.unibl.etf.vetclinic.data.entities.relations.MedicalRecordWithAppointment;
 
 import java.util.List;
