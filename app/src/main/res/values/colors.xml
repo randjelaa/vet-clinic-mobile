@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary / Secondary -->
-    <color name="colorPrimary">#673AB7</color> <!-- Ljubičasta -->
-    <color name="colorPrimaryVariant">#512DA8</color> <!-- Tamnija ljubičasta -->
-    <color name="colorOnPrimary">#FFFFFF</color> <!-- Tekst na primary -->
+    <color name="colorPrimary">#673AB7</color>
+    <color name="colorPrimaryVariant">#512DA8</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
 
-    <color name="colorSecondary">#FFA000</color> <!-- Žuta -->
-    <color name="colorSecondaryVariant">#FFA000</color> <!-- Tamnija žuta -->
-    <color name="colorOnSecondary">#000000</color> <!-- Tekst na secondary -->
+    <color name="colorSecondary">#FFA000</color>
+    <color name="colorSecondaryVariant">#FFA000</color>
+    <color name="colorOnSecondary">#000000</color>
 
-    <!-- Background / Surface -->
     <color name="colorBackground">#EDE7F6</color>
     <color name="colorOnBackground">#000000</color>
 
     <color name="colorSurface">#EDE7F6</color>
     <color name="colorOnSurface">#000000</color>
 
-    <!-- Error -->
     <color name="colorError">#B00020</color>
     <color name="colorOnError">#FFFFFF</color>
 
-    <!-- Ostale (legacy / custom) -->
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
 </resources>

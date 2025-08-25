@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="org.unibl.etf.vetclinic.ui.welcome.WelcomeFragment"
-        android:label="@string/welcome_message" >
+        android:label="@string/title_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="org.unibl.etf.vetclinic.ui.welcome.LoginFragment"
-        android:label="@string/login">
+        android:label="@string/title_login">
     <action
         android:id="@+id/action_loginFragment_to_RegisterFragment"
         app:destination="@id/registerFragment" />
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="org.unibl.etf.vetclinic.ui.welcome.RegisterFragment"
-        android:label="@string/register">
+        android:label="@string/title_register">
     <action
         android:id="@+id/action_registerFragment_to_loginFragment"
         app:destination="@id/loginFragment" />

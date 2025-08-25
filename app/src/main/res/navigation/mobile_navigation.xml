@@ -72,11 +72,11 @@
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="org.unibl.etf.vetclinic.ui.profile.EditProfileFragment"
-        android:label="Edit Profile" />
+        android:label="@string/title_edit_profile" />
 
     <fragment
         android:id="@+id/paymentsFragment"
         android:name="org.unibl.etf.vetclinic.ui.profile.PaymentListFragment"
-        android:label="My payments" />
+        android:label="@string/title_my_payments" />
 
 </navigation>

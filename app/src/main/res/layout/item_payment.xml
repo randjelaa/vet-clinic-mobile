@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/WidgetAppTextSecondary"
-            android:text="@string/details_placeholder" />
+            android:text="@string/details" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

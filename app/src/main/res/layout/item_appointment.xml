@@ -31,7 +31,7 @@
             style="@style/WidgetAppTextSecondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_date" />
+            android:text="@string/date_format" />
 
         <TextView
             android:id="@+id/textViewPaid"

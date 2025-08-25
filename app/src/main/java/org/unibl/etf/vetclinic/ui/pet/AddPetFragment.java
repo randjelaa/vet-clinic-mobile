@@ -86,7 +86,7 @@ public class AddPetFragment extends Fragment {
             pet.OwnerID = userId;
 
             petViewModel.insert(pet);
-            Toast.makeText(getContext(), getString(R.string.pet_added_success), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.success_pet_added), Toast.LENGTH_SHORT).show();
             NavHostFragment.findNavController(this).navigateUp();
         });
     }

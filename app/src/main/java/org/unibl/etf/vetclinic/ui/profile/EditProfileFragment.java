@@ -99,8 +99,8 @@ public class EditProfileFragment extends Fragment {
             }
 
             new AlertDialog.Builder(requireContext())
-                    .setTitle(getString(R.string.dialog_confirm_title))
-                    .setMessage(getString(R.string.dialog_confirm_message))
+                    .setTitle(getString(R.string.save_confirmation_title))
+                    .setMessage(getString(R.string.confirm_save_changes))
                     .setPositiveButton(getString(R.string.yes), (dialog, which) -> {
                         currentUser.Name = name;
                         currentUser.Email = email;
@@ -109,11 +109,11 @@ public class EditProfileFragment extends Fragment {
 
                         userViewModel.updateUser(currentUser,
                                 () -> requireActivity().runOnUiThread(() -> {
-                                    Toast.makeText(getContext(), getString(R.string.toast_profile_updated), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), getString(R.string.success_profile_updated), Toast.LENGTH_SHORT).show();
                                     requireActivity().getSupportFragmentManager().popBackStack();
                                 }),
                                 () -> requireActivity().runOnUiThread(() ->
-                                        Toast.makeText(getContext(), getString(R.string.toast_profile_update_failed), Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(getContext(), getString(R.string.error_profile_update), Toast.LENGTH_SHORT).show()
                                 )
                         );
                     })

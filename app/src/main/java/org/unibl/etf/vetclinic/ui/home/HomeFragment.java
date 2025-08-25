@@ -37,14 +37,14 @@ public class HomeFragment extends Fragment {
         if (userId != -1) {
             userViewModel.getUserById(userId, user -> {
                 if (user != null) {
-                    String welcomeText = getString(R.string.welcome_user, user.Name);
+                    String welcomeText = getString(R.string.welcome_format, user.Name);
                     binding.textHome.setText(welcomeText);
                 } else {
-                    binding.textHome.setText(getString(R.string.welcome_default));
+                    binding.textHome.setText(getString(R.string.welcome));
                 }
             });
         } else {
-            binding.textHome.setText(getString(R.string.welcome_default));
+            binding.textHome.setText(getString(R.string.welcome));
         }
 
         userViewModel.getAllVets().observe(getViewLifecycleOwner(), vets -> {

@@ -43,22 +43,22 @@ public class MedicalRecordAdapter extends RecyclerView.Adapter<MedicalRecordAdap
         String na = contextView.getContext().getString(R.string.value_na);
 
         holder.diagnosis.setText(contextView.getContext().getString(
-                R.string.label_diagnosis, r.Diagnosis != null ? r.Diagnosis : na));
+                R.string.diagnosis_format, r.Diagnosis != null ? r.Diagnosis : na));
 
         holder.treatment.setText(contextView.getContext().getString(
-                R.string.label_treatment, r.Treatment != null ? r.Treatment : na));
+                R.string.treatment_format, r.Treatment != null ? r.Treatment : na));
 
         holder.medications.setText(contextView.getContext().getString(
-                R.string.label_medications, r.Medications != null ? r.Medications : na));
+                R.string.medications_format, r.Medications != null ? r.Medications : na));
 
         holder.notes.setText(contextView.getContext().getString(
-                R.string.label_notes, r.Notes != null ? r.Notes : na));
+                R.string.notes_format, r.Notes != null ? r.Notes : na));
 
         if (a != null && a.Date != null) {
             String dateStr = DateUtils.formatDate(a.Date);
-            holder.date.setText(contextView.getContext().getString(R.string.label_date, dateStr));
+            holder.date.setText(contextView.getContext().getString(R.string.date_format, dateStr));
         } else {
-            holder.date.setText(contextView.getContext().getString(R.string.label_date,
+            holder.date.setText(contextView.getContext().getString(R.string.date_format,
                     contextView.getContext().getString(R.string.unknown)));
         }
     }

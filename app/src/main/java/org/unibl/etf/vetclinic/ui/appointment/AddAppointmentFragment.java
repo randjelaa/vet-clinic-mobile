@@ -117,11 +117,11 @@ public class AddAppointmentFragment extends Fragment {
 
         selectTimeButton.setOnClickListener(v -> {
             if (selectedDate == null) {
-                Toast.makeText(getContext(), getString(R.string.date_first), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_date_first), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (selectedDate.before(new Date())) {
-                Toast.makeText(getContext(), getString(R.string.future), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_future), Toast.LENGTH_SHORT).show();
                 return;
             }
             final Calendar calendar = Calendar.getInstance();
@@ -137,11 +137,11 @@ public class AddAppointmentFragment extends Fragment {
 
         submitButton.setOnClickListener(v -> {
             if (selectedDate == null) {
-                Toast.makeText(getContext(), getString(R.string.select_date_time), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_select_date_time), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (selectedDate.before(new Date())) {
-                Toast.makeText(getContext(),  getString(R.string.future), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),  getString(R.string.error_future), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -150,7 +150,7 @@ public class AddAppointmentFragment extends Fragment {
             int serviceIndex = serviceSpinner.getSelectedItemPosition();
 
             if (petIndex < 0 || vetIndex < 0 || serviceIndex < 0) {
-                Toast.makeText(getContext(),  getString(R.string.select_all), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),  getString(R.string.error_fields_required), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -162,7 +162,7 @@ public class AddAppointmentFragment extends Fragment {
 
             appointmentViewModel.insert(appointment);
 
-            Toast.makeText(getContext(),  getString(R.string.appointment_scheduled), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),  getString(R.string.success_appointment_scheduled), Toast.LENGTH_SHORT).show();
             NavHostFragment.findNavController(this).navigateUp();
         });
     }

@@ -50,7 +50,7 @@ public class PaymentListAdapter extends RecyclerView.Adapter<PaymentListAdapter.
             );
 
             holder.textDetails.setText(
-                    context.getString(R.string.details_format,
+                    context.getString(R.string.appointment_details_format,
                             payment.appointment.PetName,
                             payment.appointment.ServiceName,
                             payment.appointment.Price
@@ -58,7 +58,7 @@ public class PaymentListAdapter extends RecyclerView.Adapter<PaymentListAdapter.
             );
 
         } else {
-            holder.textDateAppointment.setText(R.string.no_appointment_associated);
+            holder.textDateAppointment.setText(R.string.error_no_appointment_associated);
             holder.textDetails.setText("");
         }
     }

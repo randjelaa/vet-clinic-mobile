@@ -48,11 +48,11 @@ public class AppointmentListFragment extends Fragment {
             @Override
             public void onCancel(AppointmentWithDetails appointment) {
                 new androidx.appcompat.app.AlertDialog.Builder(requireContext())
-                        .setTitle(R.string.confirm_cancel_title)
-                        .setMessage(R.string.confirm_cancel_message)
+                        .setTitle(R.string.cancel_confirmation_title)
+                        .setMessage(R.string.confirm_cancel_appointment)
                         .setPositiveButton(R.string.yes, (dialog, which) -> {
                             appointmentViewModel.cancelAppointment(appointment.ID);
-                            Toast.makeText(getContext(), getString(R.string.appointment_cancelled), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.success_appointment_cancelled), Toast.LENGTH_SHORT).show();
                         })
                         .setNegativeButton(R.string.no, null)
                         .show();
@@ -61,7 +61,7 @@ public class AppointmentListFragment extends Fragment {
             @Override
             public void onPay(AppointmentWithDetails appointment) {
                 appointmentViewModel.markAppointmentAsPaid(appointment.ID);
-                Toast.makeText(getContext(), getString(R.string.appointment_paid), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.success_appointment_paid), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -69,11 +69,11 @@ public class AppointmentListFragment extends Fragment {
             @Override
             public void onCancel(AppointmentWithDetails appointment) {
                 new androidx.appcompat.app.AlertDialog.Builder(requireContext())
-                        .setTitle(R.string.confirm_cancel_title)
-                        .setMessage(R.string.confirm_cancel_message)
+                        .setTitle(R.string.cancel_confirmation_title)
+                        .setMessage(R.string.confirm_cancel_appointment)
                         .setPositiveButton(R.string.yes, (dialog, which) -> {
                             appointmentViewModel.cancelAppointment(appointment.ID);
-                            Toast.makeText(getContext(), getString(R.string.appointment_cancelled), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.success_appointment_cancelled), Toast.LENGTH_SHORT).show();
                         })
                         .setNegativeButton(R.string.no, null)
                         .show();
@@ -82,7 +82,7 @@ public class AppointmentListFragment extends Fragment {
             @Override
             public void onPay(AppointmentWithDetails appointment) {
                 appointmentViewModel.markAppointmentAsPaid(appointment.ID);
-                Toast.makeText(getContext(), getString(R.string.appointment_paid), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.success_appointment_paid), Toast.LENGTH_SHORT).show();
             }
         });
 

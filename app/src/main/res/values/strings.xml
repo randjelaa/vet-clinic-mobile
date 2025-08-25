@@ -1,122 +1,113 @@
 <resources>
-    <string name="app_name">VetClinic</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name" translatable="false">VetClinic</string>
 
-    <string name="welcome_message">Welcome to VetClinic!</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="email">Email</string>
-    <string name="back">Back</string>
-    <string name="already_have_account">Already have an account? Log in here!</string>
-    <string name="dont_have_account_register">Don\'t have an account? Register here!</string>
-    <string name="add_pet">Add</string>
-    <string name="pet_name">Pet\'s name</string>
-    <string name="species">Species</string>
-    <string name="breed">Breed</string>
-    <string name="pet_details_placeholder">Pet details will be shown here.</string>
-    <string name="medical_records">Medical records...</string>
-    <string name="delete_pet">Delete pet</string>
-    <string name="unknown">Unknown</string>
-    <string name="not_found">Not found</string>
-    <string name="delete_confirmation_title">Delete Confirmation</string>
-    <string name="delete_confirmation_message">Are you sure you want to delete this pet?</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="pet_deleted">Pet deleted</string>
-    <string name="pet_delete_error">Error: Pet not found</string>
-    <string name="label_diagnosis">Diagnosis: %1$s</string>
-    <string name="label_treatment">Treatment: %1$s</string>
-    <string name="label_medications">Medications: %1$s</string>
-    <string name="label_notes">Notes: %1$s</string>
-    <string name="label_date">Date: %1$s</string>
-    <string name="value_na">N/A</string>
-    <string name="error_pet_name_required">Please enter your pet\'s name</string>
-    <string name="error_pet_name_too_short">Pet name must be at least 2 characters long</string>
-    <string name="error_species_too_short">Species must be at least 2 characters long or leave it empty</string>
-    <string name="error_breed_too_short">Breed must be at least 2 characters long or leave it empty</string>
-    <string name="error_user_not_logged_in">Error: User not logged in</string>
-    <string name="pet_added_success">Pet added successfully</string>
-    <string name="error_fields_required">All fields are required</string>
-    <string name="error_invalid_email">Please enter a valid email address</string>
-    <string name="error_invalid_credentials">Invalid credentials</string>
-    <string name="success_registration">Registration successful</string>
-    <string name="error_email_exists">Email already exists or error occurred</string>
+    <string name="title_home">Home</string>
     <string name="title_pet_list">Pets</string>
     <string name="title_add_pet">Add Pet</string>
     <string name="title_pet_details">Pet Details</string>
     <string name="title_appointments">Appointments</string>
     <string name="title_profile">Profile</string>
+    <string name="title_add_appointment">Add appointment</string>
+    <string name="title_edit_profile">Edit profile</string>
+    <string name="title_my_payments">My payments</string>
+    <string name="title_welcome">Welcome</string>
+    <string name="title_login">Login</string>
+    <string name="title_register">Register</string>
+
+
+    <string name="back">Back</string>
+    <string name="unknown">Unknown</string>
+    <string name="not_found">Not found</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="value_na" translatable="false">N/A</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+
+
+    <string name="delete_confirmation_title">Confirm delete</string>
+    <string name="save_confirmation_title">Confirm save</string>
+    <string name="cancel_confirmation_title">Confirm cancel</string>
+
+
+    <string name="confirm_delete_pet">Are you sure you want to delete this pet?</string>
+    <string name="confirm_save_changes">Are you sure you want to save these changes?</string>
+    <string name="confirm_cancel_appointment">Are you sure you want to cancel the appointment?</string>
+
+
+    <string name="success_pet_deleted">Pet deleted successfully</string>
+    <string name="success_pet_added">Pet added successfully</string>
+    <string name="success_registration">Registration successful</string>
+    <string name="success_pet_updated">Pet updated successfully</string>
+    <string name="success_profile_updated">Profile updated</string>
+    <string name="success_appointment_scheduled">Appointment scheduled</string>
+    <string name="success_appointment_cancelled">Appointment cancelled</string>
+    <string name="success_appointment_paid">Appointment successfully paid</string>
+
+
+    <string name="error_pet_not_found">Error: Pet not found</string>
+    <string name="error_pet_name_required">Pet name is required</string>
+    <string name="error_pet_name_too_short">Pet name must be at least 2 characters long</string>
+    <string name="error_species_too_short">Species must be at least 2 characters long or leave it empty</string>
+    <string name="error_breed_too_short">Breed must be at least 2 characters long or leave it empty</string>
+    <string name="error_user_not_logged_in">Error: User not logged in</string>
+    <string name="error_fields_required">All fields are required</string>
+    <string name="error_invalid_email">Please enter a valid email address</string>
+    <string name="error_invalid_credentials">Invalid credentials</string>
+    <string name="error_email_exists">Email already exists or error occurred</string>
+    <string name="error_no_appointment_associated">No appointment associated</string>
+    <string name="error_name_required">Name is required</string>
+    <string name="error_email_required">Email is required</string>
+    <string name="error_enter_passwords">Enter both current and new password</string>
+    <string name="error_incorrect_password">Incorrect current password</string>
+    <string name="error_profile_update">Failed to update profile</string>
+    <string name="error_date_first">Please select date first</string>
+    <string name="error_future">Date and time must be in future!</string>
+    <string name="error_select_date_time">Please select date and time first</string>
+
+
+    <string name="diagnosis_format">Diagnosis: %1$s</string>
+    <string name="treatment_format">Treatment: %1$s</string>
+    <string name="medications_format">Medications: %1$s</string>
+    <string name="notes_format">Notes: %1$s</string>
+    <string name="date_format">Date: %1$s</string>
+    <string name="appointment_details_format">Pet: %1$s • Service: %2$s • Price: %3$.2f€</string>
+    <string name="welcome_format">Welcome, %1$s!</string>
+    <string name="veterinarians_count_format">Many successful veterinarians: %1$d</string>
+    <string name="clients_count_format">Many satisfied clients: %1$d</string>
+    <string name="paid_on_format">Paid on: %s</string>
+    <string name="appointment_on_format">Appointment on: %s</string>
+    <string name="price_format" translatable="false">%1$.2f KM</string>
+
+
     <string name="upcoming_appointments">Upcoming appointments</string>
     <string name="past_appointments">Past appointments</string>
     <string name="add_appointment">Add appointment</string>
     <string name="service">Service</string>
-    <string name="cancel">Cancel</string>
     <string name="pay">Pay</string>
-    <string name="title_add_appointment">Add appointment</string>
     <string name="no_date_selected">No date selected!</string>
     <string name="select_date">Select date</string>
     <string name="select_time">Select time</string>
     <string name="select_pet">Select pet</string>
     <string name="select_vet">Select vet</string>
     <string name="select_service">Select service</string>
-    <string name="selected_datetime">Selected datetime</string>
     <string name="paid">Paid</string>
     <string name="edit_profile">Edit profile</string>
     <string name="preferences">Preferences</string>
     <string name="language">Language</string>
     <string name="theme">Theme</string>
-    <string name="dark_theme">Dark</string>
+    <string name="dark">Dark</string>
     <string name="my_payments">My payments</string>
     <string name="logout">Logout</string>
-    <string name="save">Save</string>
-    <string name="pet_name_required">Pet name required</string>
-    <string name="pet_updated">Pet updated</string>
-    <string name="confirm_save_pet_changes">Are you sure you want to save these changes?</string>
-    <string name="no_appointment_associated">No appointment associated</string>
     <string name="change_password">Change Password</string>
     <string name="current_password">Current Password</string>
     <string name="new_password">New Password</string>
-    <string name="details_placeholder">Details...</string>
-    <string name="paid_on">Paid on: </string>
-    <string name="appointment_on">Appointment on: </string>
-    <string name="appointment_details">Pet: %1$s • Service: %2$s • Price: %3$.2f€</string>
-    <string name="appointment_pet_prefix">Pet: </string>
-    <string name="appointment_service_prefix">Service: </string>
-    <string name="error_name_required">Name is required</string>
-    <string name="error_email_required">Email is required</string>
-    <string name="error_enter_passwords">Enter both current and new password</string>
-    <string name="error_incorrect_password">Incorrect current password</string>
-    <string name="dialog_confirm_title">Confirm Changes</string>
-    <string name="dialog_confirm_message">Are you sure you want to save these changes?</string>
-    <string name="toast_profile_updated">Profile updated</string>
-    <string name="toast_profile_update_failed">Failed to update profile</string>
-    <string name="welcome_default">Dobrodošli!</string>
-    <string name="veterinarians_count">Broj veterinara: --</string>
-    <string name="clients_count">Broj klijenata: --</string>
-    <string name="available_services">Dostupne usluge</string>
-    <string name="welcome_user">Dobrodošli, %1$s!</string>
-    <string name="veterinarians_count_format">Broj veterinara: %1$d</string>
-    <string name="clients_count_format">Broj klijenata: %1$d</string>
-    <string name="price_placeholder">Price</string>
-    <string name="price_prefix">"Cijena: "</string>
-    <string name="paid_on_format">Plaćeno: %s</string>
-    <string name="appointment_on_format">Termin: %s</string>
-    <string name="details_format">Ljubimac: %s\nUsluga: %s\nCijena: %.2f</string>
-    <string name="date_first">Please select date first</string>
-    <string name="future">Date and time must be in future!</string>
-    <string name="select_date_time">Please select date and time first</string>
-    <string name="select_all">Please select all the fields first</string>
-    <string name="appointment_scheduled">Appointment scheduled</string>
-    <string name="appointment_cancelled">Appointment cancelled</string>
-    <string name="appointment_paid">Appointment successfuly paid</string>
-    <string name="confirm_cancel_title">Confirm cancel</string>
-    <string name="confirm_cancel_message">Are you sure you want to cancel the appointment?</string>
-    <string name="price_format">%1$.2f KM</string>
-    <string name="no_medical_records">This pet has no medical records</string>
+    <string name="details">Details</string>
+    <string name="paid_on">Paid on</string>
+    <string name="appointment_on">Appointment on</string>
+    <string name="welcome">Welcome</string>
+    <string name="available_services">Available services</string>
+    <string name="price">Price</string>
     <string name="date">Date</string>
     <string name="diagnosis">Diagnosis</string>
     <string name="therapy">Therapy</string>
@@ -124,6 +115,27 @@
     <string name="notes">Notes</string>
     <string name="service_name">Service name</string>
     <string name="service_description">Service description</string>
+    <string name="add">Add</string>
+    <string name="add_pet">Add pet</string>
+    <string name="pet_name">Pet\'s name</string>
+    <string name="species">Species</string>
+    <string name="breed">Breed</string>
+    <string name="medical_records">Medical records</string>
+    <string name="delete_pet">Delete pet</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="email" translatable="false">Email</string>
+
+
+    <string name="veterinarians_count">Many successful veterinarians</string>
+    <string name="clients_count">Many satisfied clients</string>
+    <string name="no_medical_records">This pet has no medical records</string>
+    <string name="already_have_account">Already have an account? Log in here!</string>
+    <string name="dont_have_account">Don\'t have an account? Register here!</string>
+    <string name="welcome_message">Welcome to VetClinic!</string>
+
 
     <string-array name="language_options">
         <item>English</item>

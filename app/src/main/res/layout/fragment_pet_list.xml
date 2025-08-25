@@ -23,7 +23,7 @@
         style="@style/WidgetAppFloatingActionButtonPurple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/add_pet"
+        android:contentDescription="@string/add"
         app:srcCompat="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

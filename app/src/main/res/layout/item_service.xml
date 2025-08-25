@@ -30,6 +30,6 @@
             style="@style/WidgetAppTextPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/price_placeholder" />
+            android:text="@string/price" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

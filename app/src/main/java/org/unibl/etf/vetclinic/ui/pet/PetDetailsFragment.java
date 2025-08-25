@@ -97,20 +97,20 @@ public class PetDetailsFragment extends Fragment {
             String breed = editTextBreed.getText().toString().trim();
 
             if (name.isEmpty()) {
-                Toast.makeText(requireContext(), R.string.pet_name_required, Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), R.string.error_pet_name_required, Toast.LENGTH_SHORT).show();
                 return;
             }
 
             new AlertDialog.Builder(requireContext())
                     .setTitle(R.string.save)
-                    .setMessage(R.string.confirm_save_pet_changes)
+                    .setMessage(R.string.confirm_save_changes)
                     .setPositiveButton(R.string.save, (dialog, which) -> {
                         if (currentPet != null) {
                             currentPet.Name = name;
                             currentPet.Species = species.isEmpty() ? null : species;
                             currentPet.Breed = breed.isEmpty() ? null : breed;
                             petViewModel.update(currentPet);
-                            Toast.makeText(requireContext(), R.string.pet_updated, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), R.string.success_pet_updated, Toast.LENGTH_SHORT).show();
 
                             requireActivity()
                                     .runOnUiThread(() -> {
@@ -128,7 +128,7 @@ public class PetDetailsFragment extends Fragment {
     private void showDeleteConfirmationDialog() {
         new AlertDialog.Builder(requireContext())
                 .setTitle(getString(R.string.delete_confirmation_title))
-                .setMessage(getString(R.string.delete_confirmation_message))
+                .setMessage(getString(R.string.confirm_delete_pet))
                 .setPositiveButton(getString(R.string.yes), (dialog, which) -> deletePet())
                 .setNegativeButton(getString(R.string.no), null)
                 .show();
@@ -138,10 +138,10 @@ public class PetDetailsFragment extends Fragment {
         petViewModel.getPetById(petId).observe(getViewLifecycleOwner(), pet -> {
             if (pet != null) {
                 petViewModel.delete(pet);
-                Toast.makeText(requireContext(), getString(R.string.pet_deleted), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), getString(R.string.success_pet_deleted), Toast.LENGTH_SHORT).show();
                 requireActivity().onBackPressed();
             } else {
-                Toast.makeText(requireContext(), getString(R.string.pet_delete_error), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), getString(R.string.error_pet_not_found), Toast.LENGTH_SHORT).show();
             }
         });
     }
