@@ -71,7 +71,7 @@
     <string name="medications_format">Medications: %1$s</string>
     <string name="notes_format">Notes: %1$s</string>
     <string name="date_format">Date: %1$s</string>
-    <string name="appointment_details_format">Pet: %1$s • Service: %2$s • Price: %3$.2f€</string>
+    <string name="appointment_details_format">Pet: %1$s • Service: %2$s • Price: %3$.2fKM</string>
     <string name="welcome_format">Welcome, %1$s!</string>
     <string name="veterinarians_count_format">Many successful veterinarians: %1$d</string>
     <string name="clients_count_format">Many satisfied clients: %1$d</string>

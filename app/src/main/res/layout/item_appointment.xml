@@ -56,6 +56,7 @@
                 style="@style/WidgetAppButtonSecondarySmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_medium"
                 android:text="@string/cancel"
                 android:visibility="gone" />
 
@@ -64,6 +65,7 @@
                 style="@style/WidgetAppButtonSecondarySmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_medium"
                 android:text="@string/pay"
                 android:layout_marginStart="@dimen/spacing_small"
                 android:visibility="gone" />
