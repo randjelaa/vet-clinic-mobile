@@ -12,7 +12,6 @@
         android:orientation="vertical"
         android:padding="@dimen/card_padding">
 
-        <!-- Pet info -->
         <TextView
             android:id="@+id/textViewPetName"
             style="@style/WidgetAppCardTitle"
@@ -27,7 +26,6 @@
             android:layout_height="wrap_content"
             android:text="@string/service" />
 
-        <!-- Appointment date -->
         <TextView
             android:id="@+id/textViewDate"
             style="@style/WidgetAppTextSecondary"
@@ -35,7 +33,6 @@
             android:layout_height="wrap_content"
             android:text="@string/label_date" />
 
-        <!-- Paid label -->
         <TextView
             android:id="@+id/textViewPaid"
             style="@style/WidgetAppTextPrimaryBold"
@@ -46,7 +43,6 @@
             android:visibility="gone"
             android:layout_marginTop="@dimen/spacing_small" />
 
-        <!-- Buttons row -->
         <LinearLayout
             android:id="@+id/buttonsRow"
             android:layout_width="match_parent"

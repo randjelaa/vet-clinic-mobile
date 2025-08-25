@@ -16,36 +16,36 @@
             android:id="@+id/textViewDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/WidgetAppTextPrimaryBold"
-            android:text="Datum" />
+            style="@style/WidgetAppCardTitle"
+            android:text="@string/date" />
 
         <TextView
             android:id="@+id/textViewDiagnosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/WidgetAppTextPrimaryBold"
-            android:text="Dijagnoza: ..." />
+            style="@style/WidgetAppCardTitle"
+            android:text="@string/diagnosis" />
 
         <TextView
             android:id="@+id/textViewTreatment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/WidgetAppTextSecondary"
-            android:text="Terapija: ..." />
+            android:text="@string/therapy" />
 
         <TextView
             android:id="@+id/textViewMedications"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/WidgetAppTextSecondary"
-            android:text="Lijekovi: ..." />
+            android:text="@string/medicine" />
 
         <TextView
             android:id="@+id/textViewNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/WidgetAppTextSecondary"
-            android:text="Bilješke: ..." />
+            android:text="@string/notes" />
 
     </LinearLayout>
 

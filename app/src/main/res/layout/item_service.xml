@@ -16,22 +16,20 @@
             style="@style/WidgetAppCardTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ime usluge" />
+            android:text="@string/service_name" />
 
         <TextView
             android:id="@+id/textViewServiceDescription"
             style="@style/WidgetAppTextSecondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Opis usluge"
-            android:paddingTop="4dp" />
+            android:text="@string/service_description" />
 
         <TextView
             android:id="@+id/textViewServicePrice"
             style="@style/WidgetAppTextPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cijena"
-            android:paddingTop="4dp" />
+            android:text="@string/price_placeholder" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

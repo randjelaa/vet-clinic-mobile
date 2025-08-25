@@ -117,6 +117,13 @@
     <string name="confirm_cancel_message">Are you sure you want to cancel the appointment?</string>
     <string name="price_format">%1$.2f KM</string>
     <string name="no_medical_records">This pet has no medical records</string>
+    <string name="date">Date</string>
+    <string name="diagnosis">Diagnosis</string>
+    <string name="therapy">Therapy</string>
+    <string name="medicine">Medicine</string>
+    <string name="notes">Notes</string>
+    <string name="service_name">Service name</string>
+    <string name="service_description">Service description</string>
 
     <string-array name="language_options">
         <item>English</item>
