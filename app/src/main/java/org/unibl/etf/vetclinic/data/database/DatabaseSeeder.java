@@ -15,8 +15,6 @@ public class DatabaseSeeder {
 
     public static void seed(AppDatabase db, Application application) {
         try {
-            //TODO prosiriti
-
             // === ROLES ===
             RoleDao roleDao = db.roleDao();
 
@@ -70,13 +68,6 @@ public class DatabaseSeeder {
             client2.RoleID = clientRoleId;
             int client2Id = userRepo.insertUserAndPreferencesSync(client2);
 
-            User client3 = new User();
-            client3.Email = "client3@mail.com";
-            client3.Name = "Alice Brown";
-            client3.Password = "client123";
-            client3.RoleID = clientRoleId;
-            int client3Id = userRepo.insertUserAndPreferencesSync(client3);
-
             // === PETS ===
             PetDao petDao = db.petDao();
 
@@ -98,29 +89,29 @@ public class DatabaseSeeder {
             pet3.Name = "Bella";
             pet3.Species = "Dog";
             pet3.Breed = "Golden Retriever";
-            pet3.OwnerID = client3Id;
+            pet3.OwnerID = client2Id;
             int pet3Id = (int) petDao.insert(pet3);
 
             // === SERVICES ===
             ServiceDao serviceDao = db.serviceDao();
 
             Service exam = new Service();
-            exam.Name = "Pregled";
-            exam.Description = "Opšti pregled životinje";
+            exam.Name = "Examination";
+            exam.Description = "General animal examination";
             exam.Price = 30.0;
             exam.DurationMinutes = 30;
             int examId = (int) serviceDao.insert(exam);
 
             Service vac = new Service();
-            vac.Name = "Vakcinacija";
-            vac.Description = "Vakcinacija protiv bolesti";
+            vac.Name = "Vaccination";
+            vac.Description = "Vaccination against diseases";
             vac.Price = 50.0;
             vac.DurationMinutes = 20;
             int vacId = (int) serviceDao.insert(vac);
 
             Service groom = new Service();
-            groom.Name = "Šišanje";
-            groom.Description = "Usluga šišanja pasa i mačaka";
+            groom.Name = "Grooming";
+            groom.Description = "Dog and cat grooming service";
             groom.Price = 40.0;
             groom.DurationMinutes = 60;
             int groomId = (int) serviceDao.insert(groom);
@@ -132,7 +123,7 @@ public class DatabaseSeeder {
 
             Appointment app1 = new Appointment();
             app1.PetID = pet1Id;
-            app1.VetID = vet1Id;
+            app1.VetID = vet2Id;
             app1.ServiceID = examId;
             cal.setTime(new Date());
             cal.add(Calendar.DAY_OF_YEAR, 1);
@@ -157,6 +148,15 @@ public class DatabaseSeeder {
             app3.Date = cal.getTime();
             int app3Id = (int) appointmentDao.insert(app3);
 
+            Appointment app4 = new Appointment();
+            app4.PetID = pet3Id;
+            app4.VetID = vet1Id;
+            app4.ServiceID = examId;
+            cal.setTime(new Date());
+            cal.add(Calendar.DAY_OF_YEAR, 1);
+            app4.Date = cal.getTime();
+            int app4Id = (int) appointmentDao.insert(app4);
+
             // === PAYMENTS & UNPAID ===
             PaymentDao paymentDao = db.paymentDao();
             UnpaidServiceDao unpaidDao = db.unpaidServiceDao();
@@ -171,7 +171,7 @@ public class DatabaseSeeder {
             paymentDao.insert(p1);
 
             UnpaidService u1 = new UnpaidService();
-            u1.UserID = client3Id;
+            u1.UserID = client2Id;
             u1.AppointmentID = app3Id;
             u1.Amount = 40.0;
             u1.status = UnpaidService.Status.pending;
@@ -184,21 +184,28 @@ public class DatabaseSeeder {
             u2.status = UnpaidService.Status.pending;
             unpaidDao.insert(u2);
 
+            UnpaidService u3 = new UnpaidService();
+            u3.UserID = client2Id;
+            u3.AppointmentID = app4Id;
+            u3.Amount = 30.0;
+            u3.status = UnpaidService.Status.pending;
+            unpaidDao.insert(u3);
+
             // === MEDICAL RECORDS ===
             MedicalRecordDao recordDao = db.medicalRecordDao();
 
             MedicalRecord r1 = new MedicalRecord();
             r1.AppointmentID = app2Id;
-            r1.Diagnosis = "Vakcinacija uspješna";
+            r1.Diagnosis = "Vaccination successful";
             r1.Treatment = "Antirabies vaccine";
-            r1.Notes = "Nema komplikacija";
+            r1.Notes = "No complications";
             recordDao.insert(r1);
 
             MedicalRecord r2 = new MedicalRecord();
             r2.AppointmentID = app3Id;
-            r2.Diagnosis = "Pregled završen";
-            r2.Treatment = "Tablete protiv parazita";
-            r2.Notes = "Potrebna kontrola za 2 sedmice";
+            r2.Diagnosis = "Examination completed";
+            r2.Treatment = "Anti-parasite tablets";
+            r2.Notes = "Follow-up needed in 2 weeks";
             recordDao.insert(r2);
 
             Log.i("DatabaseSeeder", "Database successfully seeded!");

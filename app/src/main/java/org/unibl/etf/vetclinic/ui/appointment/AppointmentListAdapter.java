@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.unibl.etf.vetclinic.R;
 import org.unibl.etf.vetclinic.data.entities.relations.AppointmentWithDetails;
+import org.unibl.etf.vetclinic.util.DateUtils;
 
 import java.util.Date;
 import java.util.Locale;
@@ -69,7 +70,7 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
         void bind(AppointmentWithDetails appointment, OnItemActionListener listener) {
             textViewPet.setText(appointment.PetName);
             textViewService.setText(String.format(Locale.getDefault(), "%s (%.2f KM)", appointment.ServiceName, appointment.Price));
-            textViewDate.setText(appointment.Date.toString());
+            textViewDate.setText(DateUtils.formatDate(appointment.Date));
 
             Date now = new Date();
 
