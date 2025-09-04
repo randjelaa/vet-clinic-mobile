@@ -45,5 +45,7 @@ public interface AppointmentDao {
             "WHERE a.ID = :id AND a.Deleted IS NULL LIMIT 1")
     AppointmentWithDetails getDetailsById(int id);
 
+    @Query("SELECT * FROM Appointments WHERE VetID = :vetId AND Deleted IS NULL")
+    LiveData<List<Appointment>> getAppointmentsByVetId(int vetId);
 }
 

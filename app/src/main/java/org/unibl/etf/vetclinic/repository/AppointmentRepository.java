@@ -88,4 +88,8 @@ public class AppointmentRepository {
             }
         });
     }
+
+    public LiveData<List<Appointment>> getAppointmentsByVetId(int vetId) {
+        return appointmentDao.getAppointmentsByVetId(vetId);
+    }
 }

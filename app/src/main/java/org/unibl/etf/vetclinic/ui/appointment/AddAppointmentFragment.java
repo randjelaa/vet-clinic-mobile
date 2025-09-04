@@ -141,7 +141,7 @@ public class AddAppointmentFragment extends Fragment {
                 return;
             }
             if (selectedDate.before(new Date())) {
-                Toast.makeText(getContext(),  getString(R.string.error_future), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_future), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -150,21 +150,64 @@ public class AddAppointmentFragment extends Fragment {
             int serviceIndex = serviceSpinner.getSelectedItemPosition();
 
             if (petIndex < 0 || vetIndex < 0 || serviceIndex < 0) {
-                Toast.makeText(getContext(),  getString(R.string.error_fields_required), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_fields_required), Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            Appointment appointment = new Appointment();
-            appointment.Date = selectedDate;
-            appointment.PetID = userPets.get(petIndex).ID;
-            appointment.VetID = vets.get(vetIndex).ID;
-            appointment.ServiceID = services.get(serviceIndex).ID;
+            int vetId = vets.get(vetIndex).ID;
+            Service selectedService = services.get(serviceIndex);
 
-            appointmentViewModel.insert(appointment);
+            // Dobavljamo sve zakazane termine za ovog veterinara
+            appointmentViewModel.getAppointmentsByVetId(vetId).observe(getViewLifecycleOwner(), appointments -> {
+                boolean isOccupied = false;
 
-            Toast.makeText(getContext(),  getString(R.string.success_appointment_scheduled), Toast.LENGTH_SHORT).show();
-            NavHostFragment.findNavController(this).navigateUp();
+                Calendar selectedStart = Calendar.getInstance();
+                selectedStart.setTime(selectedDate);
+
+                Calendar selectedEnd = (Calendar) selectedStart.clone();
+                selectedEnd.add(Calendar.MINUTE, selectedService.DurationMinutes + 10); // dodaj buffer
+
+                for (Appointment a : appointments) {
+                    Calendar existingStart = Calendar.getInstance();
+                    existingStart.setTime(a.Date);
+
+                    Service serviceForExisting = null;
+                    for (Service s : services) {
+                        if (s.ID == a.ServiceID) {
+                            serviceForExisting = s;
+                            break;
+                        }
+                    }
+                    if (serviceForExisting == null) continue;
+
+                    Calendar existingEnd = (Calendar) existingStart.clone();
+                    existingEnd.add(Calendar.MINUTE, serviceForExisting.DurationMinutes + 10); // dodaj buffer
+
+                    // Provjera preklapanja
+                    if (selectedStart.before(existingEnd) && existingStart.before(selectedEnd)) {
+                        isOccupied = true;
+                        break;
+                    }
+                }
+
+                if (isOccupied) {
+                    Toast.makeText(getContext(), getString(R.string.error_vet_busy), Toast.LENGTH_SHORT).show();
+                } else {
+                    // Veterinar je slobodan, zakazujemo
+                    Appointment appointment = new Appointment();
+                    appointment.Date = selectedDate;
+                    appointment.PetID = userPets.get(petIndex).ID;
+                    appointment.VetID = vetId;
+                    appointment.ServiceID = selectedService.ID;
+
+                    appointmentViewModel.insert(appointment);
+
+                    Toast.makeText(getContext(), getString(R.string.success_appointment_scheduled), Toast.LENGTH_SHORT).show();
+                    NavHostFragment.findNavController(this).navigateUp();
+                }
+            });
         });
+
     }
 
     private void updateDateText() {

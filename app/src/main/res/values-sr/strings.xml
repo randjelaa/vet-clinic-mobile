@@ -56,6 +56,8 @@
     <string name="error_date_first">Prvo izaberite datum</string>
     <string name="error_future">Datum i vreme moraju biti u budućnosti!</string>
     <string name="error_select_date_time">Prvo izaberite datum i vreme</string>
+    <string name="error_vet_busy">Veterinar je zauzet u to vrijeme!</string>
+
 
     <string name="diagnosis_format">Dijagnoza: %1$s</string>
     <string name="treatment_format">Terapija: %1$s</string>

@@ -64,6 +64,7 @@
     <string name="error_date_first">Please select date first</string>
     <string name="error_future">Date and time must be in future!</string>
     <string name="error_select_date_time">Please select date and time first</string>
+    <string name="error_vet_busy">Veterinarian is already booked at that time!</string>
 
 
     <string name="diagnosis_format">Diagnosis: %1$s</string>

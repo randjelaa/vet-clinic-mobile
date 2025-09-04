@@ -36,5 +36,9 @@ public class AppointmentViewModel extends AndroidViewModel {
     public void insert(Appointment appointment) {
         repository.insert(appointment);
     }
+
+    public LiveData<List<Appointment>> getAppointmentsByVetId(int vetId) {
+        return repository.getAppointmentsByVetId(vetId);
+    }
 }
 
