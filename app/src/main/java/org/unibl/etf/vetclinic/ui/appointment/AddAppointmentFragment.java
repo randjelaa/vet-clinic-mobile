@@ -157,7 +157,6 @@ public class AddAppointmentFragment extends Fragment {
             int vetId = vets.get(vetIndex).ID;
             Service selectedService = services.get(serviceIndex);
 
-            // Dobavljamo sve zakazane termine za ovog veterinara
             appointmentViewModel.getAppointmentsByVetId(vetId).observe(getViewLifecycleOwner(), appointments -> {
                 boolean isOccupied = false;
 
@@ -165,7 +164,7 @@ public class AddAppointmentFragment extends Fragment {
                 selectedStart.setTime(selectedDate);
 
                 Calendar selectedEnd = (Calendar) selectedStart.clone();
-                selectedEnd.add(Calendar.MINUTE, selectedService.DurationMinutes + 10); // dodaj buffer
+                selectedEnd.add(Calendar.MINUTE, selectedService.DurationMinutes + 10);
 
                 for (Appointment a : appointments) {
                     Calendar existingStart = Calendar.getInstance();
@@ -181,9 +180,8 @@ public class AddAppointmentFragment extends Fragment {
                     if (serviceForExisting == null) continue;
 
                     Calendar existingEnd = (Calendar) existingStart.clone();
-                    existingEnd.add(Calendar.MINUTE, serviceForExisting.DurationMinutes + 10); // dodaj buffer
+                    existingEnd.add(Calendar.MINUTE, serviceForExisting.DurationMinutes + 10);
 
-                    // Provjera preklapanja
                     if (selectedStart.before(existingEnd) && existingStart.before(selectedEnd)) {
                         isOccupied = true;
                         break;
@@ -193,7 +191,6 @@ public class AddAppointmentFragment extends Fragment {
                 if (isOccupied) {
                     Toast.makeText(getContext(), getString(R.string.error_vet_busy), Toast.LENGTH_SHORT).show();
                 } else {
-                    // Veterinar je slobodan, zakazujemo
                     Appointment appointment = new Appointment();
                     appointment.Date = selectedDate;
                     appointment.PetID = userPets.get(petIndex).ID;

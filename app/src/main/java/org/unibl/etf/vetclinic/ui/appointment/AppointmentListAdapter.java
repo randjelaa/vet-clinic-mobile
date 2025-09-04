@@ -44,6 +44,7 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
                     return oldItem.Date.equals(newItem.Date)
                             && oldItem.PetName.equals(newItem.PetName)
                             && oldItem.ServiceName.equals(newItem.ServiceName)
+                            && oldItem.VetName.equals(newItem.VetName)
                             && oldItem.Price == newItem.Price
                             && oldItem.IsPaid == newItem.IsPaid;
                 }
@@ -52,6 +53,7 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewPet;
         private final TextView textViewService;
+        private final TextView textViewVet;
         private final TextView textViewDate;
         private final Button buttonCancel;
         private final Button buttonPay;
@@ -61,6 +63,7 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
             super(itemView);
             textViewPet = itemView.findViewById(R.id.textViewPetName);
             textViewService = itemView.findViewById(R.id.textViewService);
+            textViewVet = itemView.findViewById(R.id.textViewVet);
             textViewDate = itemView.findViewById(R.id.textViewDate);
             buttonCancel = itemView.findViewById(R.id.buttonCancel);
             buttonPay = itemView.findViewById(R.id.buttonPay);
@@ -70,6 +73,7 @@ public class AppointmentListAdapter extends ListAdapter<AppointmentWithDetails, 
         void bind(AppointmentWithDetails appointment, OnItemActionListener listener) {
             textViewPet.setText(appointment.PetName);
             textViewService.setText(String.format(Locale.getDefault(), "%s (%.2f KM)", appointment.ServiceName, appointment.Price));
+            textViewVet.setText(appointment.VetName);
             textViewDate.setText(DateUtils.formatDate(appointment.Date));
 
             Date now = new Date();

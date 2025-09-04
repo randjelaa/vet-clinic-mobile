@@ -13,6 +13,7 @@ public class AppointmentWithDetails {
     public String ServiceName;
 
     public double Price;
-    public boolean IsPaid; 
+    public boolean IsPaid;
+    public String VetName;
 }
 

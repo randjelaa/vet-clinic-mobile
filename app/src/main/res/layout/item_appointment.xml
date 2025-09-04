@@ -27,6 +27,13 @@
             android:text="@string/service" />
 
         <TextView
+            android:id="@+id/textViewVet"
+            style="@style/WidgetAppTextSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/veterinarian" />
+
+        <TextView
             android:id="@+id/textViewDate"
             style="@style/WidgetAppTextSecondary"
             android:layout_width="match_parent"

@@ -71,6 +71,8 @@
     <string name="paid_on_format">Plaćeno dana: %s</string>
     <string name="appointment_on_format">Termin zakazan za: %s</string>
 
+
+    <string name="veterinarian">Veterinar</string>
     <string name="upcoming_appointments">Predstojeći termini</string>
     <string name="past_appointments">Prošli termini</string>
     <string name="add_appointment">Dodaj termin</string>

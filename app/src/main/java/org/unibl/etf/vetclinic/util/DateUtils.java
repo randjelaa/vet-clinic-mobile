@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class DateUtils {
 
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy. HH:mm", Locale.getDefault());
 
     public static String formatDate(Date date) {
         return date != null ? sdf.format(date) : null;

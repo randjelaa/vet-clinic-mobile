@@ -81,6 +81,7 @@
     <string name="price_format" translatable="false">%1$.2f KM</string>
 
 
+    <string name="veterinarian">Veterinarian</string>
     <string name="upcoming_appointments">Upcoming appointments</string>
     <string name="past_appointments">Past appointments</string>
     <string name="add_appointment">Add appointment</string>
