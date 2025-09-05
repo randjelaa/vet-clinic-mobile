@@ -109,7 +109,7 @@ Users can:
   <img src="./screenshots/edit_profile.PNG" width="200"/>
 </p>
 
-- View a history of all their payments  
+- View a history of all their payments by clicking on the My payments button
 
 <p align="center">
   <img src="./screenshots/my_payments.PNG" width="200"/>
