@@ -7,7 +7,7 @@
 ## 🚀 Workflow Overview
 
 <p align="center">
-  <img src="./screenshots/welcome.PNG" width="400"/>
+  <img src="./screenshots/welcome.PNG" width="200"/>
 </p>
 
 The application begins with the **Welcome Activity**, where users can:
@@ -15,13 +15,13 @@ The application begins with the **Welcome Activity**, where users can:
 - 👤 Register (via `RegisterFragment`)
 
 <p align="center">
-  <img src="./screenshots/register.PNG" width="400"/>
+  <img src="./screenshots/register.PNG" width="200"/>
 </p>
 
 - 🔑 Log in (via `LoginFragment`)
 
 <p align="center">
-  <img src="./screenshots/login.PNG" width="400"/>
+  <img src="./screenshots/login.PNG" width="200"/>
 </p>
 
 After successful login, users are redirected to the **Main Activity**, which includes a **Bottom Navigation Menu** with the following sections:
@@ -31,7 +31,7 @@ After successful login, users are redirected to the **Main Activity**, which inc
 ## 🏠 Home Fragment
 
 <p align="center">
-  <img src="./screenshots/home.PNG" width="400"/>
+  <img src="./screenshots/home.PNG" width="200"/>
 </p>
 
 Displays:
@@ -44,7 +44,7 @@ Displays:
 ## 🐾 Pets Fragment
 
 <p align="center">
-  <img src="./screenshots/pets.PNG" width="400"/>
+  <img src="./screenshots/pets.PNG" width="200"/>
 </p>
 
 Users can:
@@ -53,13 +53,13 @@ Users can:
 - Edit or delete existing pet information by clicking on one of the pets
 
 <p align="center">
-  <img src="./screenshots/pet_details.PNG" width="400"/>
+  <img src="./screenshots/pet_details.PNG" width="200"/>
 </p>
 
 - Add a new pet by clicking on a floating action button
 
 <p align="center">
-  <img src="./screenshots/add_pet.PNG" width="400"/>
+  <img src="./screenshots/add_pet.PNG" width="200"/>
 </p>
 
 ---
@@ -67,7 +67,7 @@ Users can:
 ## 📅 Appointments Fragment
 
 <p align="center">
-  <img src="./screenshots/appointments.PNG" width="400"/>
+  <img src="./screenshots/appointments.PNG" width="200"/>
 </p>
 
 This section allows users to:
@@ -78,7 +78,7 @@ This section allows users to:
 - Book a new appointment  
 
 <p align="center">
-  <img src="./screenshots/add_appointment.PNG" width="400"/>
+  <img src="./screenshots/add_appointment.PNG" width="200"/>
 </p>
 
 Here users choose:
@@ -89,7 +89,7 @@ Here users choose:
 - A date and time (in the future, when the vet is not already booked)
 
 <p align="center">
-  <img src="./screenshots/select_date.PNG" width="400"/>
+  <img src="./screenshots/select_date.PNG" width="200"/>
 </p>
 
 ---
@@ -97,7 +97,7 @@ Here users choose:
 ## 👤 Profile Fragment
 
 <p align="center">
-  <img src="./screenshots/profile.PNG" width="400"/>
+  <img src="./screenshots/profile.PNG" width="200"/>
 </p>
 
 Users can:
@@ -106,20 +106,20 @@ Users can:
 - Edit their profile (name, email, password) by clicking on the **Edit Profile** button  
 
 <p align="center">
-  <img src="./screenshots/edit_profile.PNG" width="400"/>
+  <img src="./screenshots/edit_profile.PNG" width="200"/>
 </p>
 
 - View a history of all their payments  
 
 <p align="center">
-  <img src="./screenshots/my_payments.PNG" width="400"/>
+  <img src="./screenshots/my_payments.PNG" width="200"/>
 </p>
 
 - Change the app language (English / Serbian)  
 - Switch between light and dark themes  
 
 <p align="center">
-  <img src="./screenshots/dark_serbian.PNG" width="400"/>
+  <img src="./screenshots/dark_serbian.PNG" width="200"/>
 </p>
 
 ---
