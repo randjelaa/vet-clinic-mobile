@@ -6,15 +6,15 @@
 
 ## 🚀 Workflow Overview
 
-![Welcome Screen](./screenshots/welcome.png)
+![Welcome Screen](./screenshots/welcome.PNG)
 
 The application begins with the **Welcome Activity**, where users can:
 
 - 👤 Register (via `RegisterFragment`)
-![Register Screen](./screenshots/register.png)
+![Register Screen](./screenshots/register.PNG)
 
 - 🔑 Log in (via `LoginFragment`)
-![Login Screen](./screenshots/login.png)
+![Login Screen](./screenshots/login.PNG)
 
 After successful login, users are redirected to the **Main Activity**, which includes a **Bottom Navigation Menu** with the following sections:
 
@@ -22,7 +22,7 @@ After successful login, users are redirected to the **Main Activity**, which inc
 
 ## 🏠 Home Fragment
 
-![Home Fragment](./Screenshots/home.png)
+![Home Fragment](./Screenshots/home.PNG)
 
 Displays:
 
@@ -33,22 +33,22 @@ Displays:
 
 ## 🐾 Pets Fragment
 
-![Pets Fragment](./Screenshots/pets.png)
+![Pets Fragment](./Screenshots/pets.PNG)
 
 Users can:
 
 - View a list of their pets  
 - Edit or delete existing pet information by clicking on one of the pets
-![Pet Details Screen](./screenshots/pet_details.png)
+![Pet Details Screen](./screenshots/pet_details.PNG)
 
 - Add a new pet by clicking on a floating action button
-![Add Pet Screen](./screenshots/add_pet.png)
+![Add Pet Screen](./screenshots/add_pet.PNG)
 
 ---
 
 ## 📅 Appointments Fragment
 
-![Appointments Fragment](./Screenshots/appointments.png)
+![Appointments Fragment](./Screenshots/appointments.PNG)
 
 This section allows users to:
 
@@ -56,29 +56,29 @@ This section allows users to:
 - Cancel an existing appointment by clicking on Cancel button
 - Mark an appointment as paid by clicking Pay button - could be implemepted via Stripe in the future 
 - Book a new appointment
-![Add Appointment Screen](./screenshots/add_appointment.png)
+![Add Appointment Screen](./screenshots/add_appointment.PNG)
 
 Here users choose which pet is appointment for, which veterinarian they want, what service they need and then they need to select a date and time of the appointment (in the future, when the veterinarian is not already booked).
-![Select Date Screen](./screenshots/select_date.png)  
+![Select Date Screen](./screenshots/select_date.PNG)  
 
 ---
 
 ## 👤 Profile Fragment
 
-![Profile Fragment](./Screenshots/profile.png)
+![Profile Fragment](./Screenshots/profile.PNG)
 
 Users can:
 
 - View their profile
 - Edit their profile (name, email, password) by clicking on the Edit profile button
-![Edit Profile Screen](./screenshots/edit_profile.png)
+![Edit Profile Screen](./screenshots/edit_profile.PNG)
 
 - View a history of all their payments
-![My Payments Screen](./screenshots/my_payments.png)
+![My Payments Screen](./screenshots/my_payments.PNG)
   
 - Change the app language (English / Serbian)  
 - Switch between light and dark themes
-![Dark Serbian Screen](./screenshots/dark_serbian.png)
+![Dark Serbian Screen](./screenshots/dark_serbian.PNG)
  
 
 ---
