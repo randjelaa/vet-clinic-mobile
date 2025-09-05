@@ -75,7 +75,7 @@ This section allows users to:
 - View upcoming and past appointments  
 - Cancel an existing appointment by clicking the Cancel button  
 - Mark an appointment as paid by clicking the Pay button – could be implemented via Stripe in the future  
-- Book a new appointment  
+- Book a new appointment by clicking on the floating action button
 
 <p align="center">
   <img src="./screenshots/add_appointment.PNG" width="200"/>
