@@ -50,7 +50,7 @@ Displays:
 Users can:
 
 - View a list of their pets  
-- Edit or delete existing pet information by clicking on one of the pets
+- Edit or delete existing pet information and see their medical records by clicking on one of the pets
 
 <p align="center">
   <img src="./screenshots/pet_details.PNG" width="200"/>
